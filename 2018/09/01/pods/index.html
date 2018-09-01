@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="你怎那么好看">
 <meta property="og:description" content="CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 51 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-01T12:00:44.864Z">
+<meta property="og:updated_time" content="2018-09-01T12:11:35.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CocoaPods入门使用">
 <meta name="twitter:description" content="CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 51 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.">
@@ -93,7 +93,7 @@
         <p><a href="https://cocoapods.org" target="_blank" rel="noopener">CocoaPods</a> is a dependency manager for Swift and Objective-C Cocoa projects. It has over 51 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.</p>
 <h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><p>CocoaPods is built with Ruby and is installable with the default Ruby available on OS X. We recommend you use the default ruby.<br>Using the default Ruby install can require you to use sudo when installing gems. Further installation instructions are in the guides.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Xcode 8 + 9</span></span><br><span class="line">$ sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
-<p>We also have a Mac app for CocoaPods. It only gets major releases ATM though.</p>
+<p>We also have a Mac app for CocoaPods. It only gets major releases ATM though.<br>&lt; !–more–&gt;</p>
 <h3 id="Get-Starded"><a href="#Get-Starded" class="headerlink" title="Get Starded"></a>Get Starded</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, <span class="string">'8.0'</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target <span class="string">'MyApp'</span> <span class="keyword">do</span></span><br><span class="line">  pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 2.6'</span></span><br><span class="line">  pod <span class="string">'ORStackView'</span>, <span class="string">'~&gt; 3.0'</span></span><br><span class="line">  pod <span class="string">'SwiftyJSON'</span>, <span class="string">'~&gt; 2.3'</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <p>Tip: CocoaPods provides a pod init command to create a Podfile with smart defaults. You should use it.</p>
 <p>Now you can install the dependencies in your project:</p>
