@@ -93,11 +93,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://github.com/supermarin/xcpretty" target="_blank" rel="noopener">https://github.com/supermarin/xcpretty</a> 用于对xcodebuild的输出进行格式化。并包含输出report功能。<br>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install xcpretty</span><br></pre></td></tr></table></figure></p>
-<p>jenkins 安装的话,确保已安装command line tools<br>用法紧跟在xcodebuild 相关语句后面，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild [flags] | xcpretty</span><br></pre></td></tr></table></figure></p>
-<p>可以结合tee进行日志收集<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild [flags] | tee xcodebuild.log | xcpretty</span><br></pre></td></tr></table></figure></p>
-<p>重要的是，如果运行在jenkins上，需要exit参数来帮助jenkins确定是否运行失败。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -o pipefail &amp;&amp; xcodebuild [flags] | xcpretty <span class="comment"># # OR # $ xcodebuild [flags] | xcpretty &amp;&amp; exit $&#123;PIPESTATUS[0]&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>log展示输出格式：<br>默认状态 -s,会展示所有信息。<br>测试状态 -t,只展示测试信息。<br>如果需要输出报表：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">–report junit, -r junit：输出可集成在Jenkins中 JUnit-style XML report at build/reports/junit.xml</span><br><span class="line">–report html, -r html：输出html报表在build/reports/tests.html</span><br><span class="line">如果要指定报表保存位置：</span><br><span class="line">--output ~/Desktop/aaaaaaaaaa.html</span><br><span class="line">完整的例子</span><br><span class="line">xcodebuild \ -workspace Jovi.xcworkspace \ -scheme Jovi \ -destination <span class="string">'platform=iOS Simulator,name=iPhone 6'</span> \ SYMROOT=$(PWD)/build \ <span class="built_in">test</span> | tee xcodebuild.log | xcpretty -t -r html --output ~/Desktop/aaaaaaaaaa.html</span><br></pre></td></tr></table></figure></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/09/03/xcpretty/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

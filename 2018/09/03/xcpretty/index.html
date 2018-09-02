@@ -7,18 +7,18 @@
   
   <title>xcpretty | 你怎那么好看</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty jenkins 安装的话,确保已安装command line tools用法紧跟在xcodebuild 相关语句后面，比如：1xcodebuild [flags] | xcpretty 可以结合tee进">
+  <meta name="description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty">
 <meta name="keywords" content="xcpretty">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xcpretty">
 <meta property="og:url" content="http://yoursite.com/2018/09/03/xcpretty/index.html">
 <meta property="og:site_name" content="你怎那么好看">
-<meta property="og:description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty jenkins 安装的话,确保已安装command line tools用法紧跟在xcodebuild 相关语句后面，比如：1xcodebuild [flags] | xcpretty 可以结合tee进">
+<meta property="og:description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-02T17:14:37.978Z">
+<meta property="og:updated_time" content="2018-09-02T17:17:12.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xcpretty">
-<meta name="twitter:description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty jenkins 安装的话,确保已安装command line tools用法紧跟在xcodebuild 相关语句后面，比如：1xcodebuild [flags] | xcpretty 可以结合tee进">
+<meta name="twitter:description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty">
   
     <link rel="alternate" href="/atom.xml" title="你怎那么好看" type="application/atom+xml">
   
@@ -96,6 +96,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://github.com/supermarin/xcpretty" target="_blank" rel="noopener">https://github.com/supermarin/xcpretty</a> 用于对xcodebuild的输出进行格式化。并包含输出report功能。<br>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install xcpretty</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>jenkins 安装的话,确保已安装command line tools<br>用法紧跟在xcodebuild 相关语句后面，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild [flags] | xcpretty</span><br></pre></td></tr></table></figure></p>
 <p>可以结合tee进行日志收集<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild [flags] | tee xcodebuild.log | xcpretty</span><br></pre></td></tr></table></figure></p>
 <p>重要的是，如果运行在jenkins上，需要exit参数来帮助jenkins确定是否运行失败。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -o pipefail &amp;&amp; xcodebuild [flags] | xcpretty <span class="comment"># # OR # $ xcodebuild [flags] | xcpretty &amp;&amp; exit $&#123;PIPESTATUS[0]&#125;</span></span><br></pre></td></tr></table></figure></p>
