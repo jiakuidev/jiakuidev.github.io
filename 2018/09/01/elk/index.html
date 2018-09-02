@@ -7,17 +7,17 @@
   
   <title>ELK日志分析系统 | 你怎那么好看</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ELK(ElasticSearch, Logstash, Kibana)1、日志直接写入Redishttp://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.htmlElasticSearch环境搭建 ElasticSearch 安装完成后elasticsearch-5.5.0/config目录下配置elasticsearch.yml 12n">
+  <meta name="description" content="ELK(ElasticSearch, Logstash, Kibana)1、日志直接写入Redishttp://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.htmlElasticSearch环境搭建">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ELK日志分析系统">
 <meta property="og:url" content="http://yoursite.com/2018/09/01/elk/index.html">
 <meta property="og:site_name" content="你怎那么好看">
-<meta property="og:description" content="ELK(ElasticSearch, Logstash, Kibana)1、日志直接写入Redishttp://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.htmlElasticSearch环境搭建 ElasticSearch 安装完成后elasticsearch-5.5.0/config目录下配置elasticsearch.yml 12n">
+<meta property="og:description" content="ELK(ElasticSearch, Logstash, Kibana)1、日志直接写入Redishttp://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.htmlElasticSearch环境搭建">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-02T01:44:43.927Z">
+<meta property="og:updated_time" content="2018-09-02T05:48:19.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ELK日志分析系统">
-<meta name="twitter:description" content="ELK(ElasticSearch, Logstash, Kibana)1、日志直接写入Redishttp://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.htmlElasticSearch环境搭建 ElasticSearch 安装完成后elasticsearch-5.5.0/config目录下配置elasticsearch.yml 12n">
+<meta name="twitter:description" content="ELK(ElasticSearch, Logstash, Kibana)1、日志直接写入Redishttp://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.htmlElasticSearch环境搭建">
   
     <link rel="alternate" href="/atom.xml" title="你怎那么好看" type="application/atom+xml">
   
@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="ELK-ElasticSearch-Logstash-Kibana"><a href="#ELK-ElasticSearch-Logstash-Kibana" class="headerlink" title="ELK(ElasticSearch, Logstash, Kibana)"></a>ELK(ElasticSearch, Logstash, Kibana)</h4><p>1、日志直接写入Redis<br><a href="http://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.html" target="_blank" rel="noopener">http://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.html</a><br>ElasticSearch环境搭建</p>
+        <h4 id="ELK-ElasticSearch-Logstash-Kibana"><a href="#ELK-ElasticSearch-Logstash-Kibana" class="headerlink" title="ELK(ElasticSearch, Logstash, Kibana)"></a>ELK(ElasticSearch, Logstash, Kibana)</h4><p>1、日志直接写入Redis<br><a href="http://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.html" target="_blank" rel="noopener">http://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.html</a><br>ElasticSearch环境搭建<br><a id="more"></a></p>
 <h6 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h6><ol>
 <li><p>安装完成后elasticsearch-5.5.0/config目录下配置elasticsearch.yml</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">network.host: 192.8.27.5</span><br><span class="line">http.port: 9200</span><br></pre></td></tr></table></figure>
@@ -124,7 +124,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.base_uri = this.config.base_uri || this.prefs.get(<span class="string">"app-base_uri"</span>) || <span class="string">"http://192.8.19.101:9200”;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>启动方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/elasticsearch-head/node_modules</span><br><span class="line">nohup grunt server &gt;/dev/null 2&gt;&amp;1&amp;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/elasticsearch-head/node_modules</span><br><span class="line">nohup grunt server &gt;/dev/null 2&gt;&amp;1&amp;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       

@@ -88,43 +88,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="ELK-ElasticSearch-Logstash-Kibana"><a href="#ELK-ElasticSearch-Logstash-Kibana" class="headerlink" title="ELK(ElasticSearch, Logstash, Kibana)"></a>ELK(ElasticSearch, Logstash, Kibana)</h4><p>1、日志直接写入Redis<br><a href="http://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.html" target="_blank" rel="noopener">http://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.html</a><br>ElasticSearch环境搭建</p>
-<h6 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h6><ol>
-<li><p>安装完成后elasticsearch-5.5.0/config目录下配置elasticsearch.yml</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">network.host: 192.8.27.5</span><br><span class="line">http.port: 9200</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置可以启动http访问服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: “*<span class="string">"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置快照的备份目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path.repo: [<span class="string">"/home/elasticsearch/snapshot”]</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>安装完成后可以<a href="http://192.8.27.5:9200端口验证" target="_blank" rel="noopener">http://192.8.27.5:9200端口验证</a></p>
-<ol start="4">
-<li>启动方法<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">su elasticsearch</span><br><span class="line">./elasticsearch -d</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h6 id="elasticsearch-head的安装和配置"><a href="#elasticsearch-head的安装和配置" class="headerlink" title="elasticsearch-head的安装和配置"></a>elasticsearch-head的安装和配置</h6><ol>
-<li><p>首先进入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/elasticsearch-head</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改elasticsearch.yml，增加跨域的配置(需要重启es才能生效)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编辑head/Gruntfile.js，修改服务器监听地址，增加hostname属性，将其值设置为*。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下面这两种配置都可以的</span></span><br><span class="line"><span class="comment">#配置一</span></span><br><span class="line">connect: &#123;</span><br><span class="line">        hostname: <span class="string">'*'</span>,</span><br><span class="line">        server: &#123;</span><br><span class="line">                options: &#123;</span><br><span class="line">                        port: 9100,</span><br><span class="line">                        base: <span class="string">'.'</span>,</span><br><span class="line">                        keepalive: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#配置二</span></span><br><span class="line">connect: &#123;</span><br><span class="line">        server: &#123;</span><br><span class="line">                options: &#123;</span><br><span class="line">                        hostname: <span class="string">'*'</span>,</span><br><span class="line">                        port: 9100,</span><br><span class="line">                        base: <span class="string">'.'</span>,</span><br><span class="line">                        keepalive: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编辑head/_site/app.js，修改head连接es的地址，将localhost修改为es的IP地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原配置</span></span><br><span class="line">this.base_uri = this.config.base_uri || this.prefs.get(<span class="string">"app-base_uri"</span>) || <span class="string">"http://localhost:9200"</span>;</span><br><span class="line"><span class="comment"># 将localhost修改为ES的IP地址</span></span><br><span class="line">this.base_uri = this.config.base_uri || this.prefs.get(<span class="string">"app-base_uri"</span>) || <span class="string">"http://YOUR-ES-IP:9200"</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>首先进入/usr/elasticsearch-head/src/app目录，修改app.js中如下，为当前真实正确的地址</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.base_uri = this.config.base_uri || this.prefs.get(<span class="string">"app-base_uri"</span>) || <span class="string">"http://192.8.19.101:9200”;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动方法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/elasticsearch-head/node_modules</span><br><span class="line">nohup grunt server &gt;/dev/null 2&gt;&amp;1&amp;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+        <h4 id="ELK-ElasticSearch-Logstash-Kibana"><a href="#ELK-ElasticSearch-Logstash-Kibana" class="headerlink" title="ELK(ElasticSearch, Logstash, Kibana)"></a>ELK(ElasticSearch, Logstash, Kibana)</h4><p>1、日志直接写入Redis<br><a href="http://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.html" target="_blank" rel="noopener">http://www.cnblogs.com/DemoLeo/archive/2017/03/09/6525746.html</a><br>ElasticSearch环境搭建<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/01/elk/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
