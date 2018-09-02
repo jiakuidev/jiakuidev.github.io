@@ -66,6 +66,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-xctest" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/02/xctest/" class="article-date">
+  <time datetime="2018-09-02T08:45:30.000Z" itemprop="datePublished">2018-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/02/xctest/">xctest</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>极客学院文章<br><a href="http://wiki.jikexueyuan.com/project/objc/test/15-2.html" target="_blank" rel="noopener">http://wiki.jikexueyuan.com/project/objc/test/15-2.html</a></p>
+<p>官方文档<br><a href="https://developer.apple.com/documentation/xctest?language=objc" target="_blank" rel="noopener">https://developer.apple.com/documentation/xctest?language=objc</a></p>
+<p>首次发布时的视频<br><a href="https://developer.apple.com/videos/play/wwdc2015/406/" target="_blank" rel="noopener">https://developer.apple.com/videos/play/wwdc2015/406/</a></p>
+<p>xcode模拟器<br><a href="https://blog.csdn.net/qq_39551390/article/details/80848866" target="_blank" rel="noopener">https://blog.csdn.net/qq_39551390/article/details/80848866</a></p>
+<p>Xcodebuild test和xctool工具的使用<br><a href="https://blog.csdn.net/ajdfhajdkfakr/article/details/76129244" target="_blank" rel="noopener">https://blog.csdn.net/ajdfhajdkfakr/article/details/76129244</a></p>
+<p>iOS自动化常用命令集合</p>
+<p><a href="https://blog.csdn.net/g19920917/article/details/47952803" target="_blank" rel="noopener">https://blog.csdn.net/g19920917/article/details/47952803</a></p>
+<p><a href="https://blog.csdn.net/ajdfhajdkfakr/article/details/76129244" target="_blank" rel="noopener">https://blog.csdn.net/ajdfhajdkfakr/article/details/76129244</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#录制视频</span></span><br><span class="line">xcrun simctl io booted recordVideo filename.mov</span><br></pre></td></tr></table></figure></p>
+<p>测试用例可执行的命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#以项目形式进行测试</span></span><br><span class="line">Xcodebuild -scheme WawaRobot <span class="built_in">test</span> -destination <span class="string">'platform=iOS Simulator,OS=11.4,name=iPhone 8 Plus'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#以工作空间形式进行测试</span></span><br><span class="line">Xcodebuild -workspace WawaRobot.xcworkspace -scheme WawaRobot <span class="built_in">test</span> -destination <span class="string">'platform=iOS Simulator,OS=11.4,name=iPhone 8 Plus'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#运行部分测试用例</span></span><br><span class="line">-only-testing:FoundationUnitTestProjectTests/NSString+ExtensionsTests/testisAllWhiteSpaceInString</span><br><span class="line"></span><br><span class="line"><span class="comment">#运行单条测试用例</span></span><br><span class="line">Xcodebuild -scheme wifi <span class="built_in">test</span> -destination <span class="string">'platform=iOS Simulator,OS=11.4,name=iPhone 8 Plus'</span> -only-testing: wifiUITests/testExample</span><br><span class="line"></span><br><span class="line"><span class="comment">#编包</span></span><br><span class="line">xcodebuild -configuration Debug -sdk iphoneos11.4 -workspace WawaRobot.xcworkspace -scheme WawaRobot -derivedDataPath <span class="string">"./build"</span></span><br></pre></td></tr></table></figure></p>
+<p>iOS自动构建命令——xcodebuild<br><a href="https://www.jianshu.com/p/3f43370437d2" target="_blank" rel="noopener">https://www.jianshu.com/p/3f43370437d2</a></p>
+<p>Objective-C中block的底层原理<br><a href="https://www.cnblogs.com/dahe007/p/6067591.html" target="_blank" rel="noopener">https://www.cnblogs.com/dahe007/p/6067591.html</a></p>
+<p>Xcode测试苹果官方文档翻译（上）<br><a href="https://www.jianshu.com/p/54516807a622?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/54516807a622?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
+<p>Xcode测试苹果官方文档翻译（下）<br><a href="https://www.jianshu.com/p/1616d9bfbb53?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/1616d9bfbb53?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
+<p>Xcode 7 UI 测试初窥<br><a href="https://blog.csdn.net/zhenggaoxing/article/details/48783851" target="_blank" rel="noopener">https://blog.csdn.net/zhenggaoxing/article/details/48783851</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/02/xctest/" data-id="cjlkmhsas0000rls6yaeh6nuk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-kibana" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/02/kibana/" class="article-date">
@@ -350,6 +400,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/02/xctest/">xctest</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/02/kibana/">ELK日志分析系统-Kibana</a>
           </li>
         
@@ -363,10 +417,6 @@
         
           <li>
             <a href="/2018/09/01/pods/">CocoaPods入门使用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/01/hello-world/">Hello World</a>
           </li>
         
       </ul>
