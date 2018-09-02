@@ -66,6 +66,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-tcpdump" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/02/tcpdump/" class="article-date">
+  <time datetime="2018-09-02T13:38:06.000Z" itemprop="datePublished">2018-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/02/tcpdump/">TCPDUMP 抓包实践</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在centos上直接执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap</span><br></pre></td></tr></table></figure></p>
+<p>其中 em1是ifconfig查询出来的本地网卡的名字，80是监控的端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@jiakui ~]<span class="comment"># tcpdump -i em1 port 80 -c 1024</span></span><br><span class="line">tcpdump: verbose output suppressed, use -v or -vv <span class="keyword">for</span> full protocol decode</span><br><span class="line">listening on em1, link-type EN10MB (Ethernet), capture size 65535 bytes</span><br><span class="line">12:39:07.275167 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [S], seq 1599792026, win 64240, options [mss 1386,nop,wscale 8,nop,nop,sackOK], length 0</span><br><span class="line">12:39:07.275236 IP jiakui.http &gt; 192.8.209.142.55002: Flags [S.], seq 1837845607, ack 1599792027, win 14600, options [mss 1460,nop,nop,sackOK,nop,wscale 7], length 0</span><br><span class="line">12:39:07.277548 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [.], ack 1, win 259, length 0</span><br><span class="line">12:39:07.277934 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [P.], seq 1:420, ack 1, win 259, length 419</span><br><span class="line">12:39:07.277970 IP jiakui.http &gt; 192.8.209.142.55002: Flags [.], ack 420, win 123, length 0</span><br><span class="line">12:39:07.292297 IP jiakui.http &gt; 192.8.209.142.55002: Flags [.], seq 1:2773, ack 420, win 123, length 2772</span><br><span class="line">12:39:07.292311 IP jiakui.http &gt; 192.8.209.142.55002: Flags [.], seq 2773:5545, ack 420, win 123, length 2772</span><br><span class="line">12:39:07.292319 IP jiakui.http &gt; 192.8.209.142.55002: Flags [.], seq 5545:8317, ack 420, win 123, length 2772</span><br><span class="line">12:39:07.292558 IP jiakui.http &gt; 192.8.209.142.55002: Flags [P.], seq 8317:9601, ack 420, win 123, length 1284</span><br><span class="line">12:39:07.301152 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [.], ack 9601, win 259, length 0</span><br><span class="line">12:39:07.358968 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [F.], seq 420, ack 9601, win 259, length 0</span><br><span class="line">12:39:07.359027 IP jiakui.http &gt; 192.8.209.142.55002: Flags [F.], seq 9601, ack 421, win 123, length 0</span><br><span class="line">12:39:07.361335 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [.], ack 9602, win 259, length 0</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/02/tcpdump/" data-id="cjlkwlpha00008ps6ncapp1sx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-xctest" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/02/xctest/" class="article-date">
@@ -110,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/xctest/" data-id="cjlkmhsas0000rls6yaeh6nuk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/xctest/" data-id="cjlkm298b000ajes6yl9fr3fg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
@@ -155,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/kibana/" data-id="cjlkkh9nw0000nfs6cwj76mwn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/kibana/" data-id="cjlkk9ddv0004jes6ek6j8zen" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kibana/">Kibana</a></li></ul>
@@ -203,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/logstash/" data-id="cjlkjsk1o0000jxs6c77lgyvg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/02/logstash/" data-id="cjlkjhw6o0000jes64cg2rqod" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logstash/">logstash</a></li></ul>
@@ -406,6 +444,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/02/tcpdump/">TCPDUMP 抓包实践</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/02/xctest/">xctest</a>
           </li>
         
@@ -419,10 +461,6 @@
         
           <li>
             <a href="/2018/09/01/elk/">ELK日志分析系统-ElasticSearch</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/01/pods/">CocoaPods入门使用</a>
           </li>
         
       </ul>
