@@ -7,17 +7,20 @@
   
   <title>TCPDUMP 抓包实践 | 你怎那么好看</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在centos上直接执行1tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap 其中 em1是ifconfig查询出来的本地网卡的名字，80是监控的端口12345678910111213141516[root@jiakui ~]# tcpdump -i em1 port 80 -c 1024tcpdump: verbose output suppre">
+  <meta name="description" content="在centos上直接执行1tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap">
+<meta name="keywords" content="tcpdump">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCPDUMP 抓包实践">
 <meta property="og:url" content="http://yoursite.com/2018/09/02/tcpdump/index.html">
 <meta property="og:site_name" content="你怎那么好看">
-<meta property="og:description" content="在centos上直接执行1tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap 其中 em1是ifconfig查询出来的本地网卡的名字，80是监控的端口12345678910111213141516[root@jiakui ~]# tcpdump -i em1 port 80 -c 1024tcpdump: verbose output suppre">
+<meta property="og:description" content="在centos上直接执行1tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-02T13:48:14.251Z">
+<meta property="og:image" content="http://yoursite.com/images/tcpip.png">
+<meta property="og:updated_time" content="2018-09-02T14:29:25.146Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCPDUMP 抓包实践">
-<meta name="twitter:description" content="在centos上直接执行1tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap 其中 em1是ifconfig查询出来的本地网卡的名字，80是监控的端口12345678910111213141516[root@jiakui ~]# tcpdump -i em1 port 80 -c 1024tcpdump: verbose output suppre">
+<meta name="twitter:description" content="在centos上直接执行1tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap">
+<meta name="twitter:image" content="http://yoursite.com/images/tcpip.png">
   
     <link rel="alternate" href="/atom.xml" title="你怎那么好看" type="application/atom+xml">
   
@@ -71,9 +74,13 @@
         <section id="main"><article id="post-tcpdump" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/02/tcpdump/" class="article-date">
-  <time datetime="2018-09-02T13:38:06.000Z" itemprop="datePublished">2018-09-02</time>
+  <time datetime="2018-09-02T13:38:00.000Z" itemprop="datePublished">2018-09-02</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/TCP-IP/">TCP/IP</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -91,8 +98,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在centos上直接执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>其中 em1是ifconfig查询出来的本地网卡的名字，80是监控的端口<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[root@jiakui ~]<span class="comment"># tcpdump -i em1 port 80 -c 1024</span></span><br><span class="line">tcpdump: verbose output suppressed, use -v or -vv <span class="keyword">for</span> full protocol decode</span><br><span class="line">listening on em1, link-type EN10MB (Ethernet), capture size 65535 bytes</span><br><span class="line">12:39:07.275167 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [S], seq 1599792026, win 64240, options [mss 1386,nop,wscale 8,nop,nop,sackOK], length 0</span><br><span class="line">12:39:07.275236 IP jiakui.http &gt; 192.8.209.142.55002: Flags [S.], seq 1837845607, ack 1599792027, win 14600, options [mss 1460,nop,nop,sackOK,nop,wscale 7], length 0</span><br><span class="line">12:39:07.277548 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [.], ack 1, win 259, length 0</span><br><span class="line">12:39:07.277934 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [P.], seq 1:420, ack 1, win 259, length 419</span><br><span class="line">12:39:07.277970 IP jiakui.http &gt; 192.8.209.142.55002: Flags [.], ack 420, win 123, length 0</span><br><span class="line">12:39:07.292297 IP jiakui.http &gt; 192.8.209.142.55002: Flags [.], seq 1:2773, ack 420, win 123, length 2772</span><br><span class="line">12:39:07.292311 IP jiakui.http &gt; 192.8.209.142.55002: Flags [.], seq 2773:5545, ack 420, win 123, length 2772</span><br><span class="line">12:39:07.292319 IP jiakui.http &gt; 192.8.209.142.55002: Flags [.], seq 5545:8317, ack 420, win 123, length 2772</span><br><span class="line">12:39:07.292558 IP jiakui.http &gt; 192.8.209.142.55002: Flags [P.], seq 8317:9601, ack 420, win 123, length 1284</span><br><span class="line">12:39:07.301152 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [.], ack 9601, win 259, length 0</span><br><span class="line">12:39:07.358968 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [F.], seq 420, ack 9601, win 259, length 0</span><br><span class="line">12:39:07.359027 IP jiakui.http &gt; 192.8.209.142.55002: Flags [F.], seq 9601, ack 421, win 123, length 0</span><br><span class="line">12:39:07.361335 IP 192.8.209.142.55002 &gt; jiakui.http: Flags [.], ack 9602, win 259, length 0</span><br></pre></td></tr></table></figure></p>
 <p>Flags的定义<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Flags are some combination  of  </span><br><span class="line">S(SYN),F(FIN),P(PUSH),R(RST),U(URG),W(ECN CWR),E(ECN-Echo) or <span class="string">'.'</span>(ACK), or <span class="string">'none'</span> </span><br><span class="line"><span class="keyword">if</span> no flags are <span class="built_in">set</span>. Data-seqno describes the portion of sequence space covered by the data <span class="keyword">in</span> this packet (see example  below).   </span><br><span class="line">Ack is sequence number of the next data expected the other direction on this connection.  </span><br><span class="line">Window is the number of bytes of receive buffer space available the other direction on this connection.  </span><br><span class="line">Urg indicates there is `urgent<span class="string">'  datain the packet.  </span></span><br><span class="line"><span class="string">Options are tcp options enclosed in angle brackets (e.g., &lt;mss 1024&gt;).</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/tcpip.png" alt="upload successful"></p>
 
       
     </div>
@@ -100,6 +109,8 @@
       <a data-url="http://yoursite.com/2018/09/02/tcpdump/" data-id="cjlkwlpha00008ps6ncapp1sx" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcpdump/">tcpdump</a></li></ul>
+
     </footer>
   </div>
   
@@ -125,7 +136,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/TCP-IP/">TCP/IP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul>
     </div>
   </div>
 
@@ -135,7 +146,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
     </div>
   </div>
 
@@ -145,7 +156,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/xctest/" style="font-size: 10px;">xctest</a>
+      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xctest/" style="font-size: 10px;">xctest</a>
     </div>
   </div>
 
