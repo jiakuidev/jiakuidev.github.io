@@ -66,6 +66,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-kibana" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/02/kibana/" class="article-date">
+  <time datetime="2018-09-02T07:55:23.000Z" itemprop="datePublished">2018-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/02/kibana/">ELK日志分析系统-Kibana</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="配置Kibana"><a href="#配置Kibana" class="headerlink" title="配置Kibana:"></a>配置Kibana:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf kibana-4.3.0-linux-x86.tar.gz</span><br><span class="line"><span class="built_in">cd</span> kibana-4.3.0-linux-x86</span><br><span class="line">vi config/kibana.yml</span><br><span class="line">修改以下几项（由于是单机版的，因此host的值也可以使用localhost来代替，这里仅仅作为演示）：</span><br><span class="line">server.port: 5601</span><br><span class="line">server.host: “centos2”</span><br><span class="line">elasticsearch.url: http://centos2:9200</span><br><span class="line">kibana.index: “.kibana”</span><br></pre></td></tr></table></figure>
+<h5 id="启动kibana："><a href="#启动kibana：" class="headerlink" title="启动kibana："></a>启动kibana：</h5><p>这样可以直接启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/kibana-5.5.0-linux-x86_64/bin</span><br><span class="line">./bin/kibana</span><br></pre></td></tr></table></figure></p>
+<p>一般情况下需要后台启动<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./kibana &gt;/dev/null 2&gt;&amp;1&amp;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/02/kibana/" data-id="cjlkkh9nw0000nfs6cwj76mwn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-logstash" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/02/logstash/" class="article-date">
@@ -303,6 +342,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/09/02/kibana/">ELK日志分析系统-Kibana</a>
+          </li>
         
           <li>
             <a href="/2018/09/02/logstash/">ELK日志分析系统-Logstash</a>
