@@ -66,6 +66,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-xcpretty" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/03/xcpretty/" class="article-date">
+  <time datetime="2018-09-02T17:00:00.000Z" itemprop="datePublished">2018-09-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/03/xcpretty/">xcpretty</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://github.com/supermarin/xcpretty" target="_blank" rel="noopener">https://github.com/supermarin/xcpretty</a> 用于对xcodebuild的输出进行格式化。并包含输出report功能。<br>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install xcpretty</span><br></pre></td></tr></table></figure></p>
+<p>jenkins 安装的话,确保已安装command line tools<br>用法紧跟在xcodebuild 相关语句后面，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild [flags] | xcpretty</span><br></pre></td></tr></table></figure></p>
+<p>可以结合tee进行日志收集<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild [flags] | tee xcodebuild.log | xcpretty</span><br></pre></td></tr></table></figure></p>
+<p>重要的是，如果运行在jenkins上，需要exit参数来帮助jenkins确定是否运行失败。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -o pipefail &amp;&amp; xcodebuild [flags] | xcpretty <span class="comment"># # OR # $ xcodebuild [flags] | xcpretty &amp;&amp; exit $&#123;PIPESTATUS[0]&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>log展示输出格式：<br>默认状态 -s,会展示所有信息。<br>测试状态 -t,只展示测试信息。<br>如果需要输出报表：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">–report junit, -r junit：输出可集成在Jenkins中 JUnit-style XML report at build/reports/junit.xml</span><br><span class="line">–report html, -r html：输出html报表在build/reports/tests.html</span><br><span class="line">如果要指定报表保存位置：</span><br><span class="line">--output ~/Desktop/aaaaaaaaaa.html</span><br><span class="line">完整的例子</span><br><span class="line">xcodebuild \ -workspace Jovi.xcworkspace \ -scheme Jovi \ -destination <span class="string">'platform=iOS Simulator,name=iPhone 6'</span> \ SYMROOT=$(PWD)/build \ <span class="built_in">test</span> | tee xcodebuild.log | xcpretty -t -r html --output ~/Desktop/aaaaaaaaaa.html</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/03/xcpretty/" data-id="cjll49d9t0000pss6orv27bq1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcpretty/">xcpretty</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-tcpdump" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/02/tcpdump/" class="article-date">
@@ -415,7 +462,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
     </div>
   </div>
 
@@ -425,7 +472,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xctest/" style="font-size: 10px;">xctest</a>
+      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 10px;">xctest</a>
     </div>
   </div>
 
@@ -447,6 +494,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/03/xcpretty/">xcpretty</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/02/tcpdump/">TCPDUMP 抓包实践</a>
           </li>
         
@@ -460,10 +511,6 @@
         
           <li>
             <a href="/2018/09/02/logstash/">ELK日志分析系统-Logstash</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/01/elk/">ELK日志分析系统-ElasticSearch</a>
           </li>
         
       </ul>
