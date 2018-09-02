@@ -112,11 +112,11 @@
 <li><p>修改elasticsearch.yml，增加跨域的配置(需要重启es才能生效)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http.cors.enabled: <span class="literal">true</span></span><br><span class="line">http.cors.allow-origin: <span class="string">"*"</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>编辑head/Gruntfile.js，修改服务器监听地址，增加hostname属性，将其值设置为*。<br>以下两种配置都是OK的</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Type1</span></span><br><span class="line">connect: &#123;</span><br><span class="line">        hostname: <span class="string">'*'</span>,</span><br><span class="line">        server: &#123;</span><br><span class="line">                options: &#123;</span><br><span class="line">                        port: 9100,</span><br><span class="line">                        base: <span class="string">'.'</span>,</span><br><span class="line">                        keepalive: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>编辑head/Gruntfile.js，修改服务器监听地址，增加hostname属性，将其值设置为*</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置1</span></span><br><span class="line">connect: &#123;</span><br><span class="line">        hostname: <span class="string">'*'</span>,</span><br><span class="line">        server: &#123;</span><br><span class="line">                options: &#123;</span><br><span class="line">                        port: 9100,</span><br><span class="line">                        base: <span class="string">'.'</span>,</span><br><span class="line">                        keepalive: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>Type 2<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Type 2</span></span><br><span class="line">connect: &#123;</span><br><span class="line">        server: &#123;</span><br><span class="line">                options: &#123;</span><br><span class="line">                        hostname: <span class="string">'*'</span>,</span><br><span class="line">                        port: 9100,</span><br><span class="line">                        base: <span class="string">'.'</span>,</span><br><span class="line">                        keepalive: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">配置2</span><br><span class="line">connect: &#123;</span><br><span class="line">        server: &#123;</span><br><span class="line">                options: &#123;</span><br><span class="line">                        hostname: <span class="string">'*'</span>,</span><br><span class="line">                        port: 9100,</span><br><span class="line">                        base: <span class="string">'.'</span>,</span><br><span class="line">                        keepalive: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol start="4">
 <li><p>编辑head/_site/app.js，修改head连接es的地址，将localhost修改为es的IP地址</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原配置</span></span><br><span class="line">this.base_uri = this.config.base_uri || this.prefs.get(<span class="string">"app-base_uri"</span>) || <span class="string">"http://localhost:9200"</span>;</span><br><span class="line"><span class="comment"># 将localhost修改为ES的IP地址</span></span><br><span class="line">this.base_uri = this.config.base_uri || this.prefs.get(<span class="string">"app-base_uri"</span>) || <span class="string">"http://YOUR-ES-IP:9200"</span>;</span><br></pre></td></tr></table></figure>
@@ -131,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/elk/" data-id="cjljfcozl0000n0s62pce5wq0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/01/elk/" data-id="cjlk6mlal0000pqs6rgak31ug" class="article-share-link">Share</a>
       
       
     </footer>
@@ -177,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/pods/" data-id="cjljfcp010002n0s6qufmxeh6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/01/pods/" data-id="cjlk6mlb20003pqs6bis1hdov" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/hello-world/" data-id="cjljfcozs0001n0s6tnzxi43p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/01/hello-world/" data-id="cjlk6mlax0002pqs691a82lt4" class="article-share-link">Share</a>
       
       
     </footer>
