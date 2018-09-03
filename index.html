@@ -5,17 +5,17 @@
   
 
   
-  <title>你怎那么好看</title>
+  <title>学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="你怎那么好看">
+<meta property="og:title" content="学习笔记">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="你怎那么好看">
+<meta property="og:site_name" content="学习笔记">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你怎那么好看">
+<meta name="twitter:title" content="学习笔记">
   
-    <link rel="alternate" href="/atom.xml" title="你怎那么好看" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -34,11 +34,11 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">你怎那么好看</a>
+        <a href="/" id="logo">学习笔记</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">那么好看怎么办？</a>
+          <a href="/" id="subtitle">三天打鱼两天晒网！</a>
         </h2>
       
     </div>
@@ -90,22 +90,14 @@
       
         <p>通过分析dropbox再建立账号后会使用android.accounts.Account</p>
 <ol>
-<li>首先adb shell进入终端shell环境，su切换到root账户。</li>
-<li>通过busybox find / -name ‘*.db’ 可查看如下<br>有这个数据库文件，/data/system/users/0/accounts.db</li>
+<li>首先adb shell进入终端shell环境，su切换到root账户.</li>
+<li>通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db</li>
 <li><p>使用Sqlite3命令查询该数据。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@ja3g:/ <span class="comment"># sqlite3 /data/system/users/0/accounts.db</span></span><br><span class="line">SQLite version 3.7.16 2013-03-18 11:39:23 [www.ptsoft.org] [www.ptdave.com]</span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> instructions</span><br><span class="line">Enter SQL statements terminated with a “;<span class="string">"</span></span><br><span class="line"><span class="string">sqlite&gt; .tables</span></span><br><span class="line"><span class="string">accounts     authtokens    grants    shared_accounts  android_metadata  extras   meta</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对accounts表进行查询，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; select * from accounts;</span><br><span class="line">……</span><br><span class="line">11|jiakui@live.cn|com.dropbox.android.account|</span><br><span class="line">dropbox账号id=11</span><br><span class="line"><span class="comment">#查询extras表中有dropbox账号信息如下：</span></span><br><span class="line">sqlite&gt; select * from extras;</span><br><span class="line">……</span><br><span class="line">82|11|com.dropbox.android-account|&#123;<span class="string">"INITIALIZED"</span>:<span class="string">"true"</span>,<span class="string">"KEY_ALLOW_UNPAIRED_BUSINESS_PHOTOS"</span>:<span class="string">"true"</span>&#125;</span><br><span class="line">83|11|shared-device|&#123;<span class="string">"LOCK_CODE_ERASE"</span>:<span class="string">"false"</span>,<span class="string">"LOCK_CODE_LOCKED_UNTIL"</span>:<span class="string">"0"</span>,<span class="string">"LOCK_CODE"</span>:<span class="string">"1234”&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>结论：</p>
-<ol>
-<li>通过查询该表id=82和id=83都属于dropbox的id.</li>
-<li>发现id=83的行中有”LOCK_CODE”:”1234”，通过验证此”LOCK_CODE”:”1234”即属于当时dropbox的passcode</li>
-<li>通过dropbox修改passcode，此数据相应变化。</li>
-</ol>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/09/03/dropbox/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">

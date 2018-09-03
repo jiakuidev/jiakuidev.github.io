@@ -5,21 +5,21 @@
   
 
   
-  <title>Dropbox pincode分析 | 你怎那么好看</title>
+  <title>Dropbox pincode分析 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户。 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。 123456root@ja3g:/ # sql">
+  <meta name="description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dropbox pincode分析">
 <meta property="og:url" content="http://yoursite.com/2018/09/03/dropbox/index.html">
-<meta property="og:site_name" content="你怎那么好看">
-<meta property="og:description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户。 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。 123456root@ja3g:/ # sql">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-03T14:12:08.580Z">
+<meta property="og:updated_time" content="2018-09-03T14:16:43.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dropbox pincode分析">
-<meta name="twitter:description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户。 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。 123456root@ja3g:/ # sql">
+<meta name="twitter:description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
   
-    <link rel="alternate" href="/atom.xml" title="你怎那么好看" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -38,11 +38,11 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">你怎那么好看</a>
+        <a href="/" id="logo">学习笔记</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">那么好看怎么办？</a>
+          <a href="/" id="subtitle">三天打鱼两天晒网！</a>
         </h2>
       
     </div>
@@ -92,9 +92,10 @@
       
         <p>通过分析dropbox再建立账号后会使用android.accounts.Account</p>
 <ol>
-<li>首先adb shell进入终端shell环境，su切换到root账户。</li>
-<li>通过busybox find / -name ‘*.db’ 可查看如下<br>有这个数据库文件，/data/system/users/0/accounts.db</li>
+<li>首先adb shell进入终端shell环境，su切换到root账户.</li>
+<li>通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db</li>
 <li><p>使用Sqlite3命令查询该数据。</p>
+<a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@ja3g:/ <span class="comment"># sqlite3 /data/system/users/0/accounts.db</span></span><br><span class="line">SQLite version 3.7.16 2013-03-18 11:39:23 [www.ptsoft.org] [www.ptdave.com]</span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> instructions</span><br><span class="line">Enter SQL statements terminated with a “;<span class="string">"</span></span><br><span class="line"><span class="string">sqlite&gt; .tables</span></span><br><span class="line"><span class="string">accounts     authtokens    grants    shared_accounts  android_metadata  extras   meta</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>对accounts表进行查询，</p>
