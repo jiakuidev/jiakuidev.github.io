@@ -5,20 +5,19 @@
   
 
   
-  <title>XCTest出现系统弹窗时的处理方法 | 你怎那么好看</title>
+  <title>简单iOS单元测试-异步测试(XCTestExpectation) | 你怎那么好看</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="当出现系统弹窗（权限确认，低电提醒等）我们一般采取如下代码进行处理：">
-<meta name="keywords" content="xctest">
+  <meta name="description" content="异步测试(XCTestExpectation)简单iOS单元测试-异步测试(XCTestExpectation)这种测试不适合在UITest里面处理异步相关的操作，代码示例如下：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XCTest出现系统弹窗时的处理方法">
-<meta property="og:url" content="http://yoursite.com/2018/09/03/xctestsystemalerts/index.html">
+<meta property="og:title" content="简单iOS单元测试-异步测试(XCTestExpectation)">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/XCTestExpectation/index.html">
 <meta property="og:site_name" content="你怎那么好看">
-<meta property="og:description" content="当出现系统弹窗（权限确认，低电提醒等）我们一般采取如下代码进行处理：">
+<meta property="og:description" content="异步测试(XCTestExpectation)简单iOS单元测试-异步测试(XCTestExpectation)这种测试不适合在UITest里面处理异步相关的操作，代码示例如下：">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-03T03:58:40.915Z">
+<meta property="og:updated_time" content="2018-09-03T04:22:46.977Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XCTest出现系统弹窗时的处理方法">
-<meta name="twitter:description" content="当出现系统弹窗（权限确认，低电提醒等）我们一般采取如下代码进行处理：">
+<meta name="twitter:title" content="简单iOS单元测试-异步测试(XCTestExpectation)">
+<meta name="twitter:description" content="异步测试(XCTestExpectation)简单iOS单元测试-异步测试(XCTestExpectation)这种测试不适合在UITest里面处理异步相关的操作，代码示例如下：">
   
     <link rel="alternate" href="/atom.xml" title="你怎那么好看" type="application/atom+xml">
   
@@ -69,16 +68,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-xctestsystemalerts" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-XCTestExpectation" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/03/xctestsystemalerts/" class="article-date">
-  <time datetime="2018-09-03T01:39:00.000Z" itemprop="datePublished">2018-09-03</time>
+    <a href="/2018/09/03/XCTestExpectation/" class="article-date">
+  <time datetime="2018-09-03T04:14:20.000Z" itemprop="datePublished">2018-09-03</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -87,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      XCTest出现系统弹窗时的处理方法
+      简单iOS单元测试-异步测试(XCTestExpectation)
     </h1>
   
 
@@ -95,35 +90,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="当出现系统弹窗（权限确认，低电提醒等）"><a href="#当出现系统弹窗（权限确认，低电提醒等）" class="headerlink" title="当出现系统弹窗（权限确认，低电提醒等）"></a>当出现系统弹窗（权限确认，低电提醒等）</h3><p><strong><em>我们一般采取如下代码进行处理：</em></strong><br><a id="more"></a><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> monitor = [<span class="keyword">self</span> addUIInterruptionMonitorWithDescription:<span class="string">@"Would Like to Send You Notifications"</span> handler:^<span class="built_in">BOOL</span>(<span class="built_in">XCUIElement</span> *_Nonnull interruptingElement) &#123;</span><br><span class="line">       <span class="built_in">XCUIElement</span> *element = interruptingElement;</span><br><span class="line">       <span class="built_in">XCUIElement</span> *allow = element.buttons[<span class="string">@"Allow"</span>];</span><br><span class="line">       <span class="built_in">XCUIElement</span> *ok = element.buttons[<span class="string">@"OK"</span>];</span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"进入中断方法"</span>);</span><br><span class="line">       <span class="keyword">if</span> ([ok exists]) &#123;</span><br><span class="line">           <span class="built_in">NSLog</span>(<span class="string">@"开始点击ok"</span>);</span><br><span class="line">           [ok tap];</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> ([allow exists]) &#123;</span><br><span class="line">           <span class="built_in">NSLog</span>(<span class="string">@"开始点击allow"</span>);</span><br><span class="line">           [allow tap];</span><br><span class="line">           sleep(<span class="number">1</span>);</span><br><span class="line">           [app.buttons[<span class="string">@"  微信登录"</span>] tap];</span><br><span class="line">           sleep(<span class="number">1</span>);</span><br><span class="line">           [app.buttons[<span class="string">@"跳过"</span>] tap];</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">   &#125;];</span><br><span class="line">   <span class="keyword">if</span>(monitor == <span class="literal">YES</span>)&#123;</span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"系统弹框已展示"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   [app tap];  <span class="comment">// 用于处理异步UI中断（例如警报和其他对话框）的处理程序块。</span></span><br></pre></td></tr></table></figure></p>
-
+        <h4 id="异步测试-XCTestExpectation"><a href="#异步测试-XCTestExpectation" class="headerlink" title="异步测试(XCTestExpectation)"></a>异步测试(XCTestExpectation)</h4><p>简单iOS单元测试-异步测试(XCTestExpectation)<br>这种测试不适合在UITest里面处理异步相关的操作，代码示例如下：</p>
+<a id="more"></a>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)testAsyncExpectation&#123;</span><br><span class="line">    <span class="built_in">XCTestExpectation</span>* expect = [<span class="keyword">self</span> expectationWithDescription:<span class="string">@"Oh, timeout!"</span>];</span><br><span class="line">    <span class="built_in">dispatch_async</span>(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>), ^&#123;</span><br><span class="line">        sleep(<span class="number">2</span>); <span class="comment">//延迟两秒向下执行</span></span><br><span class="line">        <span class="comment">//异步代码执行开始</span></span><br><span class="line">        <span class="comment">//ViewController *viewController=[[ViewController alloc]init];</span></span><br><span class="line">        <span class="comment">//NSDictionary *dict=@&#123;@"wd":@"XCTestCase"&#125;;</span></span><br><span class="line">        <span class="comment">//NSLog(@"-----------------%@",[viewController getHttpUrl:dict]);</span></span><br><span class="line">        <span class="comment">//异步代码执行结束</span></span><br><span class="line">        <span class="built_in">XCTAssert</span>(<span class="literal">NO</span>,<span class="string">"Some Error Info"</span>);<span class="comment">//通过测试</span></span><br><span class="line">        [expect fulfill];<span class="comment">//告知异步测试结束</span></span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> waitForExpectationsWithTimeout:<span class="number">10</span> handler:^(<span class="built_in">NSError</span> *error) &#123;</span><br><span class="line">        <span class="comment">//等待10秒，若该测试未结束（未收到 fulfill方法）则测试结果为失败</span></span><br><span class="line">        <span class="comment">//Do something when time out</span></span><br><span class="line">    &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/xctestsystemalerts/" data-id="cjllm66vi00098ks6w7955v8a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/XCTestExpectation/" data-id="cjlls4h9600001cs6vdyjgx1s" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/09/03/uitesting20180903/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          WawaRobotUITests在调用app本身api时产生的报错
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/03/xcpretty/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/03/uitesting20180903/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">xcpretty</div>
+      <div class="article-nav-title">WawaRobotUITests在调用app本身api时产生的报错</div>
     </a>
   
 </nav>
