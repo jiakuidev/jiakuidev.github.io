@@ -5,20 +5,20 @@
   
 
   
-  <title>CocoaPods入门使用 | 你怎那么好看</title>
+  <title>XCTest出现系统弹窗时的处理方法 | 你怎那么好看</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 51 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.">
-<meta name="keywords" content="CocoaPods">
+  <meta name="description" content="当出现系统弹窗（权限确认，低电提醒等）我们一般采取如下代码进行处理：12345678910111213141516171819202122232425bool monitor = [self addUIInterruptionMonitorWithDescription:@&quot;Would Like to Send You Notifications&quot; handler:^BOOL(XCUIElemen">
+<meta name="keywords" content="xctest">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CocoaPods入门使用">
-<meta property="og:url" content="http://yoursite.com/2018/09/01/pods/index.html">
+<meta property="og:title" content="XCTest出现系统弹窗时的处理方法">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/xctestsystemalerts/index.html">
 <meta property="og:site_name" content="你怎那么好看">
-<meta property="og:description" content="CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 51 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.">
+<meta property="og:description" content="当出现系统弹窗（权限确认，低电提醒等）我们一般采取如下代码进行处理：12345678910111213141516171819202122232425bool monitor = [self addUIInterruptionMonitorWithDescription:@&quot;Would Like to Send You Notifications&quot; handler:^BOOL(XCUIElemen">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-02T07:29:55.404Z">
+<meta property="og:updated_time" content="2018-09-03T01:47:31.145Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CocoaPods入门使用">
-<meta name="twitter:description" content="CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 51 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.">
+<meta name="twitter:title" content="XCTest出现系统弹窗时的处理方法">
+<meta name="twitter:description" content="当出现系统弹窗（权限确认，低电提醒等）我们一般采取如下代码进行处理：12345678910111213141516171819202122232425bool monitor = [self addUIInterruptionMonitorWithDescription:@&quot;Would Like to Send You Notifications&quot; handler:^BOOL(XCUIElemen">
   
     <link rel="alternate" href="/atom.xml" title="你怎那么好看" type="application/atom+xml">
   
@@ -69,10 +69,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-pods" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-xctestsystemalerts" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/01/pods/" class="article-date">
-  <time datetime="2018-09-01T11:01:00.000Z" itemprop="datePublished">2018-09-01</time>
+    <a href="/2018/09/03/xctestsystemalerts/" class="article-date">
+  <time datetime="2018-09-03T01:39:00.000Z" itemprop="datePublished">2018-09-03</time>
 </a>
     
   <div class="article-category">
@@ -87,7 +87,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CocoaPods入门使用
+      XCTest出现系统弹窗时的处理方法
     </h1>
   
 
@@ -95,24 +95,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://cocoapods.org" target="_blank" rel="noopener">CocoaPods</a> is a dependency manager for Swift and Objective-C Cocoa projects. It has over 51 thousand libraries and is used in over 3 million apps. CocoaPods can help you scale your projects elegantly.<br><a id="more"></a></p>
-<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><p>CocoaPods is built with Ruby and is installable with the default Ruby available on OS X. We recommend you use the default ruby.<br>Using the default Ruby install can require you to use sudo when installing gems. Further installation instructions are in the guides.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Xcode 8 + 9</span></span><br><span class="line">$ sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
-<p>We also have a Mac app for CocoaPods. It only gets major releases ATM though.<br>&lt; !–more–&gt;</p>
-<h3 id="Get-Starded"><a href="#Get-Starded" class="headerlink" title="Get Starded"></a>Get Starded</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">platform :ios, <span class="string">'8.0'</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target <span class="string">'MyApp'</span> <span class="keyword">do</span></span><br><span class="line">  pod <span class="string">'AFNetworking'</span>, <span class="string">'~&gt; 2.6'</span></span><br><span class="line">  pod <span class="string">'ORStackView'</span>, <span class="string">'~&gt; 3.0'</span></span><br><span class="line">  pod <span class="string">'SwiftyJSON'</span>, <span class="string">'~&gt; 2.3'</span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<p>Tip: CocoaPods provides a pod init command to create a Podfile with smart defaults. You should use it.</p>
-<p>Now you can install the dependencies in your project:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pod install</span><br></pre></td></tr></table></figure>
-<p>Make sure to always open the Xcode workspace instead of the project file when building your project:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open App.xcworkspace</span><br></pre></td></tr></table></figure></p>
-<p>Now you can import your dependencies e.g.:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#import &lt;Reachability/Reachability.h&gt;</span></span><br></pre></td></tr></table></figure></p>
+        <h3 id="当出现系统弹窗（权限确认，低电提醒等）"><a href="#当出现系统弹窗（权限确认，低电提醒等）" class="headerlink" title="当出现系统弹窗（权限确认，低电提醒等）"></a>当出现系统弹窗（权限确认，低电提醒等）</h3><p><strong><em>我们一般采取如下代码进行处理：</em></strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> monitor = [<span class="keyword">self</span> addUIInterruptionMonitorWithDescription:<span class="string">@"Would Like to Send You Notifications"</span> handler:^<span class="built_in">BOOL</span>(<span class="built_in">XCUIElement</span> *_Nonnull interruptingElement) &#123;</span><br><span class="line">       <span class="built_in">XCUIElement</span> *element = interruptingElement;</span><br><span class="line">       <span class="built_in">XCUIElement</span> *allow = element.buttons[<span class="string">@"Allow"</span>];</span><br><span class="line">       <span class="built_in">XCUIElement</span> *ok = element.buttons[<span class="string">@"OK"</span>];</span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"进入中断方法"</span>);</span><br><span class="line">       <span class="keyword">if</span> ([ok exists]) &#123;</span><br><span class="line">           <span class="built_in">NSLog</span>(<span class="string">@"开始点击ok"</span>);</span><br><span class="line">           [ok tap];</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span> ([allow exists]) &#123;</span><br><span class="line">           <span class="built_in">NSLog</span>(<span class="string">@"开始点击allow"</span>);</span><br><span class="line">           [allow tap];</span><br><span class="line">           sleep(<span class="number">1</span>);</span><br><span class="line">           [app.buttons[<span class="string">@"  微信登录"</span>] tap];</span><br><span class="line">           sleep(<span class="number">1</span>);</span><br><span class="line">           [app.buttons[<span class="string">@"跳过"</span>] tap];</span><br><span class="line">           <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">   &#125;];</span><br><span class="line">   <span class="keyword">if</span>(monitor == <span class="literal">YES</span>)&#123;</span><br><span class="line">       <span class="built_in">NSLog</span>(<span class="string">@"系统弹框已展示"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">   [app tap];  <span class="comment">// 用于处理异步UI中断（例如警报和其他对话框）的处理程序块。</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/01/pods/" data-id="cjlkibqy60003dxs6gta7dcq4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/xctestsystemalerts/" data-id="cjllmq3jr0000gzs6f4dl4lfs" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
 
     </footer>
   </div>
@@ -120,19 +111,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/09/01/elk/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ELK日志分析系统-ElasticSearch
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/01/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/03/xcpretty/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">xcpretty</div>
     </a>
   
 </nav>
