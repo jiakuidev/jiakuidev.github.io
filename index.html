@@ -66,6 +66,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-dropbox" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/03/dropbox/" class="article-date">
+  <time datetime="2018-09-03T14:07:02.000Z" itemprop="datePublished">2018-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/03/dropbox/">Dropbox pincode分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过分析dropbox再建立账号后会使用android.accounts.Account</p>
+<ol>
+<li>首先adb shell进入终端shell环境，su切换到root账户。</li>
+<li>通过busybox find / -name ‘*.db’ 可查看如下<br>有这个数据库文件，/data/system/users/0/accounts.db</li>
+<li><p>使用Sqlite3命令查询该数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@ja3g:/ <span class="comment"># sqlite3 /data/system/users/0/accounts.db</span></span><br><span class="line">SQLite version 3.7.16 2013-03-18 11:39:23 [www.ptsoft.org] [www.ptdave.com]</span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> instructions</span><br><span class="line">Enter SQL statements terminated with a “;<span class="string">"</span></span><br><span class="line"><span class="string">sqlite&gt; .tables</span></span><br><span class="line"><span class="string">accounts     authtokens    grants    shared_accounts  android_metadata  extras   meta</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对accounts表进行查询，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; select * from accounts;</span><br><span class="line">……</span><br><span class="line">11|jiakui@live.cn|com.dropbox.android.account|</span><br><span class="line">dropbox账号id=11</span><br><span class="line"><span class="comment">#查询extras表中有dropbox账号信息如下：</span></span><br><span class="line">sqlite&gt; select * from extras;</span><br><span class="line">……</span><br><span class="line">82|11|com.dropbox.android-account|&#123;<span class="string">"INITIALIZED"</span>:<span class="string">"true"</span>,<span class="string">"KEY_ALLOW_UNPAIRED_BUSINESS_PHOTOS"</span>:<span class="string">"true"</span>&#125;</span><br><span class="line">83|11|shared-device|&#123;<span class="string">"LOCK_CODE_ERASE"</span>:<span class="string">"false"</span>,<span class="string">"LOCK_CODE_LOCKED_UNTIL"</span>:<span class="string">"0"</span>,<span class="string">"LOCK_CODE"</span>:<span class="string">"1234”&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>结论：</p>
+<ol>
+<li>通过查询该表id=82和id=83都属于dropbox的id.</li>
+<li>发现id=83的行中有”LOCK_CODE”:”1234”，通过验证此”LOCK_CODE”:”1234”即属于当时dropbox的passcode</li>
+<li>通过dropbox修改passcode，此数据相应变化。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/03/dropbox/" data-id="cjlmd6ihm00008fs6uaf30gwp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-morelocale2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/03/morelocale2/" class="article-date">
@@ -491,54 +544,6 @@
 
 
   
-    <article id="post-logstash" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/02/logstash/" class="article-date">
-  <time datetime="2018-09-02T07:34:00.000Z" itemprop="datePublished">2018-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ELK/">ELK</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/logstash/">ELK日志分析系统-Logstash</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="启动logstash"><a href="#启动logstash" class="headerlink" title="启动logstash"></a>启动logstash</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/logstash-5.5.0/bin</span><br><span class="line">nohup ./logstash -f ~/log4j_to_es.conf &gt;/dev/null 2&gt;&amp;1&amp;</span><br></pre></td></tr></table></figure>
-<p>查看这个文件里面配置信息<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/02/logstash/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/logstash/" data-id="cjlkjhw6o0000jes64cg2rqod" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logstash/">logstash</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -596,6 +601,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/03/dropbox/">Dropbox pincode分析</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/03/morelocale2/">测试过程中切换Android系统语言</a>
           </li>
         
@@ -609,10 +618,6 @@
         
           <li>
             <a href="/2018/09/03/uitesting20180903/">WawaRobotUITests在调用app本身api时产生的报错</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/03/xctestsystemalerts/">XCTest出现系统弹窗时的处理方法</a>
           </li>
         
       </ul>
