@@ -5,15 +5,21 @@
   
 
   
-  <title>Archives: 2018 | 你怎那么好看</title>
+  <title>morelocale2 | 你怎那么好看</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="你怎那么好看">
-<meta property="og:url" content="http://yoursite.com/archives/2018/page/2/index.html">
+  <meta name="description" content="首先反编译morelocale2 apk    通过命令查看广播的机制中的action 1234567aapt d xmltree /Users/admin/Downloads/jp.co.c_lis.ccl.morelocale_2.3.1_9.apk AndroidManifest.xmlE: receiver (line=41)        A: android:name(0x01010">
+<meta property="og:type" content="article">
+<meta property="og:title" content="morelocale2">
+<meta property="og:url" content="http://yoursite.com/2018/09/03/morelocale2/index.html">
 <meta property="og:site_name" content="你怎那么好看">
+<meta property="og:description" content="首先反编译morelocale2 apk    通过命令查看广播的机制中的action 1234567aapt d xmltree /Users/admin/Downloads/jp.co.c_lis.ccl.morelocale_2.3.1_9.apk AndroidManifest.xmlE: receiver (line=41)        A: android:name(0x01010">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/morelocale.png">
+<meta property="og:updated_time" content="2018-09-03T13:31:47.864Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你怎那么好看">
+<meta name="twitter:title" content="morelocale2">
+<meta name="twitter:description" content="首先反编译morelocale2 apk    通过命令查看广播的机制中的action 1234567aapt d xmltree /Users/admin/Downloads/jp.co.c_lis.ccl.morelocale_2.3.1_9.apk AndroidManifest.xmlE: receiver (line=41)        A: android:name(0x01010">
+<meta name="twitter:image" content="http://yoursite.com/images/morelocale.png">
   
     <link rel="alternate" href="/atom.xml" title="你怎那么好看" type="application/atom+xml">
   
@@ -64,83 +70,72 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/01/elk/" class="archive-article-date">
-  <time datetime="2018-09-01T12:49:00.000Z" itemprop="datePublished">Sep 1</time>
+        <section id="main"><article id="post-morelocale2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/03/morelocale2/" class="article-date">
+  <time datetime="2018-09-03T13:26:00.000Z" itemprop="datePublished">2018-09-03</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/01/elk/">ELK日志分析系统-ElasticSearch</a>
+    <h1 class="article-title" itemprop="name">
+      morelocale2
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/01/pods/" class="archive-article-date">
-  <time datetime="2018-09-01T11:01:00.000Z" itemprop="datePublished">Sep 1</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/01/pods/">CocoaPods入门使用</a>
-    </h1>
-  
+        <ol>
+<li>首先反编译morelocale2 apk</li>
+</ol>
+<p><img src="/images/morelocale.png" alt=""></p>
+<ol start="2">
+<li><p>通过命令查看广播的机制中的action</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">aapt d xmltree /Users/admin/Downloads/jp.co.c_lis.ccl.morelocale_2.3.1_9.apk AndroidManifest.xml</span><br><span class="line">E: receiver (line=41)</span><br><span class="line">        A: android:name(0x01010003)=<span class="string">"com.android.settings.morelocale.receiver.Receiver"</span> (Raw: <span class="string">"com.android.settings.morelocale.receiver.Receiver"</span>)</span><br><span class="line">        A: android:permission(0x01010006)=<span class="string">"jp.co.c_lis.permission.CHANGE_LOCALE"</span> (Raw: <span class="string">"jp.co.c_lis.permission.CHANGE_LOCALE"</span>)</span><br><span class="line">        E: intent-filter (line=42)</span><br><span class="line">          E: action (line=43)</span><br><span class="line">            A: android:name(0x01010003)=<span class="string">"jp.co.c_lis.ccl.morelocale.CHANGE_LOCALE"</span> (Raw: <span class="string">"jp.co.c_lis.ccl.morelocale.CHANGE_LOCALE"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过adb命令发送广播</p>
+<ol>
+<li><p>首先授权</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">adb shell pm grant jp.co.c_lis.ccl.morelocale android.permission.CHANGE_CONFIGURATION</span><br><span class="line">adb shell pm grant jp.co.c_lis.permission.CHANGE_LOCALE</span><br><span class="line">adb shell pm grant jp.co.c_lis.permission.CHANGE_LOCALE</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换语言</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell am broadcast -a jp.co.c_lis.ccl.morelocale.CHANGE_LOCALE --es LOCALE_COUNTRY <span class="string">"JP"</span> --es LOCALE_LANGUAGE <span class="string">"ja"</span> --es LOCALE_VARIANT <span class="string">"fdfsfsfsfsdf"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>要去掉限制的权限，就可以在所有机器上通过广播切换语言。</p>
+</li>
+</ol>
+</li>
+</ol>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/01/hello-world/" class="archive-article-date">
-  <time datetime="2018-09-01T06:33:40.003Z" itemprop="datePublished">Sep 1</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/01/hello-world/">Hello World</a>
-    </h1>
-  
-
-    </header>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/03/morelocale2/" data-id="cjlmbx95c0000yis60wg8oaq6" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
-</article>
   
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/2018/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span>
-  </nav>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/03/docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">docker常用命令学习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
