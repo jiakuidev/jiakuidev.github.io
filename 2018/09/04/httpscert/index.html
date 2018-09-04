@@ -5,19 +5,19 @@
   
 
   
-  <title>httpscert | 学习笔记</title>
+  <title>java查看到网站https的证书信息 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url.o">
+  <meta name="description" content="java代码查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url">
 <meta property="og:type" content="article">
-<meta property="og:title" content="httpscert">
+<meta property="og:title" content="java查看到网站https的证书信息">
 <meta property="og:url" content="http://yoursite.com/2018/09/04/httpscert/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="java查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url.o">
+<meta property="og:description" content="java代码查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-04T10:00:52.451Z">
+<meta property="og:updated_time" content="2018-09-04T10:45:08.512Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="httpscert">
-<meta name="twitter:description" content="java查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url.o">
+<meta name="twitter:title" content="java查看到网站https的证书信息">
+<meta name="twitter:description" content="java代码查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      httpscert
+      java查看到网站https的证书信息
     </h1>
   
 
@@ -90,12 +90,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>java查看到网站https的证书信息</p>
+        <p>java代码查看到网站https的证书信息</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHttps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		URL url = <span class="keyword">new</span> URL(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();</span><br><span class="line">		conn.connect();</span><br><span class="line">		Certificate[] certs = conn.getServerCertificates(); <span class="comment">// 会拿到完整的证书链</span></span><br><span class="line">		X509Certificate cert = (X509Certificate) certs[<span class="number">0</span>]; <span class="comment">// cert[0]是证书链的最下层</span></span><br><span class="line">		System.out.println(<span class="string">"序号："</span> + cert.getSerialNumber());</span><br><span class="line">		System.out.println(<span class="string">"颁发给："</span> + cert.getSubjectDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"颁发者："</span> + cert.getIssuerDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"起始："</span> + cert.getNotBefore());</span><br><span class="line">		System.out.println(<span class="string">"过期："</span> + cert.getNotAfter());</span><br><span class="line">		System.out.println(<span class="string">"算法："</span> + cert.getSigAlgName());</span><br><span class="line">		System.out.println(<span class="string">"指纹："</span> + getThumbPrint(cert));</span><br><span class="line">		conn.disconnect();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/httpscert/" data-id="cjlnjfqdo0000kwwh3czbrfbr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/04/httpscert/" data-id="cjlnkxkct0008ptwhpp8z1xiz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -103,6 +103,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/09/04/gitssh/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          github配置ssh出错解决方法
+        
+      </div>
+    </a>
   
   
     <a href="/2018/09/03/dropbox/" id="article-nav-older" class="article-nav-link-wrap">
@@ -165,7 +174,11 @@
       <ul>
         
           <li>
-            <a href="/2018/09/04/httpscert/">httpscert</a>
+            <a href="/2018/09/04/gitssh/">github配置ssh出错解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/04/httpscert/">java查看到网站https的证书信息</a>
           </li>
         
           <li>
@@ -178,10 +191,6 @@
         
           <li>
             <a href="/2018/09/03/docker/">docker常用命令学习</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/03/XCTestExpectation/">简单iOS单元测试-异步测试(XCTestExpectation)</a>
           </li>
         
       </ul>
