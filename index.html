@@ -66,6 +66,43 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-httpscert" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/04/httpscert/" class="article-date">
+  <time datetime="2018-09-04T09:55:18.000Z" itemprop="datePublished">2018-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/04/httpscert/">httpscert</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java查看到网站https的证书信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHttps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		URL url = <span class="keyword">new</span> URL(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();</span><br><span class="line">		conn.connect();</span><br><span class="line">		Certificate[] certs = conn.getServerCertificates(); <span class="comment">// 会拿到完整的证书链</span></span><br><span class="line">		X509Certificate cert = (X509Certificate) certs[<span class="number">0</span>]; <span class="comment">// cert[0]是证书链的最下层</span></span><br><span class="line">		System.out.println(<span class="string">"序号："</span> + cert.getSerialNumber());</span><br><span class="line">		System.out.println(<span class="string">"颁发给："</span> + cert.getSubjectDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"颁发者："</span> + cert.getIssuerDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"起始："</span> + cert.getNotBefore());</span><br><span class="line">		System.out.println(<span class="string">"过期："</span> + cert.getNotAfter());</span><br><span class="line">		System.out.println(<span class="string">"算法："</span> + cert.getSigAlgName());</span><br><span class="line">		System.out.println(<span class="string">"指纹："</span> + getThumbPrint(cert));</span><br><span class="line">		conn.disconnect();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/04/httpscert/" data-id="cjlnjfqdo0000kwwh3czbrfbr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-dropbox" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/03/dropbox/" class="article-date">
@@ -101,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/dropbox/" data-id="cjlmd6ihm00008fs6uaf30gwp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/dropbox/" data-id="cjlmczg8o0005n1s65ra2vzx0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/morelocale2/" data-id="cjlmbx95c0000yis60wg8oaq6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/morelocale2/" data-id="cjlmbij210004n1s6i8tyed9w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/docker/" data-id="cjlm2ca7e0000j1s6dcc0zxag" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/docker/" data-id="cjlm1nto00003n1s6ooqwalei" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,7 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/XCTestExpectation/" data-id="cjlls4h9600001cs6vdyjgx1s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/XCTestExpectation/" data-id="cjllrsnnf0000n1s60m5ep3zx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
@@ -489,53 +526,6 @@
 
 
   
-    <article id="post-kibana" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/02/kibana/" class="article-date">
-  <time datetime="2018-09-02T07:55:00.000Z" itemprop="datePublished">2018-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ELK/">ELK</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/kibana/">ELK日志分析系统-Kibana</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="配置Kibana"><a href="#配置Kibana" class="headerlink" title="配置Kibana:"></a>配置Kibana:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf kibana-4.3.0-linux-x86.tar.gz</span><br><span class="line"><span class="built_in">cd</span> kibana-4.3.0-linux-x86</span><br><span class="line">vi config/kibana.yml</span><br><span class="line">修改以下几项（由于是单机版的，因此host的值也可以使用localhost来代替，这里仅仅作为演示）：</span><br><span class="line">server.port: 5601</span><br><span class="line">server.host: “centos2”</span><br><span class="line">elasticsearch.url: http://centos2:9200</span><br><span class="line">kibana.index: “.kibana”</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/02/kibana/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/kibana/" data-id="cjlkk9ddv0004jes6ek6j8zen" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kibana/">Kibana</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -593,6 +583,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/04/httpscert/">httpscert</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/03/dropbox/">Dropbox pincode分析</a>
           </li>
         
@@ -606,10 +600,6 @@
         
           <li>
             <a href="/2018/09/03/XCTestExpectation/">简单iOS单元测试-异步测试(XCTestExpectation)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/03/uitesting20180903/">WawaRobotUITests在调用app本身api时产生的报错</a>
           </li>
         
       </ul>
