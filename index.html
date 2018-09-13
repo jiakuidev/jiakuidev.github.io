@@ -66,6 +66,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cert" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/cert/" class="article-date">
+  <time datetime="2018-09-13T13:57:09.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/13/cert/">cert</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="签署您的应用"><a href="#签署您的应用" class="headerlink" title="签署您的应用"></a>签署您的应用</h3><p>Android 要求所有 APK 必须先使用证书进行数字签署，然后才能安装。本文档介绍了如何使用 Android Studio 签署您的 APK，包括创建和存储证书、使用不同证书签署不同的构建配置，以及配置构建流程以自动签署您的 APK。</p>
+<h4 id="证书和密钥库"><a href="#证书和密钥库" class="headerlink" title="证书和密钥库"></a>证书和密钥库</h4><p>公钥证书（也称为数字证书或身份证书）包含公钥/私钥对的公钥，以及可以标识密钥所有者的一些其他元数据（例如名称和位置）。证书的所有者持有对应的私钥。</p>
+<p>在您签署 APK 时，签署工具会将公钥证书附加到 APK。公钥证书充当“指纹”，用于将 APK 唯一关联到您及您的对应私钥。这有助于 Android 确保您 APK 的任何将来更新都是原版更新并来自原始作者。用于创建此证书的密钥称为应用签名密钥。</p>
+<p>密钥库是一种包含一个或多个私钥的二进制文件。</p>
+<p>每个应用在其整个生命周期内必须使用相同证书，以便用户能够以应用更新的形式安装新版本。要详细了解为所有应用在其整个生命周期内使用相同证书的好处</p>
+<h4 id="签署您的调试构建-debug"><a href="#签署您的调试构建-debug" class="headerlink" title="签署您的调试构建(debug)"></a>签署您的调试构建(debug)</h4><p>从 IDE 中运行或调试您的项目时，Android Studio 将自动使用通过 Android SDK 工具生成的调试证书签署您的 APK。当您在 Android Studio 中首次运行或调试项目时，IDE 将自动在 $HOME/.android/debug.keystore 中创建调试密钥库和证书，并设置密钥库和密钥密码。</p>
+<p>由于调试证书通过构建工具创建并且在设计上不安全，大多数应用商店（包括 Google Play 商店）都不接受使用调试证书签署要发布的 APK。</p>
+<p>Android Studio 会自动将您的调试签署信息存储在签署配置中，因此您不必在每次调试时都输入此信息。签署配置是一种包含签署 APK 所需全部必要信息的对象，这些信息包括密钥库位置、密钥库密码、密钥名称和密钥密码。您无法直接编辑调试签署配置，不过可以配置如何签署您的发布构建。</p>
+<p>如需了解有关如何针对调试构建和运行应用的详细信息，请参阅构建和运行您的应用。</p>
+<h4 id="调试证书的有效期"><a href="#调试证书的有效期" class="headerlink" title="调试证书的有效期"></a>调试证书的有效期</h4><p>用于针对调试签署 APK 的自签署证书的有效期为 365 天，从其创建日期算起。当此证书到期时，您将收到一个构建错误。</p>
+<p>若要修复此问题，删除 debug.keystore 文件即可。文件存储在以下位置：</p>
+<ul>
+<li>~/.android/（OS X 和 Linux）</li>
+<li>C:\Documents and Settings\<user>.android\（Windows XP）</user></li>
+<li>C:\Users\<user>.android\ （Windows Vista，Windows 7、8 和 10）</user></li>
+</ul>
+<p>当您下次构建和运行调试构建类型时，这些构建工具将重新生成新的密钥库和调试密钥。请注意，您必须运行应用，单纯的构建不会重新生成密钥库和调试密钥。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/13/cert/" data-id="cjm0nmodj00006iwhdamdk6pa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-gitssh" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/04/gitssh/" class="article-date">
@@ -475,53 +528,6 @@
 
 
   
-    <article id="post-tcpdump" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/02/tcpdump/" class="article-date">
-  <time datetime="2018-09-02T13:38:00.000Z" itemprop="datePublished">2018-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/TCP-IP/">TCP/IP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/tcpdump/">TCPDUMP 抓包实践</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在centos上直接执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/02/tcpdump/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/02/tcpdump/" data-id="cjlnkxkda000hptwhlht1w063" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcpdump/">tcpdump</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -579,6 +585,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/13/cert/">cert</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/04/gitssh/">github配置ssh出错解决方法</a>
           </li>
         
@@ -592,10 +602,6 @@
         
           <li>
             <a href="/2018/09/03/morelocale2/">测试过程中切换Android系统语言</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/03/docker/">docker常用命令学习</a>
           </li>
         
       </ul>
