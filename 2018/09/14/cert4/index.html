@@ -8,13 +8,14 @@
   <title>Android签名apk后文件分析 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。 给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义： （1）MANIFEST.MF：这是摘要文件。">
+<meta name="keywords" content="cert">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android签名apk后文件分析">
 <meta property="og:url" content="http://yoursite.com/2018/09/14/cert4/index.html">
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。 给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义： （1）MANIFEST.MF：这是摘要文件。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-13T21:18:38.825Z">
+<meta property="og:updated_time" content="2018-09-13T21:19:43.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android签名apk后文件分析">
 <meta name="twitter:description" content="Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。 给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义： （1）MANIFEST.MF：这是摘要文件。">
@@ -71,9 +72,13 @@
         <section id="main"><article id="post-cert4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/14/cert4/" class="article-date">
-  <time datetime="2018-09-13T21:15:05.000Z" itemprop="datePublished">2018-09-14</time>
+  <time datetime="2018-09-13T21:15:00.000Z" itemprop="datePublished">2018-09-14</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -106,6 +111,8 @@
       <a data-url="http://yoursite.com/2018/09/14/cert4/" data-id="cjm12twjd0000cswhcawwvc5w" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
+
     </footer>
   </div>
   
@@ -151,7 +158,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/cert/" style="font-size: 15px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 20px;">xctest</a>
+      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 20px;">xctest</a>
     </div>
   </div>
 
