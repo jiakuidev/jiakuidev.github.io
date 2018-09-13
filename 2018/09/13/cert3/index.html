@@ -5,19 +5,19 @@
   
 
   
-  <title>java查看到网站https的证书信息 | 学习笔记</title>
+  <title>cert3 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="java代码查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url">
+  <meta name="description" content="如何获取cert.rsa的公钥在Apk 包中的META-INF目录下，有一个CERT.RSA，它是一个PKCS7 格式的文件。 下面介绍几种从中获取证书的方法。在linux下openssl获取1openssl pkcs7 -inform DER -in CERT.RSA -noout -print_certs -text java 代码获取 1234567891011121314151617imp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java查看到网站https的证书信息">
-<meta property="og:url" content="http://yoursite.com/2018/09/04/httpscert/index.html">
+<meta property="og:title" content="cert3">
+<meta property="og:url" content="http://yoursite.com/2018/09/13/cert3/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="java代码查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url">
+<meta property="og:description" content="如何获取cert.rsa的公钥在Apk 包中的META-INF目录下，有一个CERT.RSA，它是一个PKCS7 格式的文件。 下面介绍几种从中获取证书的方法。在linux下openssl获取1openssl pkcs7 -inform DER -in CERT.RSA -noout -print_certs -text java 代码获取 1234567891011121314151617imp">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-04T10:45:08.512Z">
+<meta property="og:updated_time" content="2018-09-13T15:14:30.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java查看到网站https的证书信息">
-<meta name="twitter:description" content="java代码查看到网站https的证书信息 12345678910111213141516171819202122@Testpublic void testHttps() &amp;#123;	try &amp;#123;		URL url = new URL(&quot;https://www.baidu.com&quot;);		HttpsURLConnection conn = (HttpsURLConnection) url">
+<meta name="twitter:title" content="cert3">
+<meta name="twitter:description" content="如何获取cert.rsa的公钥在Apk 包中的META-INF目录下，有一个CERT.RSA，它是一个PKCS7 格式的文件。 下面介绍几种从中获取证书的方法。在linux下openssl获取1openssl pkcs7 -inform DER -in CERT.RSA -noout -print_certs -text java 代码获取 1234567891011121314151617imp">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-httpscert" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-cert3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/04/httpscert/" class="article-date">
-  <time datetime="2018-09-04T09:55:18.000Z" itemprop="datePublished">2018-09-04</time>
+    <a href="/2018/09/13/cert3/" class="article-date">
+  <time datetime="2018-09-13T15:09:38.000Z" itemprop="datePublished">2018-09-13</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      java查看到网站https的证书信息
+      cert3
     </h1>
   
 
@@ -90,12 +90,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>java代码查看到网站https的证书信息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHttps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		URL url = <span class="keyword">new</span> URL(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();</span><br><span class="line">		conn.connect();</span><br><span class="line">		Certificate[] certs = conn.getServerCertificates(); <span class="comment">// 会拿到完整的证书链</span></span><br><span class="line">		X509Certificate cert = (X509Certificate) certs[<span class="number">0</span>]; <span class="comment">// cert[0]是证书链的最下层</span></span><br><span class="line">		System.out.println(<span class="string">"序号："</span> + cert.getSerialNumber());</span><br><span class="line">		System.out.println(<span class="string">"颁发给："</span> + cert.getSubjectDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"颁发者："</span> + cert.getIssuerDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"起始："</span> + cert.getNotBefore());</span><br><span class="line">		System.out.println(<span class="string">"过期："</span> + cert.getNotAfter());</span><br><span class="line">		System.out.println(<span class="string">"算法："</span> + cert.getSigAlgName());</span><br><span class="line">		System.out.println(<span class="string">"指纹："</span> + getThumbPrint(cert));</span><br><span class="line">		conn.disconnect();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="如何获取cert-rsa的公钥"><a href="#如何获取cert-rsa的公钥" class="headerlink" title="如何获取cert.rsa的公钥"></a>如何获取cert.rsa的公钥</h3><p>在Apk 包中的META-INF目录下，有一个CERT.RSA，它是一个PKCS7 格式的文件。</p>
+<p>下面介绍几种从中获取证书的方法。<br>在linux下openssl获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs7 -inform DER -<span class="keyword">in</span> CERT.RSA -noout -print_certs -text</span><br></pre></td></tr></table></figure></p>
+<p>java 代码获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sun.security.pkcs.PKCS7;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.security.cert.CertificateException;</span><br><span class="line"><span class="keyword">import</span> java.security.cert.X509Certificate;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> CertificateException, IOException </span>&#123;</span><br><span class="line">        FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"/Users/jiakui/Desktop/CERT.RSA"</span>);</span><br><span class="line">        PKCS7 pkcs7 = <span class="keyword">new</span> PKCS7(fis);</span><br><span class="line">        X509Certificate publicKey = pkcs7.getCertificates()[<span class="number">0</span>];</span><br><span class="line"> </span><br><span class="line">        System.out.println(<span class="string">"issuer1:"</span> + publicKey.getIssuerDN());</span><br><span class="line">        System.out.println(<span class="string">"subject2:"</span> + publicKey.getSubjectDN());</span><br><span class="line">        System.out.println(publicKey.getPublicKey());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/httpscert/" data-id="cjlnkxkct0008ptwhpp8z1xiz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/13/cert3/" data-id="cjm0pmlul0008zowhwya7xfgm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -104,19 +106,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/09/04/gitssh/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          github配置ssh出错解决方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/03/dropbox/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/13/cert2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Dropbox pincode分析</div>
+      <div class="article-nav-title">从命令行构建和签署您的应用</div>
     </a>
   
 </nav>
