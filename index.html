@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cert5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/18/cert5/" class="article-date">
+  <time datetime="2018-09-17T23:16:00.000Z" itemprop="datePublished">2018-09-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/18/cert5/">检查证书的信息和指纹</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>检查证书的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jarsigner -verify -verbose -certs xxx.apk &gt;xxx.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查证书的指纹信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -printcert -file xxx.RSA</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/18/cert5/" data-id="cjm6wsaea001tnqs6cefeavof" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cert4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/14/cert4/" class="article-date">
@@ -94,18 +143,16 @@
       
         <p>Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。</p>
 <p>给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义：</p>
-<p>（1）MANIFEST.MF：这是摘要文件。程序遍历Apk包中的所有文件(entry)，对非文件夹非签名文件的文件，逐个用SHA1生成摘要信息，再用Base64进行编码。如果你改变了apk包中的文件，那么在apk安装校验时，改变后的文件摘要信息与MANIFEST.MF的检验信息不同，于是程序就不能成功安装。</p>
-<p>说明：如果攻击者修改了程序的内容，有重新生成了新的摘要，那么就可以通过验证，所以这是一个非常简单的验证。</p>
-<p>（2）CERT.SF：这是对摘要的签名文件。对前一步生成的MANIFEST.MF，使用SHA1-RSA算法，用开发者的私钥进行签名。在安装时只能使用公钥才能解密它。解密之后，将它与未加密的摘要信息（即，MANIFEST.MF文件）进行对比，如果相符，则表明内容没有被异常修改。</p>
-<p>说明：在这一步，即使开发者修改了程序内容，并生成了新的摘要文件，但是攻击者没有开发者的私钥，所以不能生成正确的签名文件（CERT.SF）。系统在对程序进行验证的时候，用开发者公钥对不正确的签名文件进行解密，得到的结果和摘要文件（MANIFEST.MF）对应不起来，所以不能通过检验，不能成功安装文件。</p>
-<p>（3）CERT.RSA文件中保存了公钥、所采用的加密算法等信息。</p>
-<p>说明：系统对签名文件进行解密，所需要的公钥就是从这个文件里取出来的。</p>
-<p>结论：从上面的总结可以看出，META-INF里面的说那个文件环环相扣，从而保证Android程序的安全性。（只是防止开发者的程序不被攻击者修改，如果开发者的公私钥对对攻击者得到或者开发者开发出攻击程序，Android系统都无法检测出来。）</p>
-
+<p>（1）MANIFEST.MF：这是摘要文件。程序遍历Apk包中的所有文件(entry)，对非文件夹非签名文件的文件，逐个用SHA1生成摘要信息，再用Base64进行编码。如果你改变了apk包中的文件，那么在apk安装校验时，改变后的文件摘要信息与MANIFEST.MF的检验信息不同，于是程序就不能成功安装。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/14/cert4/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/14/cert4/" data-id="cjm12twjd0000cswhcawwvc5w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/14/cert4/" data-id="cjm6wpi1b000lnqs63rohlu3f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -153,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/13/cert3/" data-id="cjm0pmlul0008zowhwya7xfgm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/13/cert3/" data-id="cjm6wpi0m0006nqs6p38m9ekf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -200,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/13/cert2/" data-id="cjm0o4pu20001zowh18aeem3q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/13/cert2/" data-id="cjm6wpi0t0007nqs6v3yz1zfq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -248,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/13/cert/" data-id="cjm0n1bb80000zowhpnvgulg3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/13/cert/" data-id="cjm6wphzz0001nqs65mrgl68f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -294,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/gitssh/" data-id="cjlnky0zu001cptwh1uqk4fhf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/04/gitssh/" data-id="cjm6wpi17000inqs63xewhbn2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -331,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/04/httpscert/" data-id="cjlnkxkct0008ptwhpp8z1xiz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/04/httpscert/" data-id="cjm6wpi1g000nnqs6qof68zp0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -376,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/dropbox/" data-id="cjlnkxkco0007ptwhhe9vcdc6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/dropbox/" data-id="cjm6wpi0z000cnqs62keyvs7h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -419,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/morelocale2/" data-id="cjlnkxkea001bptwhha0d7x75" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/morelocale2/" data-id="cjm6wpi1r000snqs6j6j5zr14" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,56 +517,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/docker/" data-id="cjlnkxkbr0001ptwh3x9h5mpt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/03/docker/" data-id="cjm6wpi0w0008nqs68v81ycig" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-XCTestExpectation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/XCTestExpectation/" class="article-date">
-  <time datetime="2018-09-03T04:14:00.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/XCTestExpectation/">简单iOS单元测试-异步测试(XCTestExpectation)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="异步测试-XCTestExpectation"><a href="#异步测试-XCTestExpectation" class="headerlink" title="异步测试(XCTestExpectation)"></a>异步测试(XCTestExpectation)</h4><p>简单iOS单元测试-异步测试(XCTestExpectation)<br>这种测试不适合在UITest里面处理异步相关的操作，代码示例如下：</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/03/XCTestExpectation/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/XCTestExpectation/" data-id="cjlnkxkc30003ptwhafpqi09x" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
-
     </footer>
   </div>
   
@@ -531,7 +531,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -562,7 +562,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 20px;">xctest</a>
+      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 15px;">xctest</a>
     </div>
   </div>
 
@@ -584,6 +584,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/18/cert5/">检查证书的信息和指纹</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/14/cert4/">Android签名apk后文件分析</a>
           </li>
         
@@ -597,10 +601,6 @@
         
           <li>
             <a href="/2018/09/13/cert/">签名您的应用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/04/gitssh/">github配置ssh出错解决方法</a>
           </li>
         
       </ul>
