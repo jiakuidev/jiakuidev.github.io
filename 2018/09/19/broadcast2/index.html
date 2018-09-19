@@ -8,13 +8,14 @@
   <title>Android8.0以上广播的限制 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="背景除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。 1. 清单无法注册隐式广播下面的test_click_action为自定义的一个广播意图action123456789101112&amp;lt;receiver     android:name=&quot;.WifiRecevier&quot;     android:enabled=&quot;">
+<meta name="keywords" content="broadcast">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android8.0以上广播的限制">
 <meta property="og:url" content="http://yoursite.com/2018/09/19/broadcast2/index.html">
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="背景除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。 1. 清单无法注册隐式广播下面的test_click_action为自定义的一个广播意图action123456789101112&amp;lt;receiver     android:name=&quot;.WifiRecevier&quot;     android:enabled=&quot;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-19T05:04:13.920Z">
+<meta property="og:updated_time" content="2018-09-19T05:08:07.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android8.0以上广播的限制">
 <meta name="twitter:description" content="背景除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。 1. 清单无法注册隐式广播下面的test_click_action为自定义的一个广播意图action123456789101112&amp;lt;receiver     android:name=&quot;.WifiRecevier&quot;     android:enabled=&quot;">
@@ -71,9 +72,13 @@
         <section id="main"><article id="post-broadcast2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/19/broadcast2/" class="article-date">
-  <time datetime="2018-09-19T04:08:59.000Z" itemprop="datePublished">2018-09-19</time>
+  <time datetime="2018-09-19T04:08:00.000Z" itemprop="datePublished">2018-09-19</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -92,6 +97,7 @@
       
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。</p>
 <h2 id="1-清单无法注册隐式广播"><a href="#1-清单无法注册隐式广播" class="headerlink" title="1. 清单无法注册隐式广播"></a>1. 清单无法注册隐式广播</h2><p>下面的test_click_action为自定义的一个广播意图action<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:name</span>=<span class="string">".WifiRecevier"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.STATE_CHANGE"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"test_click_action"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <table>
 <thead>
 <tr>
@@ -138,6 +144,8 @@
       <a data-url="http://yoursite.com/2018/09/19/broadcast2/" data-id="cjm8onpza0000lawh1l3cfedn" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
+
     </footer>
   </div>
   
@@ -183,7 +191,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/broadcast/" style="font-size: 10px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 15px;">xctest</a>
+      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/broadcast/" style="font-size: 13.33px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 16.67px;">xctest</a>
     </div>
   </div>
 
