@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Android8.0以上广播的限制 | 学习笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。 1. 清单无法注册隐式广播下面的test_click_action为自定义的一个广播意图action123456789101112&amp;lt;receiver     android:name=&quot;.WifiRecevier&quot;     android:enabled=&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android8.0以上广播的限制">
+<meta property="og:url" content="http://yoursite.com/2018/09/19/broadcast2/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="背景除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。 1. 清单无法注册隐式广播下面的test_click_action为自定义的一个广播意图action123456789101112&amp;lt;receiver     android:name=&quot;.WifiRecevier&quot;     android:enabled=&quot;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-19T05:04:13.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android8.0以上广播的限制">
+<meta name="twitter:description" content="背景除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。 1. 清单无法注册隐式广播下面的test_click_action为自定义的一个广播意图action123456789101112&amp;lt;receiver     android:name=&quot;.WifiRecevier&quot;     android:enabled=&quot;">
+  
+    <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">学习笔记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">三天打鱼两天晒网！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-broadcast2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/19/broadcast2/" class="article-date">
+  <time datetime="2018-09-19T04:08:59.000Z" itemprop="datePublished">2018-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android8.0以上广播的限制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。</p>
+<h2 id="1-清单无法注册隐式广播"><a href="#1-清单无法注册隐式广播" class="headerlink" title="1. 清单无法注册隐式广播"></a>1. 清单无法注册隐式广播</h2><p>下面的test_click_action为自定义的一个广播意图action<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:name</span>=<span class="string">".WifiRecevier"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.STATE_CHANGE"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"test_click_action"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>广播</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">备注</th>
+<th>清单注册</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android.net.wifi.WIFI_STATE_CHANGED</td>
+<td style="text-align:left">隐式</td>
+<td style="text-align:left">系统广播</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>android.net.wifi.STATE_CHANGE</td>
+<td style="text-align:left">隐式</td>
+<td style="text-align:left">系统广播</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>test_click_action</td>
+<td style="text-align:left">显示</td>
+<td style="text-align:left">自定义广播</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>android.intent.action.BOOT_COMPLETED</td>
+<td style="text-align:left">隐式</td>
+<td style="text-align:left">隐式例外</td>
+<td>可以</td>
+</tr>
+</tbody>
+</table>
+<p>隐式例外广播的列表<br><a href="https://developer.android.com/guide/components/broadcast-exceptions" target="_blank" rel="noopener">https://developer.android.com/guide/components/broadcast-exceptions</a></p>
+<p>所以上面清单，只有test_click_action和android.intent.action.BOOT_COMPLETED可以生效。</p>
+<h2 id="2-动态注册隐式广播"><a href="#2-动态注册隐式广播" class="headerlink" title="2. 动态注册隐式广播"></a>2. 动态注册隐式广播</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">WifiRecevier wifiRecevier =<span class="keyword">new</span> WifiRecevier();</span><br><span class="line">IntentFilter filter=<span class="keyword">new</span> IntentFilter();</span><br><span class="line">filter.addAction(<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span>);</span><br><span class="line">filter.addAction(<span class="string">"android.net.wifi.STATE_CHANGE"</span>);</span><br><span class="line">filter.addAction(<span class="string">"android.intent.action.BOOT_COMPLETED"</span>);</span><br><span class="line">filter.addAction(<span class="string">"test_click_action"</span>);</span><br><span class="line">registerReceiver(wifiRecevier, filter);</span><br></pre></td></tr></table></figure>
+<h2 id="3-清单注册显式广播的调用"><a href="#3-清单注册显式广播的调用" class="headerlink" title="3. 清单注册显式广播的调用"></a>3. 清单注册显式广播的调用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//显示广播需要明确的指出广播接受者本例子中WifiRecevier就是接受者</span></span><br><span class="line"> Intent wifitent = <span class="keyword">new</span> Intent(BroadcastActivity.<span class="keyword">this</span>,WifiRecevier.class);</span><br><span class="line"> wifitent.setAction(<span class="string">"test_click_action"</span>);</span><br><span class="line"> sendBroadcast(wifitent);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/19/broadcast2/" data-id="cjm8onpza0000lawh1l3cfedn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/19/broadcast/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android广播的实现方式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/TCP-IP/">TCP/IP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/broadcast/" style="font-size: 10px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 15px;">xctest</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/19/broadcast2/">Android8.0以上广播的限制</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/19/broadcast/">Android广播的实现方式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/18/cert5/">检查证书的信息和指纹</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/14/cert4/">Android签名apk后文件分析</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/13/cert3/">如何获取cert.rsa的公钥</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Jiakui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

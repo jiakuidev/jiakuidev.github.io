@@ -66,6 +66,83 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-broadcast2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/19/broadcast2/" class="article-date">
+  <time datetime="2018-09-19T04:08:59.000Z" itemprop="datePublished">2018-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/19/broadcast2/">Android8.0以上广播的限制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。</p>
+<h2 id="1-清单无法注册隐式广播"><a href="#1-清单无法注册隐式广播" class="headerlink" title="1. 清单无法注册隐式广播"></a>1. 清单无法注册隐式广播</h2><p>下面的test_click_action为自定义的一个广播意图action<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:name</span>=<span class="string">".WifiRecevier"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.STATE_CHANGE"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"test_click_action"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>广播</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">备注</th>
+<th>清单注册</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android.net.wifi.WIFI_STATE_CHANGED</td>
+<td style="text-align:left">隐式</td>
+<td style="text-align:left">系统广播</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>android.net.wifi.STATE_CHANGE</td>
+<td style="text-align:left">隐式</td>
+<td style="text-align:left">系统广播</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>test_click_action</td>
+<td style="text-align:left">显示</td>
+<td style="text-align:left">自定义广播</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>android.intent.action.BOOT_COMPLETED</td>
+<td style="text-align:left">隐式</td>
+<td style="text-align:left">隐式例外</td>
+<td>可以</td>
+</tr>
+</tbody>
+</table>
+<p>隐式例外广播的列表<br><a href="https://developer.android.com/guide/components/broadcast-exceptions" target="_blank" rel="noopener">https://developer.android.com/guide/components/broadcast-exceptions</a></p>
+<p>所以上面清单，只有test_click_action和android.intent.action.BOOT_COMPLETED可以生效。</p>
+<h2 id="2-动态注册隐式广播"><a href="#2-动态注册隐式广播" class="headerlink" title="2. 动态注册隐式广播"></a>2. 动态注册隐式广播</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">WifiRecevier wifiRecevier =<span class="keyword">new</span> WifiRecevier();</span><br><span class="line">IntentFilter filter=<span class="keyword">new</span> IntentFilter();</span><br><span class="line">filter.addAction(<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span>);</span><br><span class="line">filter.addAction(<span class="string">"android.net.wifi.STATE_CHANGE"</span>);</span><br><span class="line">filter.addAction(<span class="string">"android.intent.action.BOOT_COMPLETED"</span>);</span><br><span class="line">filter.addAction(<span class="string">"test_click_action"</span>);</span><br><span class="line">registerReceiver(wifiRecevier, filter);</span><br></pre></td></tr></table></figure>
+<h2 id="3-清单注册显式广播的调用"><a href="#3-清单注册显式广播的调用" class="headerlink" title="3. 清单注册显式广播的调用"></a>3. 清单注册显式广播的调用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//显示广播需要明确的指出广播接受者本例子中WifiRecevier就是接受者</span></span><br><span class="line"> Intent wifitent = <span class="keyword">new</span> Intent(BroadcastActivity.<span class="keyword">this</span>,WifiRecevier.class);</span><br><span class="line"> wifitent.setAction(<span class="string">"test_click_action"</span>);</span><br><span class="line"> sendBroadcast(wifitent);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/19/broadcast2/" data-id="cjm8onpza0000lawh1l3cfedn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-broadcast" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/19/broadcast/" class="article-date">
@@ -480,49 +557,6 @@
 
 
   
-    <article id="post-morelocale2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/morelocale2/" class="article-date">
-  <time datetime="2018-09-03T13:26:00.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/morelocale2/">测试过程中切换Android系统语言</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>测试过程中自动切换Android系统语言,借助于morelocale2可以手动切换，让我们看看他是怎么做的吧。</p>
-<ol>
-<li>首先反编译morelocale2 apk
-        
-          <p class="article-more-link">
-            <a href="/2018/09/03/morelocale2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/morelocale2/" data-id="cjm6wpi1r000snqs6j6j5zr14" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -580,6 +614,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/19/broadcast2/">Android8.0以上广播的限制</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/19/broadcast/">Android广播的实现方式</a>
           </li>
         
@@ -593,10 +631,6 @@
         
           <li>
             <a href="/2018/09/13/cert3/">如何获取cert.rsa的公钥</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/cert2/">从命令行构建和签署您的应用</a>
           </li>
         
       </ul>
