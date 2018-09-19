@@ -66,6 +66,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-broadcast" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/19/broadcast/" class="article-date">
+  <time datetime="2018-09-19T02:13:00.000Z" itemprop="datePublished">2018-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/19/broadcast/">Android广播的实现方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一-Android广播机制"><a href="#一-Android广播机制" class="headerlink" title="一. Android广播机制"></a>一. Android广播机制</h1><p>Android应用可以从Android系统和其他Android应用发送或接收广播消息，类似于发布 - 订阅设计模式。 当感兴趣的事件发生时，发送这些广播。 例如，Android系统在发生各种系统事件时发送广播，例如系统启动或设备开始充电时。 例如，应用程序还可以发送自定义广播，以通知其他应用程序他们可能感兴趣的内容（例如，已下载了一些新数据）。</p>
+<h1 id="二-广播式如何实现"><a href="#二-广播式如何实现" class="headerlink" title="二. 广播式如何实现"></a>二. 广播式如何实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WifiRecevier</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> isConnected = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String TAG=<span class="string">"nqtest"</span>;</span><br><span class="line"></span><br><span class="line">    Context context;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">        Log.i(TAG,<span class="string">"收到广播"</span>);</span><br><span class="line">        <span class="keyword">if</span>(intent.getAction().equals(<span class="string">"test_click_action"</span>)) &#123;</span><br><span class="line">            Log.i(TAG,<span class="string">"点击按钮收到广播"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.context = context;</span><br><span class="line">        <span class="keyword">if</span> (intent.getAction().equals(WifiManager.RSSI_CHANGED_ACTION)) &#123;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (intent.getAction().equals(WifiManager.NETWORK_STATE_CHANGED_ACTION)) &#123;</span><br><span class="line">            NetworkInfo info = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);</span><br><span class="line">            <span class="keyword">if</span> (info.getState().equals(NetworkInfo.State.DISCONNECTED)) &#123;</span><br><span class="line">                <span class="comment">// 如果断开连接</span></span><br><span class="line">                isConnected = <span class="keyword">false</span>;</span><br><span class="line">                Log.i(TAG,<span class="string">"wifi网络连接断开"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (info.getState().equals(NetworkInfo.State.CONNECTED)) &#123;</span><br><span class="line">                isConnected = <span class="keyword">true</span>;</span><br><span class="line">                Log.i(TAG,<span class="string">"wifi网络连接成功"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (intent.getAction().equals(WifiManager.WIFI_STATE_CHANGED_ACTION)) &#123;</span><br><span class="line">            <span class="comment">// WIFI开关</span></span><br><span class="line">            <span class="keyword">int</span> wifistate = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, WifiManager.WIFI_STATE_DISABLED);</span><br><span class="line">            <span class="keyword">if</span> (wifistate == WifiManager.WIFI_STATE_DISABLED) &#123;</span><br><span class="line">                <span class="comment">// 如果关闭</span></span><br><span class="line">                Log.i(TAG,<span class="string">"系统关闭wifi"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (wifistate == WifiManager.WIFI_STATE_ENABLED) &#123;</span><br><span class="line">                Log.i(TAG,<span class="string">"系统开启wifi"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="三-注册方式"><a href="#三-注册方式" class="headerlink" title="三. 注册方式"></a>三. 注册方式</h1><h2 id="1-静态广播"><a href="#1-静态广播" class="headerlink" title="1. 静态广播"></a>1. 静态广播</h2><p>静态广播的注册在AndroidManifest.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:name</span>=<span class="string">".WifiRecevier"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.STATE_CHANGE"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"test_click_action"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-动态广播注册"><a href="#2-动态广播注册" class="headerlink" title="2. 动态广播注册"></a>2. 动态广播注册</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">WifiRecevier wifiRecevier =<span class="keyword">new</span> WifiRecevier();</span><br><span class="line">IntentFilter filter=<span class="keyword">new</span> IntentFilter();</span><br><span class="line">filter.addAction(<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span>);</span><br><span class="line">filter.addAction(<span class="string">"android.net.wifi.STATE_CHANGE"</span>);</span><br><span class="line">filter.addAction(<span class="string">"android.intent.action.BOOT_COMPLETED"</span>);</span><br><span class="line">filter.addAction(<span class="string">"test_click_action"</span>);</span><br><span class="line">registerReceiver(wifiRecevier, filter);</span><br></pre></td></tr></table></figure>
+<h1 id="四-广播调用形式"><a href="#四-广播调用形式" class="headerlink" title="四. 广播调用形式"></a>四. 广播调用形式</h1><h2 id="1-显示调用"><a href="#1-显示调用" class="headerlink" title="1. 显示调用"></a>1. 显示调用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//显示广播需要明确的指出广播接受者本例子中WifiRecevier就是接受者</span></span><br><span class="line"> Intent wifitent = <span class="keyword">new</span> Intent(BroadcastActivity.<span class="keyword">this</span>,WifiRecevier.class);</span><br><span class="line"> wifitent.setAction(<span class="string">"test_click_action"</span>);</span><br><span class="line"> sendBroadcast(wifitent);</span><br></pre></td></tr></table></figure>
+<h2 id="2-隐式调用"><a href="#2-隐式调用" class="headerlink" title="2. 隐式调用"></a>2. 隐式调用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Intent wifitent = <span class="keyword">new</span> Intent();</span><br><span class="line">wifitent.setAction(<span class="string">"test_click_action"</span>);</span><br><span class="line">sendBroadcast(wifitent);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/19/broadcast/" data-id="cjm8k9m9s0000zgwhmequvbki" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cert5" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/18/cert5/" class="article-date">
@@ -476,57 +523,6 @@
 
 
   
-    <article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/docker/" class="article-date">
-  <time datetime="2018-09-03T08:50:23.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/docker/">docker常用命令学习</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="如何安装docker"><a href="#如何安装docker" class="headerlink" title="如何安装docker"></a>如何安装docker</h3><p><a href="https://docs.docker.com/install/linux/docker-ce/centos/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/centos/</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看当前运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line">CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                              NAMES</span><br><span class="line">197c01ecb07e        tensorflow/tensorflow   <span class="string">"/run_jupyter.sh --al"</span>   6 months ago        Up 4 days           6006/tcp, 0.0.0.0:8888-&gt;8888/tcp   jupyter</span><br><span class="line">e956fe5d16cf        wordpress               <span class="string">"docker-entrypoint.sh"</span>   8 months ago        Up 10 weeks         0.0.0.0:6060-&gt;80/tcp               some-wordpress</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"><span class="comment">#查看所有容器</span></span><br><span class="line">docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS                      PORTS                              NAMES</span><br><span class="line">197c01ecb07e        tensorflow/tensorflow   <span class="string">"/run_jupyter.sh --al"</span>   6 months ago        Up 4 days                   6006/tcp, 0.0.0.0:8888-&gt;8888/tcp   jupyter</span><br><span class="line">e956fe5d16cf        wordpress               <span class="string">"docker-entrypoint.sh"</span>   8 months ago        Up 10 weeks                 0.0.0.0:6060-&gt;80/tcp               some-wordpress</span><br><span class="line">6997d6e6ee88        centos7-ssh             <span class="string">"/usr/sbin/sshd -D"</span>      8 months ago        Exited (137) 3 months ago                                      base-centos7-ssh</span><br><span class="line"><span class="comment">#查找镜像</span></span><br><span class="line">docker search mysql</span><br><span class="line">INDEX       NAME                                                             DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">docker.io   docker.io/mysql                                                  MySQL is a widely used, open-source relati...   6851      [OK]       </span><br><span class="line">docker.io   docker.io/mariadb                                                MariaDB is a community-developed fork of M...   2188      [OK]       </span><br><span class="line">docker.io   docker.io/mysql/mysql-server                                     Optimized MySQL Server Docker images. Crea...   502                  [OK]</span><br><span class="line"><span class="comment">#查看本地已有的镜像</span></span><br><span class="line">REPOSITORY                        TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">docker.io/tensorflow/tensorflow   latest              a2d1671e8a93        7 months ago        1.255 GB</span><br><span class="line">docker.io/wordpress               latest              34947222d667        8 months ago        409.6 MB</span><br><span class="line">centos7-ssh                       latest              8a236d0dff52        8 months ago        293.6 MB</span><br><span class="line">docker.io/centos                  latest              3fa822599e10        9 months ago        203.5 MB</span><br><span class="line"><span class="comment">#直接进入一个已启动的容器里面</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 197c01ecb07e /bin/sh</span><br></pre></td></tr></table></figure>
-<h3 id="启动一个centos7的mysql服务"><a href="#启动一个centos7的mysql服务" class="headerlink" title="启动一个centos7的mysql服务"></a>启动一个centos7的mysql服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name qintest -p 4406:3306 -e MYSQL\_ROOT\_PASSWORD=123456 -d centos/mysql-57-centos7</span><br></pre></td></tr></table></figure>
-<h3 id="docker中centos设置ssh"><a href="#docker中centos设置ssh" class="headerlink" title="docker中centos设置ssh"></a>docker中centos设置ssh</h3><p><a href="http://blog.csdn.net/waixin/article/details/50212079" target="_blank" rel="noopener">http://blog.csdn.net/waixin/article/details/50212079</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 4022:22 -p 9090:8080 centos-tomcat-ssh /usr/sbin/sshd -D</span><br></pre></td></tr></table></figure></p>
-<h3 id="给已经存在的docker容器挂在卷"><a href="#给已经存在的docker容器挂在卷" class="headerlink" title="给已经存在的docker容器挂在卷"></a>给已经存在的docker容器挂在卷</h3><p><a href="http://www.open-open.com/lib/view/open1421996521062.html" target="_blank" rel="noopener">http://www.open-open.com/lib/view/open1421996521062.html</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 9022:22 -p 9090:8080 centos-tomcat-ssh /usr/sbin/sshd -D</span><br></pre></td></tr></table></figure></p>
-<h3 id="查看docker容器的相关信息"><a href="#查看docker容器的相关信息" class="headerlink" title="查看docker容器的相关信息"></a>查看docker容器的相关信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect 4a9a791d9ee9</span><br></pre></td></tr></table></figure>
-<p>docker和虚拟机的性能对比<br><a href="http://blog.csdn.net/cbl709/article/details/43955687" target="_blank" rel="noopener">http://blog.csdn.net/cbl709/article/details/43955687</a></p>
-<p>docker 目录挂载 拷贝数据<br><a href="http://blog.csdn.net/huludan/article/details/52641090" target="_blank" rel="noopener">http://blog.csdn.net/huludan/article/details/52641090</a></p>
-<p>dockerfile 生成sshd<br><a href="http://blog.csdn.net/cmzsteven/article/details/49096645" target="_blank" rel="noopener">http://blog.csdn.net/cmzsteven/article/details/49096645</a></p>
-<p>执行：<br>service sshd restart<br>有提示：<br>停止 sshd：                                                [  确定  ]<br>启动 sshdCould not load host key: /etc/ssh/ssh_host_ecdsa_key<br>                                                      [  确定  ]<br>解决方法：<br>ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N “”</p>
-<p>docker hadoop<br><a href="http://www.jianshu.com/p/b75f8bc9346d" target="_blank" rel="noopener">http://www.jianshu.com/p/b75f8bc9346d</a></p>
-<p><a href="http://192.8.27.5:8080/qintest/dashboard.action" target="_blank" rel="noopener">http://192.8.27.5:8080/qintest/dashboard.action</a></p>
-<p>docker run -d -p 6022:22 -p 6060:8080 -p 3606:3306 -p 26017:27017 -p 6679:6379 -p 60:80 centos-tomcat-ssh /usr/sbin/sshd -D</p>
-<p>ssh docker 设置</p>
-<p><a href="https://www.cnblogs.com/zhengxingpeng/p/6686258.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhengxingpeng/p/6686258.html</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --name postgresql_database -e POSTGRESQL_USER=user -e POSTGRESQL_PASSWORD=pass -e POSTGRESQL_DATABASE=db -p 5432:5432 centos/postgresql-95-centos7</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/03/docker/" data-id="cjm6wpi0w0008nqs68v81ycig" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -552,7 +548,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
     </div>
   </div>
 
@@ -562,7 +558,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 15px;">xctest</a>
+      <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/broadcast/" style="font-size: 10px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 15px;">xctest</a>
     </div>
   </div>
 
@@ -584,6 +580,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/19/broadcast/">Android广播的实现方式</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/18/cert5/">检查证书的信息和指纹</a>
           </li>
         
@@ -597,10 +597,6 @@
         
           <li>
             <a href="/2018/09/13/cert2/">从命令行构建和签署您的应用</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/cert/">签名您的应用</a>
           </li>
         
       </ul>
