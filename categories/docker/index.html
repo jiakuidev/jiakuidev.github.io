@@ -5,19 +5,15 @@
   
 
   
-  <title>Dropbox pincode分析 | 学习笔记</title>
+  <title>Category: docker | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Dropbox pincode分析">
-<meta property="og:url" content="http://jiakui.app/2018/09/03/dropbox/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="学习笔记">
+<meta property="og:url" content="http://jiakui.app/categories/docker/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-03T14:16:43.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dropbox pincode分析">
-<meta name="twitter:description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
+<meta name="twitter:title" content="学习笔记">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -68,78 +64,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-dropbox" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/dropbox/" class="article-date">
-  <time datetime="2018-09-03T14:07:02.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Dropbox pincode分析
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/09/03/docker/" class="archive-article-date">
+  <time datetime="2018-09-03T08:50:00.000Z" itemprop="datePublished">Sep 3</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/09/03/docker/">docker常用命令学习</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>通过分析dropbox再建立账号后会使用android.accounts.Account</p>
-<ol>
-<li>首先adb shell进入终端shell环境，su切换到root账户.</li>
-<li>通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db</li>
-<li><p>使用Sqlite3命令查询该数据。</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@ja3g:/ <span class="comment"># sqlite3 /data/system/users/0/accounts.db</span></span><br><span class="line">SQLite version 3.7.16 2013-03-18 11:39:23 [www.ptsoft.org] [www.ptdave.com]</span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> instructions</span><br><span class="line">Enter SQL statements terminated with a “;<span class="string">"</span></span><br><span class="line"><span class="string">sqlite&gt; .tables</span></span><br><span class="line"><span class="string">accounts     authtokens    grants    shared_accounts  android_metadata  extras   meta</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对accounts表进行查询，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; select * from accounts;</span><br><span class="line">……</span><br><span class="line">11|jiakui@live.cn|com.dropbox.android.account|</span><br><span class="line">dropbox账号id=11</span><br><span class="line"><span class="comment">#查询extras表中有dropbox账号信息如下：</span></span><br><span class="line">sqlite&gt; select * from extras;</span><br><span class="line">……</span><br><span class="line">82|11|com.dropbox.android-account|&#123;<span class="string">"INITIALIZED"</span>:<span class="string">"true"</span>,<span class="string">"KEY_ALLOW_UNPAIRED_BUSINESS_PHOTOS"</span>:<span class="string">"true"</span>&#125;</span><br><span class="line">83|11|shared-device|&#123;<span class="string">"LOCK_CODE_ERASE"</span>:<span class="string">"false"</span>,<span class="string">"LOCK_CODE_LOCKED_UNTIL"</span>:<span class="string">"0"</span>,<span class="string">"LOCK_CODE"</span>:<span class="string">"1234”&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>结论：</p>
-<ol>
-<li>通过查询该表id=82和id=83都属于dropbox的id.</li>
-<li>发现id=83的行中有”LOCK_CODE”:”1234”，通过验证此”LOCK_CODE”:”1234”即属于当时dropbox的passcode</li>
-<li>通过dropbox修改passcode，此数据相应变化。</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/dropbox/" data-id="cjnbeo7c7000weas66melqxpa" class="article-share-link">Share</a>
-      
-      
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/09/04/httpscert/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          java查看到网站https的证书信息
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/09/03/morelocale2/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">测试过程中切换Android系统语言</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         
