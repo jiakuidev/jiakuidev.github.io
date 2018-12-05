@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: cert | 学习笔记</title>
+  <title>Appium在centos上安装 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="学习笔记">
-<meta property="og:url" content="http://jiakui.app/tags/cert/index.html">
+  <meta name="description" content="1.pip安装https://pip.pypa.io/en/stable/installing/ 12curl https://bootstrap.pypa.io/get-pip.py -o get-pip.pypython get-pip.py">
+<meta name="keywords" content="Appium,Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Appium在centos上安装">
+<meta property="og:url" content="http://jiakui.app/2018/12/05/appium/index.html">
 <meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="1.pip安装https://pip.pypa.io/en/stable/installing/ 12curl https://bootstrap.pypa.io/get-pip.py -o get-pip.pypython get-pip.py">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-05T07:31:07.073Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习笔记">
+<meta name="twitter:title" content="Appium在centos上安装">
+<meta name="twitter:description" content="1.pip安装https://pip.pypa.io/en/stable/installing/ 12curl https://bootstrap.pypa.io/get-pip.py -o get-pip.pypython get-pip.py">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -64,116 +69,63 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/18/cert5/" class="archive-article-date">
-  <time datetime="2018-09-17T23:16:00.000Z" itemprop="datePublished">Sep 18</time>
+        <section id="main"><article id="post-appium" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/05/appium/" class="article-date">
+  <time datetime="2018-12-05T07:22:00.000Z" itemprop="datePublished">2018-12-05</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Appium/">Appium</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/18/cert5/">检查证书的信息和指纹</a>
+    <h1 class="article-title" itemprop="name">
+      Appium在centos上安装
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/14/cert4/" class="archive-article-date">
-  <time datetime="2018-09-13T21:15:00.000Z" itemprop="datePublished">Sep 14</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/14/cert4/">Android签名apk后文件分析</a>
-    </h1>
-  
+        <h2 id="1-pip安装"><a href="#1-pip安装" class="headerlink" title="1.pip安装"></a>1.pip安装</h2><p><a href="https://pip.pypa.io/en/stable/installing/" target="_blank" rel="noopener">https://pip.pypa.io/en/stable/installing/</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</span><br><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="2-nodejs-安装"><a href="#2-nodejs-安装" class="headerlink" title="2.nodejs 安装"></a>2.nodejs 安装</h2><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install wget</span><br><span class="line">wget https://nodejs.org/dist/v10.14.1/node-v10.14.1-linux-x64.tar.xz</span><br><span class="line">tar -xvf node-v10.14.1-linux-x64.tar.xz</span><br><span class="line">vi /etc/profile</span><br><span class="line"><span class="meta">#</span>环境变量追加</span><br><span class="line">PATH=/usr/local/node-v10.14.1-linux-x64/bin:$PATH</span><br><span class="line">export PATH</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<h2 id="3-Appium安装"><a href="#3-Appium安装" class="headerlink" title="3.Appium安装"></a>3.Appium安装</h2><p><a href="http://appium.io/" target="_blank" rel="noopener">http://appium.io/</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install -g appium  # get appium</span><br><span class="line">npm install wd         # get appium client</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>如果失败之行下面语句</span><br><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">cnpm install -g appium --unsafe-perm</span><br></pre></td></tr></table></figure></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/13/cert3/" class="archive-article-date">
-  <time datetime="2018-09-13T15:09:00.000Z" itemprop="datePublished">Sep 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/13/cert3/">如何获取cert.rsa的公钥</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/13/cert2/" class="archive-article-date">
-  <time datetime="2018-09-13T14:27:00.000Z" itemprop="datePublished">Sep 13</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="cjpauy77v0005ezs66cwc2lhx" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/13/cert2/">从命令行构建和签署您的应用</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/13/cert/" class="archive-article-date">
-  <time datetime="2018-09-13T13:57:00.000Z" itemprop="datePublished">Sep 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/13/cert/">签名您的应用</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Appium/">Appium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/09/19/broadcast2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Android8.0以上广播的限制</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
