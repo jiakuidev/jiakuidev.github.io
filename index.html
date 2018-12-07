@@ -66,6 +66,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-appium-python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/07/appium-python/" class="article-date">
+  <time datetime="2018-12-07T04:30:15.000Z" itemprop="datePublished">2018-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/07/appium-python/">appium-python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下提供官方示例代码的github仓库：<br><br><a href="https://github.com/appium-boneyard/sample-code/tree/master/sample-code/examples" target="_blank" rel="noopener">https://github.com/appium-boneyard/sample-code/tree/master/sample-code/examples</a></p>
+<p>以下为官方提供的示例脚本文件<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> appium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line"><span class="comment"># Returns abs path relative to this file and not cwd</span></span><br><span class="line">PATH = <span class="keyword">lambda</span> p: os.path.abspath(</span><br><span class="line">    os.path.join(os.path.dirname(__file__), p)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleAndroidTests</span><span class="params">(unittest.TestCase)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setUp</span><span class="params">(self)</span>:</span></span><br><span class="line">        desired_caps = &#123;&#125;</span><br><span class="line">        <span class="comment">#用来指定iOS还是Android</span></span><br><span class="line">        desired_caps[<span class="string">'platformName'</span>] = <span class="string">'Android'</span></span><br><span class="line">        <span class="comment">#确定平台版本</span></span><br><span class="line">        desired_caps[<span class="string">'platformVersion'</span>] = <span class="string">'5.1.1'</span></span><br><span class="line">        <span class="comment">#设备udid为设备串号Android为"adb devices"查看</span></span><br><span class="line">        desired_caps[<span class="string">'uidi'</span>] = <span class="string">'7N2PJR143V002818'</span></span><br><span class="line">        <span class="comment">#应用的包名</span></span><br><span class="line">        desired_caps[<span class="string">'appPackage'</span>] = <span class="string">'com.tencent.mobileqq'</span></span><br><span class="line">        <span class="comment">#应用的启动类</span></span><br><span class="line">        desired_caps[<span class="string">'appActivity'</span>] = <span class="string">'.activity.SplashActivity'</span></span><br><span class="line">        <span class="comment">#应用安装包的位置</span></span><br><span class="line">        desired_caps[<span class="string">'app'</span>] = PATH(</span><br><span class="line">            <span class="string">'../../../sample-code/apps/ApiDemos/bin/ApiDemos-debug.apk'</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.driver = webdriver.Remote(<span class="string">'http://localhost:4723/wd/hub'</span>, desired_caps)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tearDown</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># end the session</span></span><br><span class="line">        self.driver.quit()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_find_elements</span><span class="params">(self)</span>:</span></span><br><span class="line">        el = self.driver.find_element_by_accessibility_id(<span class="string">'Graphics'</span>)</span><br><span class="line">        el.click()</span><br><span class="line">        el = self.driver.find_element_by_accessibility_id(<span class="string">'Arcs'</span>)</span><br><span class="line">        self.assertIsNotNone(el)</span><br><span class="line"></span><br><span class="line">        self.driver.back()</span><br><span class="line"></span><br><span class="line">        el = self.driver.find_element_by_accessibility_id(<span class="string">"App"</span>)</span><br><span class="line">        self.assertIsNotNone(el)</span><br><span class="line"></span><br><span class="line">        els = self.driver.find_elements_by_android_uiautomator(<span class="string">"new UiSelector().clickable(true)"</span>)</span><br><span class="line">        self.assertGreaterEqual(<span class="number">12</span>, len(els))</span><br><span class="line"></span><br><span class="line">        self.driver.find_element_by_android_uiautomator(<span class="string">'text("API Demos")'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">test_simple_actions</span><span class="params">(self)</span>:</span></span><br><span class="line">        el = self.driver.find_element_by_accessibility_id(<span class="string">'Graphics'</span>)</span><br><span class="line">        el.click()</span><br><span class="line"></span><br><span class="line">        el = self.driver.find_element_by_accessibility_id(<span class="string">'Arcs'</span>)</span><br><span class="line">        el.click()</span><br><span class="line"></span><br><span class="line">        self.driver.find_element_by_android_uiautomator(<span class="string">'new UiSelector().text("Graphics/Arcs")'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    suite = unittest.TestLoader().loadTestsFromTestCase(SimpleAndroidTests)</span><br><span class="line">    unittest.TextTestRunner(verbosity=<span class="number">2</span>).run(suite)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="cjpdj7rv60000k5s6dkk9dk86" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-appium" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/05/appium/" class="article-date">
@@ -495,43 +533,6 @@
 
 
   
-    <article id="post-httpscert" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/04/httpscert/" class="article-date">
-  <time datetime="2018-09-04T09:55:18.000Z" itemprop="datePublished">2018-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/04/httpscert/">java查看到网站https的证书信息</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java代码查看到网站https的证书信息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHttps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		URL url = <span class="keyword">new</span> URL(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();</span><br><span class="line">		conn.connect();</span><br><span class="line">		Certificate[] certs = conn.getServerCertificates(); <span class="comment">// 会拿到完整的证书链</span></span><br><span class="line">		X509Certificate cert = (X509Certificate) certs[<span class="number">0</span>]; <span class="comment">// cert[0]是证书链的最下层</span></span><br><span class="line">		System.out.println(<span class="string">"序号："</span> + cert.getSerialNumber());</span><br><span class="line">		System.out.println(<span class="string">"颁发给："</span> + cert.getSubjectDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"颁发者："</span> + cert.getIssuerDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"起始："</span> + cert.getNotBefore());</span><br><span class="line">		System.out.println(<span class="string">"过期："</span> + cert.getNotAfter());</span><br><span class="line">		System.out.println(<span class="string">"算法："</span> + cert.getSigAlgName());</span><br><span class="line">		System.out.println(<span class="string">"指纹："</span> + getThumbPrint(cert));</span><br><span class="line">		conn.disconnect();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/04/httpscert/" data-id="cjpauzrpp0016fps67adrv0ga" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -589,6 +590,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/07/appium-python/">appium-python</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/05/appium/">Appium在centos上安装</a>
           </li>
         
@@ -602,10 +607,6 @@
         
           <li>
             <a href="/2018/09/18/cert5/">检查证书的信息和指纹</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/14/cert4/">Android签名apk后文件分析</a>
           </li>
         
       </ul>
