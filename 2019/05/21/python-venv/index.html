@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2018/12 | 学习笔记</title>
+  <title>python-venv | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="学习笔记">
-<meta property="og:url" content="http://jiakui.app/archives/2018/12/index.html">
+  <meta name="description" content="1.首先在pycharm中项目的终端执行：1pip freeze &amp;gt; requirements.txt 2.将requirements.txt作为项目文件一同上传svn或者git 3.在Jenkins shell类型执行如下命令：1$&amp;#123;WORKSPACE&amp;#125;/venv/bin/pip3 install -r $&amp;#123;WORKSPACE&amp;#125;/requiremen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python-venv">
+<meta property="og:url" content="http://jiakui.app/2019/05/21/python-venv/index.html">
 <meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="1.首先在pycharm中项目的终端执行：1pip freeze &amp;gt; requirements.txt 2.将requirements.txt作为项目文件一同上传svn或者git 3.在Jenkins shell类型执行如下命令：1$&amp;#123;WORKSPACE&amp;#125;/venv/bin/pip3 install -r $&amp;#123;WORKSPACE&amp;#125;/requiremen">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-21T03:19:24.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习笔记">
+<meta name="twitter:title" content="python-venv">
+<meta name="twitter:description" content="1.首先在pycharm中项目的终端执行：1pip freeze &amp;gt; requirements.txt 2.将requirements.txt作为项目文件一同上传svn或者git 3.在Jenkins shell类型执行如下命令：1$&amp;#123;WORKSPACE&amp;#125;/venv/bin/pip3 install -r $&amp;#123;WORKSPACE&amp;#125;/requiremen">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -64,59 +68,55 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/12/07/appium-python/" class="archive-article-date">
-  <time datetime="2018-12-07T04:30:00.000Z" itemprop="datePublished">Dec 7</time>
+        <section id="main"><article id="post-python-venv" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/21/python-venv/" class="article-date">
+  <time datetime="2019-05-21T03:13:36.000Z" itemprop="datePublished">2019-05-21</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/07/appium-python/">appium-python</a>
+    <h1 class="article-title" itemprop="name">
+      python-venv
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/12/05/appium/" class="archive-article-date">
-  <time datetime="2018-12-05T07:22:00.000Z" itemprop="datePublished">Dec 5</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/05/appium/">Appium在centos上安装</a>
-    </h1>
-  
+        <p>1.首先在pycharm中项目的终端执行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure></p>
+<p>2.将requirements.txt作为项目文件一同上传svn或者git</p>
+<p>3.在Jenkins shell类型执行如下命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&#123;WORKSPACE&#125;/venv/bin/pip3 install -r $&#123;WORKSPACE&#125;/requirements.txt</span><br></pre></td></tr></table></figure></p>
+<p>4.在Jenkins shell类型中执行python的脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&#123;WORKSPACE&#125;/venv/bin/python3 foo.py</span><br></pre></td></tr></table></figure></p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="cjvx84q8f00005mfy9na1wl9a" class="article-share-link">Share</a>
+      
+      
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/05/21/centos-python3-7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">centos-python3.7</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         
