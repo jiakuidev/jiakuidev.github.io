@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。1.首先，你要知道系统现在的python的位置在哪儿：[root@root ~]# whereis pythonpython: /">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-21T03:02:43.527Z">
+<meta property="og:updated_time" content="2019-05-21T03:20:56.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos-python3.7">
 <meta name="twitter:description" content="centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。1.首先，你要知道系统现在的python的位置在哪儿：[root@root ~]# whereis pythonpython: /">
@@ -91,8 +91,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。<br>1.首先，你要知道系统现在的python的位置在哪儿：<br>[root@root ~]# whereis python<br>python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</p>
-<p>可以知道我们的python在 /usr/bin目录中</p>
-<p>[root@root ~]# cd /usr/bin/<br>[root@root bin]# ll python*<br>lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2<br>lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7<br>-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</p>
+<p>可以知道我们的python在 /usr/bin目录中<br><a id="more"></a><br>[root@root ~]# cd /usr/bin/<br>[root@root bin]# ll python*<br>lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2<br>lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7<br>-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</p>
 <p>可以看到，python指向的是python2，python2指向的是python2.7，因此我们可以装个python3，然后将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了。</p>
 <p>2.因为我们要安装python3，所以要先安装相关包，用于下载编译python3：<br>yum install zlib-devel bzip2-devel openssl-devel ncurses-devel  libffi-devel sqlite-devel readline-devel tk-devel gcc make<br>运行了以上命令以后，就安装了编译python3所用到的相关依赖</p>
 <p>3.默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。</p>
