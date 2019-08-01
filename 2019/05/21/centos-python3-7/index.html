@@ -7,17 +7,17 @@
   
   <title>centos-python3.7 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。1.首先，你要知道系统现在的python的位置在哪儿：[root@root ~]# whereis pythonpython: /">
+  <meta name="description" content="centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。  1.首先，你要知道系统现在的python的位置在哪儿：[root@root ~]# whereis pythonpython">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos-python3.7">
 <meta property="og:url" content="http://jiakui.app/2019/05/21/centos-python3-7/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。1.首先，你要知道系统现在的python的位置在哪儿：[root@root ~]# whereis pythonpython: /">
+<meta property="og:description" content="centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。  1.首先，你要知道系统现在的python的位置在哪儿：[root@root ~]# whereis pythonpython">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-21T03:20:56.435Z">
+<meta property="og:updated_time" content="2019-08-01T14:48:31.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos-python3.7">
-<meta name="twitter:description" content="centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。1.首先，你要知道系统现在的python的位置在哪儿：[root@root ~]# whereis pythonpython: /">
+<meta name="twitter:description" content="centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。  1.首先，你要知道系统现在的python的位置在哪儿：[root@root ~]# whereis pythonpython">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -90,30 +90,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。<br>1.首先，你要知道系统现在的python的位置在哪儿：<br>[root@root ~]# whereis python<br>python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</p>
+        <blockquote>
+<p>centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。</p>
+</blockquote>
+<h3 id="1-首先，你要知道系统现在的python的位置在哪儿："><a href="#1-首先，你要知道系统现在的python的位置在哪儿：" class="headerlink" title="1.首先，你要知道系统现在的python的位置在哪儿："></a>1.首先，你要知道系统现在的python的位置在哪儿：</h3><p>[root@root ~]# whereis python<br>python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</p>
 <p>可以知道我们的python在 /usr/bin目录中<br><a id="more"></a><br>[root@root ~]# cd /usr/bin/<br>[root@root bin]# ll python*<br>lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2<br>lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7<br>-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</p>
 <p>可以看到，python指向的是python2，python2指向的是python2.7，因此我们可以装个python3，然后将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了。</p>
-<p>2.因为我们要安装python3，所以要先安装相关包，用于下载编译python3：<br>yum install zlib-devel bzip2-devel openssl-devel ncurses-devel  libffi-devel sqlite-devel readline-devel tk-devel gcc make<br>运行了以上命令以后，就安装了编译python3所用到的相关依赖</p>
-<p>3.默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。</p>
-<p>#运行这个命令添加epel扩展源<br>yum -y install epel-release</p>
+<h3 id="2-因为我们要安装python3，所以要先安装相关包，用于下载编译python3："><a href="#2-因为我们要安装python3，所以要先安装相关包，用于下载编译python3：" class="headerlink" title="2.因为我们要安装python3，所以要先安装相关包，用于下载编译python3："></a>2.因为我们要安装python3，所以要先安装相关包，用于下载编译python3：</h3><p>yum install zlib-devel bzip2-devel openssl-devel ncurses-devel  libffi-devel sqlite-devel readline-devel tk-devel gcc make<br>运行了以上命令以后，就安装了编译python3所用到的相关依赖</p>
+<h3 id="3-默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。"><a href="#3-默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。" class="headerlink" title="3.默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。"></a>3.默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。</h3><p>#运行这个命令添加epel扩展源<br>yum -y install epel-release</p>
 <p>#安装pip<br>yum install python-pip</p>
-<p>4.用pip装wget<br>pip install wget</p>
-<p>5.用wget下载python3的源码包<br>wget <a href="https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz</a></p>
-<p>6.编译python3源码包</p>
-<p>#解压<br>xz -d Python-3.6.4.tar.xz<br>tar -xf Python-3.6.4.tar</p>
+<h3 id="4-用pip装wget"><a href="#4-用pip装wget" class="headerlink" title="4.用pip装wget"></a>4.用pip装wget</h3><p>pip install wget</p>
+<h3 id="5-用wget下载python3的源码包"><a href="#5-用wget下载python3的源码包" class="headerlink" title="5.用wget下载python3的源码包"></a>5.用wget下载python3的源码包</h3><p>wget <a href="https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz</a></p>
+<h3 id="6-编译python3源码包"><a href="#6-编译python3源码包" class="headerlink" title="6.编译python3源码包"></a>6.编译python3源码包</h3><p>#解压<br>xz -d Python-3.6.4.tar.xz<br>tar -xf Python-3.6.4.tar</p>
 <p>#进入解压后的目录，依次执行下面命令进行手动编译<br>./configure prefix=/usr/local/python3<br>make &amp;&amp; make install</p>
 <p>如果最后没提示出错，就代表正确安装了，在/usr/local/目录下就会有python3目录</p>
-<p>7.添加软链接</p>
-<p>#将原来的链接备份<br>mv /usr/bin/python /usr/bin/python.bak</p>
+<h3 id="7-添加软链接"><a href="#7-添加软链接" class="headerlink" title="7.添加软链接"></a>7.添加软链接</h3><p>#将原来的链接备份<br>mv /usr/bin/python /usr/bin/python.bak</p>
 <p>#添加python3的软链接<br>ln -s /usr/local/python3/bin/python3.6 /usr/bin/python</p>
 <p>#测试是否安装成功了<br>python -V</p>
-<p>8.更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用<br>vi /usr/bin/yum<br>把#! /usr/bin/python修改为#! /usr/bin/python2</p>
+<h3 id="8-更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用"><a href="#8-更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用" class="headerlink" title="8.更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用"></a>8.更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用</h3><p>vi /usr/bin/yum<br>把#! /usr/bin/python修改为#! /usr/bin/python2</p>
 <p>vi /usr/libexec/urlgrabber-ext-down<br>把#! /usr/bin/python 修改为#! /usr/bin/python2</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="cjvx7ioo8002m34fy4gaf3xuu" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="cjysseiy6000cres68oydch1l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +204,7 @@
           </li>
         
           <li>
-            <a href="/2018/12/05/appium/">Appium在centos上安装</a>
+            <a href="/2018/12/05/appium/">appium在centos上安装</a>
           </li>
         
           <li>
