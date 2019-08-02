@@ -66,6 +66,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-appium-getpullfile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/02/appium-getpullfile/" class="article-date">
+  <time datetime="2019-08-02T10:20:49.000Z" itemprop="datePublished">2019-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="appium从手机端获取文件内容"><a href="#appium从手机端获取文件内容" class="headerlink" title="appium从手机端获取文件内容"></a>appium从手机端获取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] file = mobiledriver.pullFile(<span class="string">"/sdcard/verfiyCode.dat"</span>);</span><br><span class="line">InputStream bis = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> ByteArrayInputStream(file));</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	String result = <span class="string">""</span>;</span><br><span class="line">	BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(bis));</span><br><span class="line">	String line = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">while</span> ((line = bufferedReader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">		log.info(line);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="cjytyj7ox002rqsfyipixsxqp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-venv" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/21/python-venv/" class="article-date">
@@ -80,7 +116,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/21/python-venv/">python-venv</a>
+      <a class="article-title" href="/2019/05/21/python-venv/">python venv 环境使用</a>
     </h1>
   
 
@@ -93,13 +129,13 @@
 </blockquote>
 <p>1.首先在pycharm中项目的终端执行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure></p>
 <p>2.将requirements.txt作为项目文件一同上传svn或者git</p>
-<p>3.在Jenkins shell类型执行如下命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&#123;WORKSPACE&#125;/venv/bin/pip3 install -r $&#123;WORKSPACE&#125;/requirements.txt</span><br></pre></td></tr></table></figure></p>
-<p>4.在Jenkins shell类型中执行python的脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>&#123;WORKSPACE&#125;/venv/bin/python3 foo.py</span><br></pre></td></tr></table></figure></p>
+<p>3.在Jenkins shell类型执行如下命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">&#123;WORKSPACE&#125;/venv/bin/pip3 install -r <span class="variable">$&#123;WORKSPACE&#125;</span>/requirements.txt</span></span><br></pre></td></tr></table></figure></p>
+<p>4.在Jenkins shell类型中执行python的脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">&#123;WORKSPACE&#125;/venv/bin/python3 foo.py</span></span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="cjysseiyw001sres6jhjua9va" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="cjytyhpon002hqsfy2vz0e8yh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -123,7 +159,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/21/centos-python3-7/">centos-python3.7</a>
+      <a class="article-title" href="/2019/05/21/centos-python3-7/">centos python3.7安装</a>
     </h1>
   
 
@@ -132,19 +168,23 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>centos7 自带有 python，但是却是 python2 版本的 python，如果你想安装个python3怎么办呢？难道要从github上把源码clone下来进行编译安装么？没错！因为 yum 源中并没有现成的 python3 程序，所以必须要自己手动编译安装。</p>
+<p>centos7 自带python2,如果安装python3要从github上把源码clone下来进行编译安装,由于因为 yum 源中并没有现成的 python3 程序，所以手动编译安装。</p>
 </blockquote>
-<h3 id="1-首先，你要知道系统现在的python的位置在哪儿："><a href="#1-首先，你要知道系统现在的python的位置在哪儿：" class="headerlink" title="1.首先，你要知道系统现在的python的位置在哪儿："></a>1.首先，你要知道系统现在的python的位置在哪儿：</h3><p>[root@root ~]# whereis python<br>python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</p>
-<p>可以知道我们的python在 /usr/bin目录中<br>
-        
-          <p class="article-more-link">
-            <a href="/2019/05/21/centos-python3-7/#more">Read More</a>
-          </p>
-        
+<h3 id="1-首先，查询系统现在的python的位置："><a href="#1-首先，查询系统现在的python的位置：" class="headerlink" title="1.首先，查询系统现在的python的位置："></a>1.首先，查询系统现在的python的位置：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# whereis python</span><br><span class="line">python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#可以知道我们的python在 /usr/bin目录中</span></span></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">[root@root ~]# cd /usr/bin/</span><br><span class="line">[root@root bin]# ll python*</span><br><span class="line">lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2</span><br><span class="line">lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7</span><br><span class="line">-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</span><br></pre></td></tr></table></figure>
+<p>可以看到，python指向的是python2，python2指向的是python2.7，因此我们可以装个python3，然后将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了。</p>
+<h3 id="2-因为我们要安装python3，所以要先安装相关包，用于下载编译python3："><a href="#2-因为我们要安装python3，所以要先安装相关包，用于下载编译python3：" class="headerlink" title="2.因为我们要安装python3，所以要先安装相关包，用于下载编译python3："></a>2.因为我们要安装python3，所以要先安装相关包，用于下载编译python3：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib-devel bzip2-devel openssl-devel ncurses-devel  libffi-devel sqlite-devel readline-devel tk-devel gcc make</span><br></pre></td></tr></table></figure>
+<p>运行了以上命令以后，就安装了编译python3所用到的相关依赖</p>
+<h3 id="3-默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。"><a href="#3-默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。" class="headerlink" title="3.默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。"></a>3.默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">运行这个命令添加epel扩展源</span></span><br><span class="line">yum -y install epel-release</span><br><span class="line"><span class="meta">#</span><span class="bash">安装pip</span></span><br><span class="line">yum install python-pip</span><br></pre></td></tr></table></figure>
+<h3 id="4-用pip装wget"><a href="#4-用pip装wget" class="headerlink" title="4.用pip装wget"></a>4.用pip装wget</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install wget</span><br></pre></td></tr></table></figure>
+<h3 id="5-用wget下载python3的源码包"><a href="#5-用wget下载python3的源码包" class="headerlink" title="5.用wget下载python3的源码包"></a>5.用wget下载python3的源码包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz</span><br></pre></td></tr></table></figure>
+<h3 id="6-编译python3源码包"><a href="#6-编译python3源码包" class="headerlink" title="6.编译python3源码包"></a>6.编译python3源码包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">解压</span></span><br><span class="line">xz -d Python-3.6.4.tar.xz</span><br><span class="line">tar -xf Python-3.6.4.tar</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">进入解压后的目录，依次执行下面命令进行手动编译</span></span><br><span class="line">./configure prefix=/usr/local/python3</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<p>如果最后没提示出错，就代表正确安装了，在/usr/local/目录下就会有python3目录</p>
+<h3 id="7-添加软链接"><a href="#7-添加软链接" class="headerlink" title="7.添加软链接"></a>7.添加软链接</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">将原来的链接备份</span></span><br><span class="line">mv /usr/bin/python /usr/bin/python.bak</span><br><span class="line"><span class="meta">#</span><span class="bash">添加python3的软链接</span></span><br><span class="line">ln -s /usr/local/python3/bin/python3.6 /usr/bin/python</span><br><span class="line"><span class="meta">#</span><span class="bash">测试是否安装成功了</span></span><br><span class="line">python -V</span><br></pre></td></tr></table></figure>
+<h3 id="8-更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用"><a href="#8-更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用" class="headerlink" title="8.更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用"></a>8.更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/bin/yum</span><br><span class="line">把#! /usr/bin/python修改为#! /usr/bin/python2</span><br><span class="line">vi /usr/libexec/urlgrabber-ext-down</span><br><span class="line">把#! /usr/bin/python 修改为#! /usr/bin/python2</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="cjysseiy6000cres68oydch1l" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="cjytyhpnj0008qsfyg3665wey" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +212,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/07/appium-python/">appium-python</a>
+      <a class="article-title" href="/2018/12/07/appium-python/">appium python应用实例</a>
     </h1>
   
 
@@ -190,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="cjysseixy0003res6wq0vj110" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="cjytyhpne0003qsfyyztbv0kj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -238,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="cjysseiy30007res6vjx950pe" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="cjytyhpnh0006qsfyjd4s0u30" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Appium/">Appium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -286,7 +326,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/19/broadcast2/" data-id="cjysseiy40008res67k7nzwh5" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/19/broadcast2/" data-id="cjytyhpnl000cqsfylnwxdo21" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
@@ -334,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/19/broadcast/" data-id="cjysseiy10006res6w9ajege3" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/19/broadcast/" data-id="cjytyhpni0007qsfyqrqxrp8f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
@@ -383,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/18/cert5/" data-id="cjysseiyf000pres6rb4af66d" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/18/cert5/" data-id="cjytyhpns000jqsfymadb43id" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -432,7 +472,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/14/cert4/" data-id="cjysseiyb000jres6kd3u7y28" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/14/cert4/" data-id="cjytyhpnn000dqsfyblng8p4f" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -480,54 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/13/cert3/" data-id="cjysseiya000hres63t8i106b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cert2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/cert2/" class="article-date">
-  <time datetime="2018-09-13T14:27:00.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/cert2/">从命令行构建和签署您的应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="从命令行构建和签署您的应用"><a href="#从命令行构建和签署您的应用" class="headerlink" title="从命令行构建和签署您的应用"></a>从命令行构建和签署您的应用</h3><p>不需要 Android Studio 也可以签署您的应用。您可以通过 apksigner 工具从命令行签署您的应用，或在构建期间配置 Gradle 来签署您的应用。无论使用哪一个方式，您必须首先使用 keytool 生成一个私钥。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -<span class="built_in">alias</span> my-alias</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/13/cert2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/13/cert2/" data-id="cjysseiy8000dres6c7nl1nqh" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/13/cert3/" data-id="cjytyhpnt000nqsfyvbnml8mo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -583,7 +576,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
     </div>
   </div>
 
@@ -596,23 +589,23 @@
       <ul>
         
           <li>
-            <a href="/2019/05/21/python-venv/">python-venv</a>
+            <a href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
           </li>
         
           <li>
-            <a href="/2019/05/21/centos-python3-7/">centos-python3.7</a>
+            <a href="/2019/05/21/python-venv/">python venv 环境使用</a>
           </li>
         
           <li>
-            <a href="/2018/12/07/appium-python/">appium-python</a>
+            <a href="/2019/05/21/centos-python3-7/">centos python3.7安装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/07/appium-python/">appium python应用实例</a>
           </li>
         
           <li>
             <a href="/2018/12/05/appium/">appium在centos上安装</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/19/broadcast2/">Android8.0以上广播的限制</a>
           </li>
         
       </ul>
