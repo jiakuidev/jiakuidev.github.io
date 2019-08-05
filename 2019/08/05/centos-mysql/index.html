@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="1、安装YUM Repo由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。1wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm 然后进行repo的安装：1rpm -ivh mysql57-community-release-el7-9.noarch.rpm">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-05T05:51:25.823Z">
+<meta property="og:updated_time" content="2019-08-05T05:54:27.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7中mysql5.7安装">
 <meta name="twitter:description" content="1、安装YUM Repo由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。1wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm 然后进行repo的安装：1rpm -ivh mysql57-community-release-el7-9.noarch.rpm">
@@ -92,7 +92,7 @@
       
         <h2 id="1、安装YUM-Repo"><a href="#1、安装YUM-Repo" class="headerlink" title="1、安装YUM Repo"></a>1、安装YUM Repo</h2><p>由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
 <p>然后进行repo的安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
-<p>执行完成后会在/etc/yum.repos.d/目录下生成两个repo文件mysql-community.repo mysql-community-source.repo</p>
+<p>执行完成后会在/etc/yum.repos.d/目录下生成两个repo文件mysql-community.repo mysql-community-source.repo<br><a id="more"></a></p>
 <h2 id="2、安装MySQL"><a href="#2、安装MySQL" class="headerlink" title="2、安装MySQL"></a>2、安装MySQL</h2><ol>
 <li><p>使用yum命令即可完成安装</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-server</span><br></pre></td></tr></table></figure>

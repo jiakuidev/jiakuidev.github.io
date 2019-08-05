@@ -90,41 +90,12 @@
       
         <h2 id="1、安装YUM-Repo"><a href="#1、安装YUM-Repo" class="headerlink" title="1、安装YUM Repo"></a>1、安装YUM Repo</h2><p>由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
 <p>然后进行repo的安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
-<p>执行完成后会在/etc/yum.repos.d/目录下生成两个repo文件mysql-community.repo mysql-community-source.repo</p>
-<h2 id="2、安装MySQL"><a href="#2、安装MySQL" class="headerlink" title="2、安装MySQL"></a>2、安装MySQL</h2><ol>
-<li><p>使用yum命令即可完成安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-server</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>启动msyql：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld #启动MySQL</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>配置MySQL 获取安装时的临时密码：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep 'temporary password' /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>倘若没有：</p>
-</li>
-</ol>
-<ul>
-<li><p>删除原来安装过的mysql残留的数据</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/mysql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>再启动mysql</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld #启动MySQL</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="5">
-<li>登录：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<ul>
-<li>登录成功后修改密码：<br>set password=password(“yourpassword”);</li>
-<li>设置安全选项：<br>mysql_secure_installation</li>
-<li>其他设置：<br>systemctl stop mysqld #关闭MySQL<br>systemctl restart mysqld #重启MySQL<br>systemctl status mysqld #查看MySQL运行状态<br>systemctl enable mysqld #设置开机启动<br>systemctl disable mysqld #关闭开机启动<h2 id="3、其他配置"><a href="#3、其他配置" class="headerlink" title="3、其他配置"></a>3、其他配置</h2>开启远程控制<br>MySQL默认是没有开启远程控制的，必须添加远程访问的用户<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on 数据库名.表名 to 创建的用户名(root)@"%" identified by "密码"; # 数据库名.表名 如果写成*.*代表授权所有的数据库 </span><br><span class="line">flush privileges; #刷新刚才的内容</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>如：</span><br><span class="line">grant all privileges on *.* to root@"113.64.243.1" identified by "123456789";</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>@ 后面是访问mysql的客户端IP地址（或是 主机名） % 代表任意的客户端，如果填写 localhost 为本地访问（那此用户就不能远程访问该mysql数据库了）。<br>同时也可以为现有的用户设置是否具有远程访问权限。<br>配置默认编码为utf8：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="meta">#</span>添加</span><br><span class="line">[mysqld]</span><br><span class="line">character_set_server=utf8</span><br><span class="line">init_connect='SET NAMES utf8'</span><br></pre></td></tr></table></figure></p>
-<p>其他默认配置文件路径：<br>配置文件：/etc/my.cnf<br>日志文件：/var/log//var/log/mysqld.log<br>服务启动脚本：/usr/lib/systemd/system/mysqld.service<br>socket文件：/var/run/mysqld/mysqld.pid</p>
-<h2 id="4、my-cnf文件配置"><a href="#4、my-cnf文件配置" class="headerlink" title="4、my.cnf文件配置"></a>4、my.cnf文件配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon ~]# cat /etc/my.cnf</span><br><span class="line"><span class="meta">#</span> For advice on how to change settings please see</span><br><span class="line"><span class="meta">#</span> http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # and set to the amount of RAM for the most important data</span><br><span class="line"><span class="meta">#</span> cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.</span><br><span class="line"><span class="meta">#</span> innodb_buffer_pool_size = 128M</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # to turn on a very important data integrity option: logging</span><br><span class="line"><span class="meta">#</span> changes to the binary log between backups.</span><br><span class="line"><span class="meta">#</span> log_bin</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # to set options mainly useful for reporting servers.</span><br><span class="line"><span class="meta">#</span> The server defaults are faster for transactions and fast SELECTs.</span><br><span class="line"><span class="meta">#</span> Adjust sizes as needed, experiment to find the optimal values.</span><br><span class="line"><span class="meta">#</span> join_buffer_size = 128M</span><br><span class="line"><span class="meta">#</span> sort_buffer_size = 2M</span><br><span class="line"><span class="meta">#</span> read_rnd_buffer_size = 2M</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line">validate_password=OFF</span><br><span class="line"><span class="meta">#</span> Disabling symbolic-links is recommended to prevent assorted security risks</span><br><span class="line">symbolic-links=0</span><br><span class="line"></span><br><span class="line">log-error=/var/log/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br></pre></td></tr></table></figure>
+<p>执行完成后会在/etc/yum.repos.d/目录下生成两个repo文件mysql-community.repo mysql-community-source.repo<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/05/centos-mysql/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -200,10 +171,11 @@
 <p>在python中使用freez的好处<br>目前应该多多使用于系统无关的解决方案,方便用在容器当中进行部署</p>
 </blockquote>
 <p>1.首先在pycharm中项目的终端执行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure></p>
-<p>2.将requirements.txt作为项目文件一同上传svn或者git</p>
-<p>3.在Jenkins shell类型执行如下命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">&#123;WORKSPACE&#125;/venv/bin/pip3 install -r <span class="variable">$&#123;WORKSPACE&#125;</span>/requirements.txt</span></span><br></pre></td></tr></table></figure></p>
-<p>4.在Jenkins shell类型中执行python的脚本<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">&#123;WORKSPACE&#125;/venv/bin/python3 foo.py</span></span><br></pre></td></tr></table></figure></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/05/21/python-venv/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -242,17 +214,13 @@
         <blockquote>
 <p>centos7 自带python2,如果安装python3要从github上把源码clone下来进行编译安装,由于因为 yum 源中并没有现成的 python3 程序，所以手动编译安装。</p>
 </blockquote>
-<h3 id="1-首先，查询系统现在的python的位置："><a href="#1-首先，查询系统现在的python的位置：" class="headerlink" title="1.首先，查询系统现在的python的位置："></a>1.首先，查询系统现在的python的位置：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# whereis python</span><br><span class="line">python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#可以知道我们的python在 /usr/bin目录中</span></span></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">[root@root ~]# cd /usr/bin/</span><br><span class="line">[root@root bin]# ll python*</span><br><span class="line">lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2</span><br><span class="line">lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7</span><br><span class="line">-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</span><br></pre></td></tr></table></figure>
-<p>可以看到，python指向的是python2，python2指向的是python2.7，因此我们可以装个python3，然后将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了。</p>
-<h3 id="2-因为我们要安装python3，所以要先安装相关包，用于下载编译python3："><a href="#2-因为我们要安装python3，所以要先安装相关包，用于下载编译python3：" class="headerlink" title="2.因为我们要安装python3，所以要先安装相关包，用于下载编译python3："></a>2.因为我们要安装python3，所以要先安装相关包，用于下载编译python3：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install zlib-devel bzip2-devel openssl-devel ncurses-devel  libffi-devel sqlite-devel readline-devel tk-devel gcc make</span><br></pre></td></tr></table></figure>
-<p>运行了以上命令以后，就安装了编译python3所用到的相关依赖</p>
-<h3 id="3-默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。"><a href="#3-默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。" class="headerlink" title="3.默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。"></a>3.默认的，centos7也没有安装pip，不知道是不是因为我安装软件的时候选择的是最小安装的模式。</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">运行这个命令添加epel扩展源</span></span><br><span class="line">yum -y install epel-release</span><br><span class="line"><span class="meta">#</span><span class="bash">安装pip</span></span><br><span class="line">yum install python-pip</span><br></pre></td></tr></table></figure>
-<h3 id="4-用pip装wget"><a href="#4-用pip装wget" class="headerlink" title="4.用pip装wget"></a>4.用pip装wget</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install wget</span><br></pre></td></tr></table></figure>
-<h3 id="5-用wget下载python3的源码包"><a href="#5-用wget下载python3的源码包" class="headerlink" title="5.用wget下载python3的源码包"></a>5.用wget下载python3的源码包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.python.org/ftp/python/3.6.4/Python-3.6.4.tar.xz</span><br></pre></td></tr></table></figure>
-<h3 id="6-编译python3源码包"><a href="#6-编译python3源码包" class="headerlink" title="6.编译python3源码包"></a>6.编译python3源码包</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">解压</span></span><br><span class="line">xz -d Python-3.6.4.tar.xz</span><br><span class="line">tar -xf Python-3.6.4.tar</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">进入解压后的目录，依次执行下面命令进行手动编译</span></span><br><span class="line">./configure prefix=/usr/local/python3</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>如果最后没提示出错，就代表正确安装了，在/usr/local/目录下就会有python3目录</p>
-<h3 id="7-添加软链接"><a href="#7-添加软链接" class="headerlink" title="7.添加软链接"></a>7.添加软链接</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">将原来的链接备份</span></span><br><span class="line">mv /usr/bin/python /usr/bin/python.bak</span><br><span class="line"><span class="meta">#</span><span class="bash">添加python3的软链接</span></span><br><span class="line">ln -s /usr/local/python3/bin/python3.6 /usr/bin/python</span><br><span class="line"><span class="meta">#</span><span class="bash">测试是否安装成功了</span></span><br><span class="line">python -V</span><br></pre></td></tr></table></figure>
-<h3 id="8-更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用"><a href="#8-更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用" class="headerlink" title="8.更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用"></a>8.更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /usr/bin/yum</span><br><span class="line">把#! /usr/bin/python修改为#! /usr/bin/python2</span><br><span class="line">vi /usr/libexec/urlgrabber-ext-down</span><br><span class="line">把#! /usr/bin/python 修改为#! /usr/bin/python2</span><br></pre></td></tr></table></figure>
+<h3 id="1-首先，查询系统现在的python的位置："><a href="#1-首先，查询系统现在的python的位置：" class="headerlink" title="1.首先，查询系统现在的python的位置："></a>1.首先，查询系统现在的python的位置：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# whereis python</span><br><span class="line">python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</span><br><span class="line"><span class="meta">#</span>#可以知道我们的python在 /usr/bin目录中</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">[root@root ~]# cd /usr/bin/</span><br><span class="line">[root@root bin]# ll python*</span><br><span class="line">lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2</span><br><span class="line">lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7</span><br><span class="line">-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</span><br></pre></td></tr></table></figure>
+<p>可以看到，python指向的是python2，python2指向的是python2.7，因此我们可以装个python3，然后将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了。<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/05/21/centos-python3-7/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
