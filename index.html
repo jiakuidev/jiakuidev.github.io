@@ -66,6 +66,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-centos-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/05/centos-mysql/" class="article-date">
+  <time datetime="2019-08-05T05:49:08.000Z" itemprop="datePublished">2019-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、安装YUM-Repo"><a href="#1、安装YUM-Repo" class="headerlink" title="1、安装YUM Repo"></a>1、安装YUM Repo</h2><p>由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>然后进行repo的安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>执行完成后会在/etc/yum.repos.d/目录下生成两个repo文件mysql-community.repo mysql-community-source.repo</p>
+<h2 id="2、安装MySQL"><a href="#2、安装MySQL" class="headerlink" title="2、安装MySQL"></a>2、安装MySQL</h2><ol>
+<li><p>使用yum命令即可完成安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动msyql：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld #启动MySQL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置MySQL 获取安装时的临时密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep 'temporary password' /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>倘若没有：</p>
+</li>
+</ol>
+<ul>
+<li><p>删除原来安装过的mysql残留的数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再启动mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld #启动MySQL</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="5">
+<li>登录：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>登录成功后修改密码：<br>set password=password(“yourpassword”);</li>
+<li>设置安全选项：<br>mysql_secure_installation</li>
+<li>其他设置：<br>systemctl stop mysqld #关闭MySQL<br>systemctl restart mysqld #重启MySQL<br>systemctl status mysqld #查看MySQL运行状态<br>systemctl enable mysqld #设置开机启动<br>systemctl disable mysqld #关闭开机启动<h2 id="3、其他配置"><a href="#3、其他配置" class="headerlink" title="3、其他配置"></a>3、其他配置</h2>开启远程控制<br>MySQL默认是没有开启远程控制的，必须添加远程访问的用户<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on 数据库名.表名 to 创建的用户名(root)@"%" identified by "密码"; # 数据库名.表名 如果写成*.*代表授权所有的数据库 </span><br><span class="line">flush privileges; #刷新刚才的内容</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>如：</span><br><span class="line">grant all privileges on *.* to root@"113.64.243.1" identified by "123456789";</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>@ 后面是访问mysql的客户端IP地址（或是 主机名） % 代表任意的客户端，如果填写 localhost 为本地访问（那此用户就不能远程访问该mysql数据库了）。<br>同时也可以为现有的用户设置是否具有远程访问权限。<br>配置默认编码为utf8：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="meta">#</span>添加</span><br><span class="line">[mysqld]</span><br><span class="line">character_set_server=utf8</span><br><span class="line">init_connect='SET NAMES utf8'</span><br></pre></td></tr></table></figure></p>
+<p>其他默认配置文件路径：<br>配置文件：/etc/my.cnf<br>日志文件：/var/log//var/log/mysqld.log<br>服务启动脚本：/usr/lib/systemd/system/mysqld.service<br>socket文件：/var/run/mysqld/mysqld.pid</p>
+<h2 id="4、my-cnf文件配置"><a href="#4、my-cnf文件配置" class="headerlink" title="4、my.cnf文件配置"></a>4、my.cnf文件配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon ~]# cat /etc/my.cnf</span><br><span class="line"><span class="meta">#</span> For advice on how to change settings please see</span><br><span class="line"><span class="meta">#</span> http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # and set to the amount of RAM for the most important data</span><br><span class="line"><span class="meta">#</span> cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.</span><br><span class="line"><span class="meta">#</span> innodb_buffer_pool_size = 128M</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # to turn on a very important data integrity option: logging</span><br><span class="line"><span class="meta">#</span> changes to the binary log between backups.</span><br><span class="line"><span class="meta">#</span> log_bin</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # to set options mainly useful for reporting servers.</span><br><span class="line"><span class="meta">#</span> The server defaults are faster for transactions and fast SELECTs.</span><br><span class="line"><span class="meta">#</span> Adjust sizes as needed, experiment to find the optimal values.</span><br><span class="line"><span class="meta">#</span> join_buffer_size = 128M</span><br><span class="line"><span class="meta">#</span> sort_buffer_size = 2M</span><br><span class="line"><span class="meta">#</span> read_rnd_buffer_size = 2M</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line">validate_password=OFF</span><br><span class="line"><span class="meta">#</span> Disabling symbolic-links is recommended to prevent assorted security risks</span><br><span class="line">symbolic-links=0</span><br><span class="line"></span><br><span class="line">log-error=/var/log/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="cjyxz5ixb0000thfy2or0vhxo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-appium-getpullfile" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/02/appium-getpullfile/" class="article-date">
@@ -484,54 +556,6 @@
 
 
   
-    <article id="post-cert3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/cert3/" class="article-date">
-  <time datetime="2018-09-13T15:09:00.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/cert3/">如何获取cert.rsa的公钥</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="如何获取cert-rsa的公钥"><a href="#如何获取cert-rsa的公钥" class="headerlink" title="如何获取cert.rsa的公钥"></a>如何获取cert.rsa的公钥</h3><p>在Apk 包中的META-INF目录下，有一个CERT.RSA，它是一个PKCS7 格式的文件。</p>
-<p>下面介绍几种从中获取证书的方法。<br>在linux下openssl获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs7 -inform DER -<span class="keyword">in</span> CERT.RSA -noout -print_certs -text</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/13/cert3/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/13/cert3/" data-id="cjytyhpnt000nqsfyvbnml8mo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -589,6 +613,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
           </li>
         
@@ -602,10 +630,6 @@
         
           <li>
             <a href="/2018/12/07/appium-python/">appium python应用实例</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/05/appium/">appium在centos上安装</a>
           </li>
         
       </ul>

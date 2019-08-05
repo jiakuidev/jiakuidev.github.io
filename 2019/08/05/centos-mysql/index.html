@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>centos7中mysql5.7安装 | 学习笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1、安装YUM Repo由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。1wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm 然后进行repo的安装：1rpm -ivh mysql57-community-release-el7-9.noarch.rpm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos7中mysql5.7安装">
+<meta property="og:url" content="http://jiakui.app/2019/08/05/centos-mysql/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="1、安装YUM Repo由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。1wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm 然后进行repo的安装：1rpm -ivh mysql57-community-release-el7-9.noarch.rpm">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-05T05:51:25.823Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos7中mysql5.7安装">
+<meta name="twitter:description" content="1、安装YUM Repo由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。1wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm 然后进行repo的安装：1rpm -ivh mysql57-community-release-el7-9.noarch.rpm">
+  
+    <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">学习笔记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">三天打鱼两天晒网！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jiakui.app"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/05/centos-mysql/" class="article-date">
+  <time datetime="2019-08-05T05:49:08.000Z" itemprop="datePublished">2019-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centos7中mysql5.7安装
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、安装YUM-Repo"><a href="#1、安装YUM-Repo" class="headerlink" title="1、安装YUM Repo"></a>1、安装YUM Repo</h2><p>由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>然后进行repo的安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>执行完成后会在/etc/yum.repos.d/目录下生成两个repo文件mysql-community.repo mysql-community-source.repo</p>
+<h2 id="2、安装MySQL"><a href="#2、安装MySQL" class="headerlink" title="2、安装MySQL"></a>2、安装MySQL</h2><ol>
+<li><p>使用yum命令即可完成安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql-server</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动msyql：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld #启动MySQL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置MySQL 获取安装时的临时密码：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep 'temporary password' /var/log/mysqld.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>倘若没有：</p>
+</li>
+</ol>
+<ul>
+<li><p>删除原来安装过的mysql残留的数据</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /var/lib/mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再启动mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld #启动MySQL</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="5">
+<li>登录：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>登录成功后修改密码：<br>set password=password(“yourpassword”);</li>
+<li>设置安全选项：<br>mysql_secure_installation</li>
+<li>其他设置：<br>systemctl stop mysqld #关闭MySQL<br>systemctl restart mysqld #重启MySQL<br>systemctl status mysqld #查看MySQL运行状态<br>systemctl enable mysqld #设置开机启动<br>systemctl disable mysqld #关闭开机启动<h2 id="3、其他配置"><a href="#3、其他配置" class="headerlink" title="3、其他配置"></a>3、其他配置</h2>开启远程控制<br>MySQL默认是没有开启远程控制的，必须添加远程访问的用户<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on 数据库名.表名 to 创建的用户名(root)@"%" identified by "密码"; # 数据库名.表名 如果写成*.*代表授权所有的数据库 </span><br><span class="line">flush privileges; #刷新刚才的内容</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>如：</span><br><span class="line">grant all privileges on *.* to root@"113.64.243.1" identified by "123456789";</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>@ 后面是访问mysql的客户端IP地址（或是 主机名） % 代表任意的客户端，如果填写 localhost 为本地访问（那此用户就不能远程访问该mysql数据库了）。<br>同时也可以为现有的用户设置是否具有远程访问权限。<br>配置默认编码为utf8：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="meta">#</span>添加</span><br><span class="line">[mysqld]</span><br><span class="line">character_set_server=utf8</span><br><span class="line">init_connect='SET NAMES utf8'</span><br></pre></td></tr></table></figure></p>
+<p>其他默认配置文件路径：<br>配置文件：/etc/my.cnf<br>日志文件：/var/log//var/log/mysqld.log<br>服务启动脚本：/usr/lib/systemd/system/mysqld.service<br>socket文件：/var/run/mysqld/mysqld.pid</p>
+<h2 id="4、my-cnf文件配置"><a href="#4、my-cnf文件配置" class="headerlink" title="4、my.cnf文件配置"></a>4、my.cnf文件配置</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[root@bogon ~]# cat /etc/my.cnf</span><br><span class="line"><span class="meta">#</span> For advice on how to change settings please see</span><br><span class="line"><span class="meta">#</span> http://dev.mysql.com/doc/refman/5.7/en/server-configuration-defaults.html</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # and set to the amount of RAM for the most important data</span><br><span class="line"><span class="meta">#</span> cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.</span><br><span class="line"><span class="meta">#</span> innodb_buffer_pool_size = 128M</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # to turn on a very important data integrity option: logging</span><br><span class="line"><span class="meta">#</span> changes to the binary log between backups.</span><br><span class="line"><span class="meta">#</span> log_bin</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Remove leading # to set options mainly useful for reporting servers.</span><br><span class="line"><span class="meta">#</span> The server defaults are faster for transactions and fast SELECTs.</span><br><span class="line"><span class="meta">#</span> Adjust sizes as needed, experiment to find the optimal values.</span><br><span class="line"><span class="meta">#</span> join_buffer_size = 128M</span><br><span class="line"><span class="meta">#</span> sort_buffer_size = 2M</span><br><span class="line"><span class="meta">#</span> read_rnd_buffer_size = 2M</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line">sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br><span class="line">validate_password=OFF</span><br><span class="line"><span class="meta">#</span> Disabling symbolic-links is recommended to prevent assorted security risks</span><br><span class="line">symbolic-links=0</span><br><span class="line"></span><br><span class="line">log-error=/var/log/mysqld.log</span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="cjyxz5ixb0000thfy2or0vhxo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/02/appium-getpullfile/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">appium从手机端获取文件内容</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Appium/">Appium</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/TCP-IP/">TCP/IP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Appium/">Appium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Appium/" style="font-size: 10px;">Appium</a> <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/broadcast/" style="font-size: 13.33px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 16.67px;">xctest</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/21/python-venv/">python venv 环境使用</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/21/centos-python3-7/">centos python3.7安装</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/07/appium-python/">appium python应用实例</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Jiakui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
