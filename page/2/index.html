@@ -66,6 +66,104 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cert5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/18/cert5/" class="article-date">
+  <time datetime="2018-09-17T23:16:00.000Z" itemprop="datePublished">2018-09-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/18/cert5/">检查证书的信息和指纹</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>检查证书的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jarsigner -verify -verbose -certs xxx.apk &gt;xxx.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查证书的指纹信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -printcert -file xxx.RSA</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/18/cert5/" data-id="cjyy83cv2000mtwfygy05lnqw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-cert4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/14/cert4/" class="article-date">
+  <time datetime="2018-09-13T21:15:00.000Z" itemprop="datePublished">2018-09-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/14/cert4/">Android签名apk后文件分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。</p>
+<p>给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义：</p>
+<p>（1）MANIFEST.MF：这是摘要文件。程序遍历Apk包中的所有文件(entry)，对非文件夹非签名文件的文件，逐个用SHA1生成摘要信息，再用Base64进行编码。如果你改变了apk包中的文件，那么在apk安装校验时，改变后的文件摘要信息与MANIFEST.MF的检验信息不同，于是程序就不能成功安装。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/14/cert4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/14/cert4/" data-id="cjyy83cv1000itwfywqn6mryd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cert3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/13/cert3/" class="article-date">
@@ -426,106 +524,11 @@
 
 
   
-    <article id="post-XCTestExpectation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/XCTestExpectation/" class="article-date">
-  <time datetime="2018-09-03T04:14:00.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/XCTestExpectation/">简单iOS单元测试-异步测试(XCTestExpectation)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="异步测试-XCTestExpectation"><a href="#异步测试-XCTestExpectation" class="headerlink" title="异步测试(XCTestExpectation)"></a>异步测试(XCTestExpectation)</h4><p>简单iOS单元测试-异步测试(XCTestExpectation)<br>这种测试不适合在UITest里面处理异步相关的操作，代码示例如下：</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/03/XCTestExpectation/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/XCTestExpectation/" data-id="cjyy83cvh001ptwfyccq51bmv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-uitesting20180903" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/uitesting20180903/" class="article-date">
-  <time datetime="2018-09-03T02:04:00.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/uitesting20180903/">WawaRobotUITests在调用app本身api时产生的报错</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="XCTest"><a href="#XCTest" class="headerlink" title="XCTest"></a>XCTest</h3><p>单元测试用例可以验证，app程序测试的相应方法和调用</p>
-<h3 id="XCUITest"><a href="#XCUITest" class="headerlink" title="XCUITest"></a>XCUITest</h3><p>目前在UI测试过程中，暂时不能调用应用的api，倒入头文件后虽然不抱错，但是编译的时候缺少链接库。应该就是不支持。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/03/uitesting20180903/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/uitesting20180903/" data-id="cjyy83cvf001ktwfy8bf9dey3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -578,6 +581,14 @@
       <ul>
         
           <li>
+            <a href="/2019/08/08/test-upgrade/">测试能力改进计划</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/08/centos-svn/">centos下svn搭建</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
           </li>
         
@@ -587,14 +598,6 @@
         
           <li>
             <a href="/2019/05/21/python-venv/">python venv 环境使用</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/21/centos-python3-7/">centos python3.7安装</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/07/appium-python/">appium python应用实例</a>
           </li>
         
       </ul>
