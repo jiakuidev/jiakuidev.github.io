@@ -66,6 +66,102 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cobertura" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/14/cobertura/" class="article-date">
+  <time datetime="2019-08-14T05:15:59.000Z" itemprop="datePublished">2019-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/14/cobertura/">cobertura</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：</p>
+</blockquote>
+<h4 id="1-maven项目配置代码覆盖率插件"><a href="#1-maven项目配置代码覆盖率插件" class="headerlink" title="1. maven项目配置代码覆盖率插件"></a>1. maven项目配置代码覆盖率插件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">reporting</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.mojo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cobertura-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">formats</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">format</span>&gt;</span>html<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">format</span>&gt;</span>xml<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">formats</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">reporting</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-jenkins-插件的安装"><a href="#2-jenkins-插件的安装" class="headerlink" title="2. jenkins 插件的安装"></a>2. jenkins 插件的安装</h4><p><a href="https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin" target="_blank" rel="noopener">https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin</a></p>
+<h4 id="3-jenkins配置"><a href="#3-jenkins配置" class="headerlink" title="3. jenkins配置"></a>3. jenkins配置</h4><h5 id="1-构建"><a href="#1-构建" class="headerlink" title="1. 构建"></a>1. 构建</h5><ol>
+<li>添加-&gt;构建-&gt;选择顶层Maven目标</li>
+<li>在目标中：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cobertura:cobertura -Dcobertura.report.format=xml</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="2-构建后操作"><a href="#2-构建后操作" class="headerlink" title="2. 构建后操作"></a>2. 构建后操作</h5><ol>
+<li><p>发布覆盖率报告</p>
+<ol>
+<li>选择Publish Cobertura Coverage Report</li>
+<li><p>Cobertura xml report pattern内容:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**/target/site/cobertura/coverage.xml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Source Encoding设置为”UTF-8”</p>
+</li>
+</ol>
+</li>
+<li><p>发布测试报告</p>
+<ol>
+<li>选择Publish JUnit test result report</li>
+<li>测试报告（XML）<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**/target/surefire-reports/**.xml</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="4-测试报告分析"><a href="#4-测试报告分析" class="headerlink" title="4. 测试报告分析"></a>4. 测试报告分析</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th>含义</th>
+<th style="text-align:left">通过指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Line Coverage</td>
+<td>The percent of lines executed by this test run.</td>
+<td style="text-align:left">100%</td>
+</tr>
+<tr>
+<td style="text-align:left">Branch Coverage</td>
+<td>The percent of branches executed by this test run.</td>
+<td style="text-align:left">70%</td>
+</tr>
+<tr>
+<td style="text-align:left">Complexity</td>
+<td>Average McCabe’s cyclomatic code complexity for all methods. This is basically a count of the number of different code paths in a method (incremented by 1 for each if statement, while loop, etc.)</td>
+<td style="text-align:left">暂无</td>
+</tr>
+<tr>
+<td style="text-align:left">N/A</td>
+<td>Line coverage and branch coverage will appear as “Not Applicable” when Cobertura can not find line number information in the .class file. This happens for stub and skeleton classes, interfaces, or when the class was not compiled with “debug=true.”</td>
+<td style="text-align:left">不适用</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/14/cobertura/" data-id="cjzasxcmo0000r5fy9dly1wm3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-test-upgrade" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/08/test-upgrade/" class="article-date">
@@ -489,54 +585,6 @@
 
 
   
-    <article id="post-broadcast" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/19/broadcast/" class="article-date">
-  <time datetime="2018-09-19T02:13:00.000Z" itemprop="datePublished">2018-09-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/19/broadcast/">Android广播的实现方式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一-Android广播机制"><a href="#一-Android广播机制" class="headerlink" title="一. Android广播机制"></a>一. Android广播机制</h1><p>Android应用可以从Android系统和其他Android应用发送或接收广播消息，类似于发布 - 订阅设计模式。 当感兴趣的事件发生时，发送这些广播。 例如，Android系统在发生各种系统事件时发送广播，例如系统启动或设备开始充电时。 例如，应用程序还可以发送自定义广播，以通知其他应用程序他们可能感兴趣的内容（例如，已下载了一些新数据）。</p>
-<h1 id="二-广播式如何实现"><a href="#二-广播式如何实现" class="headerlink" title="二. 广播式如何实现"></a>二. 广播式如何实现</h1>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/19/broadcast/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/19/broadcast/" data-id="cjyy83cuo0003twfyna1i3fnd" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -594,6 +642,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/14/cobertura/">cobertura</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/08/test-upgrade/">测试能力改进计划</a>
           </li>
         
@@ -607,10 +659,6 @@
         
           <li>
             <a href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/21/python-venv/">python venv 环境使用</a>
           </li>
         
       </ul>
