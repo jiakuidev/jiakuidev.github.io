@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SpringbootTest" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/18/SpringbootTest/" class="article-date">
+  <time datetime="2019-08-18T00:09:43.000Z" itemprop="datePublished">2019-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/18/SpringbootTest/">SpringbootTest</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>是指对软件中的最小可测试单元进行检查和验证</p>
+</blockquote>
+<h2 id="1-单元测试目标"><a href="#1-单元测试目标" class="headerlink" title="1. 单元测试目标"></a>1. 单元测试目标</h2><ol>
+<li>提升软件质量</li>
+<li>促进代码优化</li>
+<li>提升研发效率</li>
+<li>增加从构自信</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/18/SpringbootTest/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/18/SpringbootTest/" data-id="cjzg7r368002v75s6y3s2tj9m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cobertura" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/14/cobertura/" class="article-date">
@@ -92,67 +141,15 @@
 <p>由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：</p>
 </blockquote>
 <h4 id="1-maven项目配置代码覆盖率插件"><a href="#1-maven项目配置代码覆盖率插件" class="headerlink" title="1. maven项目配置代码覆盖率插件"></a>1. maven项目配置代码覆盖率插件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">reporting</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.mojo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cobertura-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">formats</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">format</span>&gt;</span>html<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">format</span>&gt;</span>xml<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">formats</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">reporting</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-jenkins-插件的安装"><a href="#2-jenkins-插件的安装" class="headerlink" title="2. jenkins 插件的安装"></a>2. jenkins 插件的安装</h4><p><a href="https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin" target="_blank" rel="noopener">https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin</a></p>
-<h4 id="3-jenkins配置"><a href="#3-jenkins配置" class="headerlink" title="3. jenkins配置"></a>3. jenkins配置</h4><h5 id="1-构建"><a href="#1-构建" class="headerlink" title="1. 构建"></a>1. 构建</h5><ol>
-<li>添加-&gt;构建-&gt;选择顶层Maven目标</li>
-<li>在目标中：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cobertura:cobertura -Dcobertura.report.format=xml</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h5 id="2-构建后操作"><a href="#2-构建后操作" class="headerlink" title="2. 构建后操作"></a>2. 构建后操作</h5><ol>
-<li><p>发布覆盖率报告</p>
-<ol>
-<li>选择Publish Cobertura Coverage Report</li>
-<li><p>Cobertura xml report pattern内容:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**/target/site/cobertura/coverage.xml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Source Encoding设置为”UTF-8”</p>
-</li>
-</ol>
-</li>
-<li><p>发布测试报告</p>
-<ol>
-<li>选择Publish JUnit test result report</li>
-<li>测试报告（XML）<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**/target/surefire-reports/**.xml</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="4-测试报告分析"><a href="#4-测试报告分析" class="headerlink" title="4. 测试报告分析"></a>4. 测试报告分析</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">类型</th>
-<th>含义</th>
-<th style="text-align:left">通过指标</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Line Coverage</td>
-<td>The percent of lines executed by this test run.</td>
-<td style="text-align:left">100%</td>
-</tr>
-<tr>
-<td style="text-align:left">Branch Coverage</td>
-<td>The percent of branches executed by this test run.</td>
-<td style="text-align:left">70%</td>
-</tr>
-<tr>
-<td style="text-align:left">Complexity</td>
-<td>Average McCabe’s cyclomatic code complexity for all methods. This is basically a count of the number of different code paths in a method (incremented by 1 for each if statement, while loop, etc.)</td>
-<td style="text-align:left">暂无</td>
-</tr>
-<tr>
-<td style="text-align:left">N/A</td>
-<td>Line coverage and branch coverage will appear as “Not Applicable” when Cobertura can not find line number information in the .class file. This happens for stub and skeleton classes, interfaces, or when the class was not compiled with “debug=true.”</td>
-<td style="text-align:left">不适用</td>
-</tr>
-</tbody>
-</table>
-
+        
+          <p class="article-more-link">
+            <a href="/2019/08/14/cobertura/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/14/cobertura/" data-id="cjzasxcmo0000r5fy9dly1wm3" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/14/cobertura/" data-id="cjzg7pbnj001275s6dpdx29s1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -221,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/08/test-upgrade/" data-id="cjz2s58ih0001kds6tillak64" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/08/test-upgrade/" data-id="cjzg7pbny002175s6e986nabw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -263,7 +260,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/08/centos-svn/" data-id="cjz2s25280000kds685ghi28i" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/08/centos-svn/" data-id="cjzg7pbn4000d75s6qlezcrq0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -306,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="cjyy83cut0008twfy5klah2sb" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="cjzg7pbo1002d75s65y87yy62" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +339,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="cjyy83cur0006twfy4ldnlhtq" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="cjzg7pbnz002775s6d9mc31qu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -386,7 +383,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="cjyy83cvm0025twfyt7ac0yad" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="cjzg7pbnv001u75s6du2i51th" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="cjyy83cuw000ctwfymp9e5bjx" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="cjzg7pbn2000c75s6osqzwme6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -477,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="cjyy83cvl0021twfylq67wm92" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="cjzg7pbn0000775s6tni1fzxm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -525,58 +522,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="cjyy83cuk0002twfyse6n155y" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="cjzg7pbmv000375s6ssl32nhj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Appium/">Appium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-broadcast2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/19/broadcast2/" class="article-date">
-  <time datetime="2018-09-19T04:08:00.000Z" itemprop="datePublished">2018-09-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/19/broadcast2/">Android8.0以上广播的限制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。</p>
-<h2 id="1-清单无法注册隐式广播"><a href="#1-清单无法注册隐式广播" class="headerlink" title="1. 清单无法注册隐式广播"></a>1. 清单无法注册隐式广播</h2><p>下面的test_click_action为自定义的一个广播意图action<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:name</span>=<span class="string">".WifiRecevier"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.STATE_CHANGE"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"test_click_action"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/19/broadcast2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/19/broadcast2/" data-id="cjyy83cus0007twfy2qp566oi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
 
     </footer>
   </div>
@@ -642,6 +591,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/18/SpringbootTest/">SpringbootTest</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/14/cobertura/">cobertura</a>
           </li>
         
@@ -655,10 +608,6 @@
         
           <li>
             <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
           </li>
         
       </ul>

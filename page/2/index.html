@@ -66,6 +66,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-broadcast2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/19/broadcast2/" class="article-date">
+  <time datetime="2018-09-19T04:08:00.000Z" itemprop="datePublished">2018-09-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/19/broadcast2/">Android8.0以上广播的限制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。</p>
+<h2 id="1-清单无法注册隐式广播"><a href="#1-清单无法注册隐式广播" class="headerlink" title="1. 清单无法注册隐式广播"></a>1. 清单无法注册隐式广播</h2><p>下面的test_click_action为自定义的一个广播意图action<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:name</span>=<span class="string">".WifiRecevier"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.STATE_CHANGE"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"test_click_action"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/19/broadcast2/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/19/broadcast2/" data-id="cjzg7pbn1000875s6btu0sjbv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-broadcast" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/19/broadcast/" class="article-date">
@@ -102,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/19/broadcast/" data-id="cjyy83cuo0003twfyna1i3fnd" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/19/broadcast/" data-id="cjzg7pbmy000675s6d4fsdp2z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
@@ -151,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/18/cert5/" data-id="cjyy83cv2000mtwfygy05lnqw" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/18/cert5/" data-id="cjzg7pbnb000o75s6q5etdf3w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -200,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/14/cert4/" data-id="cjyy83cv1000itwfywqn6mryd" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/14/cert4/" data-id="cjzg7pbna000m75s6gf43eikx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -248,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/13/cert3/" data-id="cjyy83cuz000gtwfyvjdcja5h" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/13/cert3/" data-id="cjzg7pbnd000t75s6c0pcoqyk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -295,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/13/cert2/" data-id="cjyy83cvj001utwfyt8qruec2" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/13/cert2/" data-id="cjzg7pbn8000i75s6cb8zrj4s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -343,7 +391,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/13/cert/" data-id="cjyy83cuv000btwfyk5ltdzpd" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/13/cert/" data-id="cjzg7pbn6000h75s61jx2dhsb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
@@ -389,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/04/gitssh/" data-id="cjyy83cv90014twfymysvxw77" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/04/gitssh/" data-id="cjzg7pbnl001975s66afys1c4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -426,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/04/httpscert/" data-id="cjyy83cv80012twfyno874c52" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/04/httpscert/" data-id="cjzg7pbnm001b75s6bbjbf03k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -471,50 +519,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/dropbox/" data-id="cjyy83cv3000ptwfy049v7t1y" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-morelocale2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/morelocale2/" class="article-date">
-  <time datetime="2018-09-03T13:26:00.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/morelocale2/">测试过程中切换Android系统语言</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>测试过程中自动切换Android系统语言,借助于morelocale2可以手动切换，让我们看看他是怎么做的吧。</p>
-<ol>
-<li>首先反编译morelocale2 apk
-        
-          <p class="article-more-link">
-            <a href="/2018/09/03/morelocale2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/morelocale2/" data-id="cjyy83cvc001ctwfyu2hdwo12" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/03/dropbox/" data-id="cjzg7pbng000w75s6k0879iih" class="article-share-link">Share</a>
       
       
     </footer>
@@ -581,6 +586,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/18/SpringbootTest/">SpringbootTest</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/14/cobertura/">cobertura</a>
           </li>
         
@@ -594,10 +603,6 @@
         
           <li>
             <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
           </li>
         
       </ul>

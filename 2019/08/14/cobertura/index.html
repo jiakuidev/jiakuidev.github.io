@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：  1. maven项目配置代码覆盖率插件1234567891011121314&amp;lt;reporting&amp;gt;    &amp;lt;plugins&amp;gt;        &amp;lt;plugin&amp;gt;            &amp;lt;groupId&amp;gt;org.codehaus">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-14T05:21:19.965Z">
+<meta property="og:updated_time" content="2019-08-14T05:27:59.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cobertura">
 <meta name="twitter:description" content="由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：  1. maven项目配置代码覆盖率插件1234567891011121314&amp;lt;reporting&amp;gt;    &amp;lt;plugins&amp;gt;        &amp;lt;plugin&amp;gt;            &amp;lt;groupId&amp;gt;org.codehaus">
@@ -94,6 +94,7 @@
 <p>由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：</p>
 </blockquote>
 <h4 id="1-maven项目配置代码覆盖率插件"><a href="#1-maven项目配置代码覆盖率插件" class="headerlink" title="1. maven项目配置代码覆盖率插件"></a>1. maven项目配置代码覆盖率插件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">reporting</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.mojo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cobertura-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">formats</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">format</span>&gt;</span>html<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">format</span>&gt;</span>xml<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">formats</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">reporting</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="2-jenkins-插件的安装"><a href="#2-jenkins-插件的安装" class="headerlink" title="2. jenkins 插件的安装"></a>2. jenkins 插件的安装</h4><p><a href="https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin" target="_blank" rel="noopener">https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin</a></p>
 <h4 id="3-jenkins配置"><a href="#3-jenkins配置" class="headerlink" title="3. jenkins配置"></a>3. jenkins配置</h4><h5 id="1-构建"><a href="#1-构建" class="headerlink" title="1. 构建"></a>1. 构建</h5><ol>
 <li>添加-&gt;构建-&gt;选择顶层Maven目标</li>
@@ -154,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/14/cobertura/" data-id="cjzasxcmo0000r5fy9dly1wm3" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/14/cobertura/" data-id="cjzg7pbnj001275s6dpdx29s1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,6 +163,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2019/08/18/SpringbootTest/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SpringbootTest
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/08/test-upgrade/" id="article-nav-older" class="article-nav-link-wrap">
@@ -224,6 +234,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/18/SpringbootTest/">SpringbootTest</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/14/cobertura/">cobertura</a>
           </li>
         
@@ -237,10 +251,6 @@
         
           <li>
             <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
           </li>
         
       </ul>
