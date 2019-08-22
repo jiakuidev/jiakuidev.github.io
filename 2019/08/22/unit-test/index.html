@@ -5,19 +5,19 @@
   
 
   
-  <title>SpringbootTest | 学习笔记</title>
+  <title>单元测试规范 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信">
+  <meta name="description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则  1. AIR原则具体包括： A: Automatic (自动化) I: Independent (独立性) R: Repeatable (可重复)  2. BCDE原">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringbootTest">
-<meta property="og:url" content="http://jiakui.app/2019/08/18/SpringbootTest/index.html">
+<meta property="og:title" content="单元测试规范">
+<meta property="og:url" content="http://jiakui.app/2019/08/22/unit-test/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信">
+<meta property="og:description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则  1. AIR原则具体包括： A: Automatic (自动化) I: Independent (独立性) R: Repeatable (可重复)  2. BCDE原">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-18T00:17:17.827Z">
+<meta property="og:updated_time" content="2019-08-22T12:57:13.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringbootTest">
-<meta name="twitter:description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信">
+<meta name="twitter:title" content="单元测试规范">
+<meta name="twitter:description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则  1. AIR原则具体包括： A: Automatic (自动化) I: Independent (独立性) R: Repeatable (可重复)  2. BCDE原">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-SpringbootTest" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-unit-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/18/SpringbootTest/" class="article-date">
-  <time datetime="2019-08-18T00:09:43.000Z" itemprop="datePublished">2019-08-18</time>
+    <a href="/2019/08/22/unit-test/" class="article-date">
+  <time datetime="2019-08-22T12:56:28.000Z" itemprop="datePublished">2019-08-22</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      SpringbootTest
+      单元测试规范
     </h1>
   
 
@@ -99,7 +99,6 @@
 <li>提升研发效率</li>
 <li>增加从构自信</li>
 </ol>
-<a id="more"></a>
 <h2 id="2-单元测试的基本原则"><a href="#2-单元测试的基本原则" class="headerlink" title="2. 单元测试的基本原则"></a>2. 单元测试的基本原则</h2><blockquote>
 <p>宏观角度单元测试要复合AIR原则；<br>微观角度单元测试的代码层面要符合BCDE原则</p>
 </blockquote>
@@ -114,6 +113,7 @@
 <li>D: Design，与设计文档相结合，来编写单元测试。</li>
 <li>E: Error，单元测试的目的是证明程序有错，而不是证明程序无错。为了发现代码中潜在的错误，我们需奥在编写测试用例时有一些强制的错误输入（如非法数据、异常流程、非业务允许输入等）来得到预期的错误结果</li>
 </ul>
+<a id="more"></a>
 <h3 id="3-需要Mock的因素"><a href="#3-需要Mock的因素" class="headerlink" title="3. 需要Mock的因素"></a>3. 需要Mock的因素</h3><blockquote>
 <p>由于单元测试只是系统集成测试前的小模块测试，有些因素往往不具备的，因此需要进行Mock，例如：</p>
 </blockquote>
@@ -134,9 +134,11 @@
 </ol>
 <h4 id="2-细力度的覆盖"><a href="#2-细力度的覆盖" class="headerlink" title="2. 细力度的覆盖"></a>2. 细力度的覆盖</h4><p>细力度的覆盖包括一下几种</p>
 <ol>
-<li><p>行覆盖（Line Coverage）<br>行覆盖又称为语句覆盖，用来度量可执行的语句是否被执行到。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CoverageSample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">testMethod</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a == <span class="number">1</span> &amp;&amp; b == <span class="number">2</span> || c == <span class="number">3</span>)&#123;</span><br><span class="line">            result=<span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@DisplayName</span>(<span class="string">"line coverage"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLineCoverage</span><span class="params">()</span></span>&#123;</span><br><span class="line">    CoverageSample covearage=<span class="keyword">new</span> CoverageSample();</span><br><span class="line">    Assertions.assertTrue(coverage.testMethod(<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>行覆盖（Line Coverage）<br>行覆盖又称为语句覆盖，用来度量可执行的语句是否被执行到。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CoverageSample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">testMethod</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(a == <span class="number">1</span> &amp;&amp; b == <span class="number">2</span> || c == <span class="number">3</span>)&#123;</span><br><span class="line">            result=<span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="meta">@DisplayName</span>(<span class="string">"line coverage"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLineCoverage</span><span class="params">()</span></span>&#123;</span><br><span class="line">    CoverageSample covearage=<span class="keyword">new</span> CoverageSample();</span><br><span class="line">    Assertions.assertTrue(coverage.testMethod(<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
 <li><p>分支覆盖（Branch Coverage）<br>分支覆盖也称为判定覆盖，用来度量每一个判定分支是否都被执行到。</p>
 </li>
 <li><p>条件判定覆盖（Condition Decision Coverge）<br>条件判定覆盖要求设计足够的测试用例，能够让判定中每个条件的所有可能情况至少被执行一次，同时每个判定本身的所有可能结果也至少被执行一次。</p>
@@ -155,7 +157,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/18/SpringbootTest/" data-id="cjzg7r368002v75s6y3s2tj9m" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/22/unit-test/" data-id="cjzmowckl0002hjx2lbzznink" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,9 +167,9 @@
 <nav id="article-nav">
   
   
-    <a href="/2019/08/14/cobertura/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/22/springboottest/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">cobertura</div>
+      <div class="article-nav-title">SpringBoot的测试</div>
     </a>
   
 </nav>
@@ -225,23 +227,23 @@
       <ul>
         
           <li>
-            <a href="/2019/08/18/SpringbootTest/">SpringbootTest</a>
+            <a href="/2019/08/22/unit-test/">单元测试规范</a>
           </li>
         
           <li>
-            <a href="/2019/08/14/cobertura/">cobertura</a>
+            <a href="/2019/08/22/springboottest/">SpringBoot的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/08/test-upgrade/">测试能力改进计划</a>
+            <a href="/2019/08/22/SpringMvc的测试/">SpringMvc的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/08/centos-svn/">centos下svn搭建</a>
+            <a href="/2019/08/22/springtest/">Spring的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
+            <a href="/2019/08/22/jacoco/">Java代码覆盖率jacoco</a>
           </li>
         
       </ul>

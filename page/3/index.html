@@ -66,6 +66,180 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cert" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/cert/" class="article-date">
+  <time datetime="2018-09-13T13:57:00.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/13/cert/">签名您的应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="签署您的应用"><a href="#签署您的应用" class="headerlink" title="签署您的应用"></a>签署您的应用</h3><p>Android 要求所有 APK 必须先使用证书进行数字签署，然后才能安装。本文档介绍了如何使用 Android Studio 签署您的 APK，包括创建和存储证书、使用不同证书签署不同的构建配置，以及配置构建流程以自动签署您的 APK。</p>
+<h4 id="证书和密钥库"><a href="#证书和密钥库" class="headerlink" title="证书和密钥库"></a>证书和密钥库</h4><p>公钥证书（也称为数字证书或身份证书）包含公钥/私钥对的公钥，以及可以标识密钥所有者的一些其他元数据（例如名称和位置）。证书的所有者持有对应的私钥。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/13/cert/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/13/cert/" data-id="cjzg7pbn6000h75s61jx2dhsb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-gitssh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/04/gitssh/" class="article-date">
+  <time datetime="2018-09-04T10:37:32.000Z" itemprop="datePublished">2018-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/04/gitssh/">github配置ssh出错解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ssh-keygen<br>生成ssh 密钥的时候，会在 Enter file in which to save the key (“当前所在路径”): “给文件起个名字”<br>这里随便起一个名字，这样问题就出来了，你起的这个名字没有和ssh内设定的名字保持一致，所以使用命令</p>
+<p>ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a><br>的时候报出Permission denied (publickey).这个错误<br>当出现这个问题时，有两个比较简单的解决办法：</p>
+<ol>
+<li>给文件起名字的时候使用 ‘ id_rsa ’ 这个名字</li>
+<li>如果亲非要自己取名子，那就使用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将自己起的名字加入到ssh中</span></span><br><span class="line">ssh-add ~/.ssh/你的名字</span><br><span class="line"><span class="comment">#这样再使用</span></span><br><span class="line">ssh -T git@github.com</span><br><span class="line"><span class="comment">#查看加入的密钥列表</span></span><br><span class="line">ssh-add -l</span><br><span class="line"><span class="comment">#查看调试信息</span></span><br><span class="line">ssh -v git@github.com</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注：在生成密钥的时候，请在 “ ~/.ssh/ ”目录下操作。或者生成后把文件移动到“ ~/.ssh/ ”目录下。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/04/gitssh/" data-id="cjzg7pbnl001975s66afys1c4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-httpscert" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/04/httpscert/" class="article-date">
+  <time datetime="2018-09-04T09:55:18.000Z" itemprop="datePublished">2018-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/04/httpscert/">java查看到网站https的证书信息</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>java代码查看到网站https的证书信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHttps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		URL url = <span class="keyword">new</span> URL(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();</span><br><span class="line">		conn.connect();</span><br><span class="line">		Certificate[] certs = conn.getServerCertificates(); <span class="comment">// 会拿到完整的证书链</span></span><br><span class="line">		X509Certificate cert = (X509Certificate) certs[<span class="number">0</span>]; <span class="comment">// cert[0]是证书链的最下层</span></span><br><span class="line">		System.out.println(<span class="string">"序号："</span> + cert.getSerialNumber());</span><br><span class="line">		System.out.println(<span class="string">"颁发给："</span> + cert.getSubjectDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"颁发者："</span> + cert.getIssuerDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"起始："</span> + cert.getNotBefore());</span><br><span class="line">		System.out.println(<span class="string">"过期："</span> + cert.getNotAfter());</span><br><span class="line">		System.out.println(<span class="string">"算法："</span> + cert.getSigAlgName());</span><br><span class="line">		System.out.println(<span class="string">"指纹："</span> + getThumbPrint(cert));</span><br><span class="line">		conn.disconnect();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/04/httpscert/" data-id="cjzg7pbnm001b75s6bbjbf03k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-dropbox" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/03/dropbox/" class="article-date">
+  <time datetime="2018-09-03T14:07:02.000Z" itemprop="datePublished">2018-09-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/03/dropbox/">Dropbox pincode分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>通过分析dropbox再建立账号后会使用android.accounts.Account</p>
+<ol>
+<li>首先adb shell进入终端shell环境，su切换到root账户.</li>
+<li>通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db</li>
+<li><p>使用Sqlite3命令查询该数据。</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/03/dropbox/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/03/dropbox/" data-id="cjzg7pbng000w75s6k0879iih" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-morelocale2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/03/morelocale2/" class="article-date">
@@ -346,196 +520,6 @@
 
 
   
-    <article id="post-tcpdump" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/02/tcpdump/" class="article-date">
-  <time datetime="2018-09-02T13:38:00.000Z" itemprop="datePublished">2018-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/TCP-IP/">TCP/IP</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/tcpdump/">TCPDUMP 抓包实践</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在centos上直接执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcpdump -i em1 port 80 -c 1024 -t -w /tcpdump.pcap</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/02/tcpdump/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/02/tcpdump/" data-id="cjzg7pbnu001r75s6tqr5tt24" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tcpdump/">tcpdump</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-xctest" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/02/xctest/" class="article-date">
-  <time datetime="2018-09-02T08:45:00.000Z" itemprop="datePublished">2018-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/xctest/">xctest</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>极客学院文章<br><a href="http://wiki.jikexueyuan.com/project/objc/test/15-2.html" target="_blank" rel="noopener">http://wiki.jikexueyuan.com/project/objc/test/15-2.html</a></p>
-<p>官方文档<br><a href="https://developer.apple.com/documentation/xctest?language=objc" target="_blank" rel="noopener">https://developer.apple.com/documentation/xctest?language=objc</a><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/02/xctest/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/02/xctest/" data-id="cjzg7pbo2002g75s60lydbbm2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-kibana" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/02/kibana/" class="article-date">
-  <time datetime="2018-09-02T07:55:00.000Z" itemprop="datePublished">2018-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ELK/">ELK</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/kibana/">ELK日志分析系统-Kibana</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="配置Kibana"><a href="#配置Kibana" class="headerlink" title="配置Kibana:"></a>配置Kibana:</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf kibana-4.3.0-linux-x86.tar.gz</span><br><span class="line"><span class="built_in">cd</span> kibana-4.3.0-linux-x86</span><br><span class="line">vi config/kibana.yml</span><br><span class="line">修改以下几项（由于是单机版的，因此host的值也可以使用localhost来代替，这里仅仅作为演示）：</span><br><span class="line">server.port: 5601</span><br><span class="line">server.host: “centos2”</span><br><span class="line">elasticsearch.url: http://centos2:9200</span><br><span class="line">kibana.index: “.kibana”</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/02/kibana/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/02/kibana/" data-id="cjzg7pbnp001g75s6jfaymgb1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kibana/">Kibana</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-logstash" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/02/logstash/" class="article-date">
-  <time datetime="2018-09-02T07:34:00.000Z" itemprop="datePublished">2018-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ELK/">ELK</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/02/logstash/">ELK日志分析系统-Logstash</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="启动logstash"><a href="#启动logstash" class="headerlink" title="启动logstash"></a>启动logstash</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/logstash-5.5.0/bin</span><br><span class="line">nohup ./logstash -f ~/log4j_to_es.conf &gt;/dev/null 2&gt;&amp;1&amp;</span><br></pre></td></tr></table></figure>
-<p>查看这个文件里面配置信息<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/02/logstash/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/02/logstash/" data-id="cjzg7pbnr001l75s6xjzfpbrl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logstash/">logstash</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -593,23 +577,23 @@
       <ul>
         
           <li>
-            <a href="/2019/08/18/SpringbootTest/">SpringbootTest</a>
+            <a href="/2019/08/22/unit-test/">单元测试规范</a>
           </li>
         
           <li>
-            <a href="/2019/08/14/cobertura/">cobertura</a>
+            <a href="/2019/08/22/springboottest/">SpringBoot的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/08/test-upgrade/">测试能力改进计划</a>
+            <a href="/2019/08/22/SpringMvc的测试/">SpringMvc的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/08/centos-svn/">centos下svn搭建</a>
+            <a href="/2019/08/22/springtest/">Spring的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
+            <a href="/2019/08/22/jacoco/">Java代码覆盖率jacoco</a>
           </li>
         
       </ul>

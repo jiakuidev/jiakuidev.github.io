@@ -5,19 +5,19 @@
   
 
   
-  <title>Java代码覆盖率cobertura | 学习笔记</title>
+  <title>Java代码覆盖率jacoco | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：  1. maven项目配置代码覆盖率插件1234567891011121314&amp;lt;reporting&amp;gt;    &amp;lt;plugins&amp;gt;        &amp;lt;plugin&amp;gt;            &amp;lt;groupId&amp;gt;org.codehaus">
+  <meta name="description" content="由于采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和jacoco来集成步骤如下：  1. maven项目配置代码覆盖率插件12345678910111213141516171819202122232425&amp;lt;plugin&amp;gt;    &amp;lt;groupId&amp;gt;org.jacoco&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java代码覆盖率cobertura">
-<meta property="og:url" content="http://jiakui.app/2019/08/14/cobertura/index.html">
+<meta property="og:title" content="Java代码覆盖率jacoco">
+<meta property="og:url" content="http://jiakui.app/2019/08/22/jacoco/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：  1. maven项目配置代码覆盖率插件1234567891011121314&amp;lt;reporting&amp;gt;    &amp;lt;plugins&amp;gt;        &amp;lt;plugin&amp;gt;            &amp;lt;groupId&amp;gt;org.codehaus">
+<meta property="og:description" content="由于采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和jacoco来集成步骤如下：  1. maven项目配置代码覆盖率插件12345678910111213141516171819202122232425&amp;lt;plugin&amp;gt;    &amp;lt;groupId&amp;gt;org.jacoco&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-22T12:37:15.680Z">
+<meta property="og:updated_time" content="2019-08-22T12:39:07.760Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java代码覆盖率cobertura">
-<meta name="twitter:description" content="由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：  1. maven项目配置代码覆盖率插件1234567891011121314&amp;lt;reporting&amp;gt;    &amp;lt;plugins&amp;gt;        &amp;lt;plugin&amp;gt;            &amp;lt;groupId&amp;gt;org.codehaus">
+<meta name="twitter:title" content="Java代码覆盖率jacoco">
+<meta name="twitter:description" content="由于采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和jacoco来集成步骤如下：  1. maven项目配置代码覆盖率插件12345678910111213141516171819202122232425&amp;lt;plugin&amp;gt;    &amp;lt;groupId&amp;gt;org.jacoco&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-cobertura" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-jacoco" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/14/cobertura/" class="article-date">
-  <time datetime="2019-08-14T05:15:59.000Z" itemprop="datePublished">2019-08-14</time>
+    <a href="/2019/08/22/jacoco/" class="article-date">
+  <time datetime="2019-08-22T12:37:55.000Z" itemprop="datePublished">2019-08-22</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java代码覆盖率cobertura
+      Java代码覆盖率jacoco
     </h1>
   
 
@@ -91,24 +91,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>由于我司采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和cobertura来集成步骤如下：</p>
+<p>由于采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和jacoco来集成步骤如下：</p>
 </blockquote>
-<h4 id="1-maven项目配置代码覆盖率插件"><a href="#1-maven项目配置代码覆盖率插件" class="headerlink" title="1. maven项目配置代码覆盖率插件"></a>1. maven项目配置代码覆盖率插件</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">reporting</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.mojo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cobertura-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">formats</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">format</span>&gt;</span>html<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">format</span>&gt;</span>xml<span class="tag">&lt;/<span class="name">format</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">formats</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">reporting</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="1-maven项目配置代码覆盖率插件"><a href="#1-maven项目配置代码覆盖率插件" class="headerlink" title="1. maven项目配置代码覆盖率插件"></a>1. maven项目配置代码覆盖率插件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jacoco<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jacoco-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.7.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">destFile</span>&gt;</span>$&#123;basedir&#125;/../target/coverage-reports/jacoco-unit.exec<span class="tag">&lt;/<span class="name">destFile</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dataFile</span>&gt;</span>$&#123;basedir&#125;/../target/coverage-reports/jacoco-unit.exec<span class="tag">&lt;/<span class="name">dataFile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>jacoco-initialize<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>prepare-agent<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>jacoco-site<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>test<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>report<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h4 id="2-jenkins-插件的安装"><a href="#2-jenkins-插件的安装" class="headerlink" title="2. jenkins 插件的安装"></a>2. jenkins 插件的安装</h4><p><a href="https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin" target="_blank" rel="noopener">https://wiki.jenkins.io/display/JENKINS/Cobertura+Plugin</a></p>
-<h4 id="3-jenkins配置"><a href="#3-jenkins配置" class="headerlink" title="3. jenkins配置"></a>3. jenkins配置</h4><h5 id="1-构建"><a href="#1-构建" class="headerlink" title="1. 构建"></a>1. 构建</h5><ol>
+<h2 id="2-jenkins-插件的安装"><a href="#2-jenkins-插件的安装" class="headerlink" title="2. jenkins 插件的安装"></a>2. jenkins 插件的安装</h2><p><a href="https://wiki.jenkins.io/display/JENKINS/JaCoCo+Plugin" target="_blank" rel="noopener">https://wiki.jenkins.io/display/JENKINS/JaCoCo+Plugin</a></p>
+<h2 id="3-jenkins配置"><a href="#3-jenkins配置" class="headerlink" title="3. jenkins配置"></a>3. jenkins配置</h2><h3 id="1-构建"><a href="#1-构建" class="headerlink" title="1. 构建"></a>1. 构建</h3><ol>
 <li>添加-&gt;构建-&gt;选择顶层Maven目标</li>
-<li>在目标中：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cobertura:cobertura -Dcobertura.report.format=xml</span><br></pre></td></tr></table></figure>
+<li>在目标中：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>直接在maven中执行</span><br><span class="line">mvn test</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h5 id="2-构建后操作"><a href="#2-构建后操作" class="headerlink" title="2. 构建后操作"></a>2. 构建后操作</h5><ol>
+<h3 id="2-构建后操作"><a href="#2-构建后操作" class="headerlink" title="2. 构建后操作"></a>2. 构建后操作</h3><ol>
 <li><p>发布覆盖率报告</p>
 <ol>
-<li>选择Publish Cobertura Coverage Report</li>
-<li><p>Cobertura xml report pattern内容:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**/target/site/cobertura/coverage.xml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Source Encoding设置为”UTF-8”</p>
+<li>选择Record JaCoCo coverage report</li>
+<li>Cobertura xml report pattern内容:<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**/**.exec</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 </li>
@@ -120,7 +117,7 @@
 </ol>
 </li>
 </ol>
-<h4 id="4-测试报告分析"><a href="#4-测试报告分析" class="headerlink" title="4. 测试报告分析"></a>4. 测试报告分析</h4><table>
+<h2 id="3-测试报告分析"><a href="#3-测试报告分析" class="headerlink" title="3. 测试报告分析"></a>3. 测试报告分析</h2><table>
 <thead>
 <tr>
 <th style="text-align:left">类型</th>
@@ -155,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/14/cobertura/" data-id="cjzg7pbnj001275s6dpdx29s1" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/22/jacoco/" data-id="cjzmo8hhb0000sbx2x87h8rcf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,19 +161,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/08/22/jacoco/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/08/22/springtest/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Java代码覆盖率jacoco
+          Spring的测试
         
       </div>
     </a>
   
   
-    <a href="/2019/08/08/test-upgrade/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/14/cobertura/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">测试能力改进计划</div>
+      <div class="article-nav-title">Java代码覆盖率cobertura</div>
     </a>
   
 </nav>

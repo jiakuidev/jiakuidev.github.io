@@ -66,10 +66,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-SpringbootTest" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-unit-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/18/SpringbootTest/" class="article-date">
-  <time datetime="2019-08-18T00:09:43.000Z" itemprop="datePublished">2019-08-18</time>
+    <a href="/2019/08/22/unit-test/" class="article-date">
+  <time datetime="2019-08-22T12:56:28.000Z" itemprop="datePublished">2019-08-22</time>
 </a>
     
   </div>
@@ -80,7 +80,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/18/SpringbootTest/">SpringbootTest</a>
+      <a class="article-title" href="/2019/08/22/unit-test/">单元测试规范</a>
     </h1>
   
 
@@ -97,15 +97,212 @@
 <li>提升研发效率</li>
 <li>增加从构自信</li>
 </ol>
+<h2 id="2-单元测试的基本原则"><a href="#2-单元测试的基本原则" class="headerlink" title="2. 单元测试的基本原则"></a>2. 单元测试的基本原则</h2><blockquote>
+<p>宏观角度单元测试要复合AIR原则；<br>微观角度单元测试的代码层面要符合BCDE原则</p>
+</blockquote>
+<h3 id="1-AIR原则具体包括："><a href="#1-AIR原则具体包括：" class="headerlink" title="1. AIR原则具体包括："></a>1. AIR原则具体包括：</h3><ul>
+<li>A: Automatic (自动化)</li>
+<li>I: Independent (独立性)</li>
+<li>R: Repeatable (可重复)</li>
+</ul>
+<h3 id="2-BCDE原则："><a href="#2-BCDE原则：" class="headerlink" title="2. BCDE原则："></a>2. BCDE原则：</h3><ul>
+<li>B: Border，边界值测试，包括循环边界、特殊取值、特殊时间点，数据顺序。</li>
+<li>C: Correct，正确的输入，并得到预期的结果。</li>
+<li>D: Design，与设计文档相结合，来编写单元测试。</li>
+<li>E: Error，单元测试的目的是证明程序有错，而不是证明程序无错。为了发现代码中潜在的错误，我们需奥在编写测试用例时有一些强制的错误输入（如非法数据、异常流程、非业务允许输入等）来得到预期的错误结果</li>
+</ul>
         
           <p class="article-more-link">
-            <a href="/2019/08/18/SpringbootTest/#more">Read More</a>
+            <a href="/2019/08/22/unit-test/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/18/SpringbootTest/" data-id="cjzg7r368002v75s6y3s2tj9m" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/22/unit-test/" data-id="cjzmowckl0002hjx2lbzznink" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-springboottest" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/22/springboottest/" class="article-date">
+  <time datetime="2019-08-22T12:55:08.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/22/springboottest/">SpringBoot的测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Spring Boot的测试和Spring MVC的测试类似。Spring Boot为我们提供了一个SpringApplicationConfiguration来代替ContextConfiguration，用来配置Application Context。</p>
+</blockquote>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="1-项目依赖"><a href="#1-项目依赖" class="headerlink" title="1. 项目依赖"></a>1. 项目依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hsqldb<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hsqldb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/22/springboottest/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/22/springboottest/" data-id="cjzmouvdu0001hjx2z16y5a0u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-SpringMvc的测试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/22/SpringMvc的测试/" class="article-date">
+  <time datetime="2019-08-22T12:41:42.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/22/SpringMvc的测试/">SpringMvc的测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Spring MVC的测试，主要涉及控制器的测试，为了测试Web项目通常不需要启动项目，我们需要一些Servlet相关的模拟对象:</p>
+<ol>
+<li>MockMVC</li>
+<li>MockHttpServletRequest</li>
+<li>MockHttpServletResponse</li>
+<li>MockHttpSession</li>
+</ol>
+<p>在spring里，我们使用@WebAppConfiguration指定加载的ApplicationContext是一个WebApplicationContext</p>
+</blockquote>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="1-依赖配置"><a href="#1-依赖配置" class="headerlink" title="1. 依赖配置"></a>1. 依赖配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span></span></span><br><span class="line">     &lt;artifactId&gt;spring-test&lt;/artifactId</span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-framework.version&#125;<span class="tag">&lt;/<span class="name">version</span></span></span><br><span class="line">     &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span></span></span><br><span class="line">    &lt;artifactId&gt;junit&lt;/artifactId</span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/22/SpringMvc的测试/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/22/SpringMvc的测试/" data-id="cjzmodl6z0002sbx2fok83hrz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-springtest" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/22/springtest/" class="article-date">
+  <time datetime="2019-08-22T12:40:23.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/22/springtest/">Spring的测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Spring提供了SpringJunit4ClassRunner类，它提供了Spring TestContent Framework的功能。通过@ContentConfiguration来配置Application Content，通过ActiveProfiles确定活动的profile.</p>
+</blockquote>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="1-准备"><a href="#1-准备" class="headerlink" title="1. 准备"></a>1. 准备</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring test 支持 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-test<span class="tag">&lt;/<span class="name">artifactId</span></span></span><br><span class="line">    &lt;version&gt;$&#123;spring-framework.version&#125;&lt;/version&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span></span></span><br><span class="line">    &lt;artifactId&gt;junit&lt;/artifactId</span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/22/springtest/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/22/springtest/" data-id="cjzmoblar0001sbx2effjf4vt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jacoco" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/22/jacoco/" class="article-date">
+  <time datetime="2019-08-22T12:37:55.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/22/jacoco/">Java代码覆盖率jacoco</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>由于采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和jacoco来集成步骤如下：</p>
+</blockquote>
+<h2 id="1-maven项目配置代码覆盖率插件"><a href="#1-maven项目配置代码覆盖率插件" class="headerlink" title="1. maven项目配置代码覆盖率插件"></a>1. maven项目配置代码覆盖率插件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jacoco<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jacoco-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.7.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">destFile</span>&gt;</span>$&#123;basedir&#125;/../target/coverage-reports/jacoco-unit.exec<span class="tag">&lt;/<span class="name">destFile</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dataFile</span>&gt;</span>$&#123;basedir&#125;/../target/coverage-reports/jacoco-unit.exec<span class="tag">&lt;/<span class="name">dataFile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>jacoco-initialize<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>prepare-agent<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>jacoco-site<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>test<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>report<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/22/jacoco/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/22/jacoco/" data-id="cjzmo8hhb0000sbx2x87h8rcf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +326,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/14/cobertura/">cobertura</a>
+      <a class="article-title" href="/2019/08/14/cobertura/">Java代码覆盖率cobertura</a>
     </h1>
   
 
@@ -349,191 +546,6 @@
 
 
   
-    <article id="post-python-venv" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/21/python-venv/" class="article-date">
-  <time datetime="2019-05-21T03:13:36.000Z" itemprop="datePublished">2019-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/21/python-venv/">python venv 环境使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>在python中使用freez的好处<br>目前应该多多使用于系统无关的解决方案,方便用在容器当中进行部署</p>
-</blockquote>
-<p>1.首先在pycharm中项目的终端执行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2019/05/21/python-venv/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="cjzg7pbnv001u75s6du2i51th" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-centos-python3-7" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/21/centos-python3-7/" class="article-date">
-  <time datetime="2019-05-21T02:56:32.000Z" itemprop="datePublished">2019-05-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/21/centos-python3-7/">centos python3.7安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>centos7 自带python2,如果安装python3要从github上把源码clone下来进行编译安装,由于因为 yum 源中并没有现成的 python3 程序，所以手动编译安装。</p>
-</blockquote>
-<h3 id="1-首先，查询系统现在的python的位置："><a href="#1-首先，查询系统现在的python的位置：" class="headerlink" title="1.首先，查询系统现在的python的位置："></a>1.首先，查询系统现在的python的位置：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# whereis python</span><br><span class="line">python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</span><br><span class="line"><span class="meta">#</span>#可以知道我们的python在 /usr/bin目录中</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">[root@root ~]# cd /usr/bin/</span><br><span class="line">[root@root bin]# ll python*</span><br><span class="line">lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2</span><br><span class="line">lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7</span><br><span class="line">-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</span><br></pre></td></tr></table></figure>
-<p>可以看到，python指向的是python2，python2指向的是python2.7，因此我们可以装个python3，然后将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了。<br>
-        
-          <p class="article-more-link">
-            <a href="/2019/05/21/centos-python3-7/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="cjzg7pbn2000c75s6osqzwme6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-appium-python" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/07/appium-python/" class="article-date">
-  <time datetime="2018-12-07T04:30:00.000Z" itemprop="datePublished">2018-12-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Appium/">Appium</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/07/appium-python/">appium python应用实例</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以下提供官方示例代码的github仓库：<br><br><a href="https://github.com/appium-boneyard/sample-code/tree/master/sample-code/examples" target="_blank" rel="noopener">https://github.com/appium-boneyard/sample-code/tree/master/sample-code/examples</a></p>
-<p>以下为官方提供的示例脚本文件</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/12/07/appium-python/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="cjzg7pbn0000775s6tni1fzxm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-appium" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/05/appium/" class="article-date">
-  <time datetime="2018-12-05T07:22:00.000Z" itemprop="datePublished">2018-12-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Appium/">Appium</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/05/appium/">appium在centos上安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-pip安装"><a href="#1-pip安装" class="headerlink" title="1.pip安装"></a>1.pip安装</h2><p><a href="https://pip.pypa.io/en/stable/installing/" target="_blank" rel="noopener">https://pip.pypa.io/en/stable/installing/</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py</span><br><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2018/12/05/appium/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="cjzg7pbmv000375s6ssl32nhj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Appium/">Appium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -591,23 +603,23 @@
       <ul>
         
           <li>
-            <a href="/2019/08/18/SpringbootTest/">SpringbootTest</a>
+            <a href="/2019/08/22/unit-test/">单元测试规范</a>
           </li>
         
           <li>
-            <a href="/2019/08/14/cobertura/">cobertura</a>
+            <a href="/2019/08/22/springboottest/">SpringBoot的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/08/test-upgrade/">测试能力改进计划</a>
+            <a href="/2019/08/22/SpringMvc的测试/">SpringMvc的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/08/centos-svn/">centos下svn搭建</a>
+            <a href="/2019/08/22/springtest/">Spring的测试</a>
           </li>
         
           <li>
-            <a href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
+            <a href="/2019/08/22/jacoco/">Java代码覆盖率jacoco</a>
           </li>
         
       </ul>
