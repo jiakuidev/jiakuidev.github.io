@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="由于采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和jacoco来集成步骤如下：  1. maven项目配置代码覆盖率插件12345678910111213141516171819202122232425&amp;lt;plugin&amp;gt;    &amp;lt;groupId&amp;gt;org.jacoco&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-22T12:39:07.760Z">
+<meta property="og:updated_time" content="2019-08-23T10:48:56.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java代码覆盖率jacoco">
 <meta name="twitter:description" content="由于采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和jacoco来集成步骤如下：  1. maven项目配置代码覆盖率插件12345678910111213141516171819202122232425&amp;lt;plugin&amp;gt;    &amp;lt;groupId&amp;gt;org.jacoco&amp;lt;/groupId&amp;gt;    &amp;lt;artifactId&amp;gt">
@@ -102,13 +102,9 @@
 </li>
 </ol>
 <h3 id="2-构建后操作"><a href="#2-构建后操作" class="headerlink" title="2. 构建后操作"></a>2. 构建后操作</h3><ol>
-<li><p>发布覆盖率报告</p>
-<ol>
-<li>选择Record JaCoCo coverage report</li>
-<li>Cobertura xml report pattern内容:<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**/**.exec</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
+<li><p>发布覆盖率报告<br>选择Record JaCoCo coverage report</p>
+<pre><code><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**/**.exec</span><br></pre></td></tr></table></figure>
+</code></pre></li>
 <li><p>发布测试报告</p>
 <ol>
 <li>选择Publish JUnit test result report</li>

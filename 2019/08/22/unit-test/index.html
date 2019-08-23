@@ -7,17 +7,17 @@
   
   <title>单元测试规范 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则  1. AIR原则具体包括： A: Automatic (自动化) I: Independent (独立性) R: Repeatable (可重复)  2. BCDE原">
+  <meta name="description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单元测试规范">
 <meta property="og:url" content="http://jiakui.app/2019/08/22/unit-test/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则  1. AIR原则具体包括： A: Automatic (自动化) I: Independent (独立性) R: Repeatable (可重复)  2. BCDE原">
+<meta property="og:description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-22T12:57:13.529Z">
+<meta property="og:updated_time" content="2019-08-23T10:49:25.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单元测试规范">
-<meta name="twitter:description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则  1. AIR原则具体包括： A: Automatic (自动化) I: Independent (独立性) R: Repeatable (可重复)  2. BCDE原">
+<meta name="twitter:description" content="是指对软件中的最小可测试单元进行检查和验证  1. 单元测试目标 提升软件质量 促进代码优化 提升研发效率 增加从构自信  2. 单元测试的基本原则 宏观角度单元测试要复合AIR原则；微观角度单元测试的代码层面要符合BCDE原则">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -100,7 +100,7 @@
 <li>增加从构自信</li>
 </ol>
 <h2 id="2-单元测试的基本原则"><a href="#2-单元测试的基本原则" class="headerlink" title="2. 单元测试的基本原则"></a>2. 单元测试的基本原则</h2><blockquote>
-<p>宏观角度单元测试要复合AIR原则；<br>微观角度单元测试的代码层面要符合BCDE原则</p>
+<p>宏观角度单元测试要复合AIR原则；<br>微观角度单元测试的代码层面要符合BCDE原则<br><a id="more"></a></p>
 </blockquote>
 <h3 id="1-AIR原则具体包括："><a href="#1-AIR原则具体包括：" class="headerlink" title="1. AIR原则具体包括："></a>1. AIR原则具体包括：</h3><ul>
 <li>A: Automatic (自动化)</li>
@@ -113,7 +113,6 @@
 <li>D: Design，与设计文档相结合，来编写单元测试。</li>
 <li>E: Error，单元测试的目的是证明程序有错，而不是证明程序无错。为了发现代码中潜在的错误，我们需奥在编写测试用例时有一些强制的错误输入（如非法数据、异常流程、非业务允许输入等）来得到预期的错误结果</li>
 </ul>
-<a id="more"></a>
 <h3 id="3-需要Mock的因素"><a href="#3-需要Mock的因素" class="headerlink" title="3. 需要Mock的因素"></a>3. 需要Mock的因素</h3><blockquote>
 <p>由于单元测试只是系统集成测试前的小模块测试，有些因素往往不具备的，因此需要进行Mock，例如：</p>
 </blockquote>
