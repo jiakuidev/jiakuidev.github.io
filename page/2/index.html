@@ -66,6 +66,42 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-appium-getpullfile" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/02/appium-getpullfile/" class="article-date">
+  <time datetime="2019-08-02T10:20:49.000Z" itemprop="datePublished">2019-08-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="appium从手机端获取文件内容"><a href="#appium从手机端获取文件内容" class="headerlink" title="appium从手机端获取文件内容"></a>appium从手机端获取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] file = mobiledriver.pullFile(<span class="string">"/sdcard/verfiyCode.dat"</span>);</span><br><span class="line">InputStream bis = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> ByteArrayInputStream(file));</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	String result = <span class="string">""</span>;</span><br><span class="line">	BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(bis));</span><br><span class="line">	String line = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">while</span> ((line = bufferedReader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">		log.info(line);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="cjzg7pbnz002775s6d9mc31qu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-venv" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/21/python-venv/" class="article-date">
@@ -493,53 +529,6 @@
 
 
   
-    <article id="post-cert2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/cert2/" class="article-date">
-  <time datetime="2018-09-13T14:27:00.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/cert2/">从命令行构建和签署您的应用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="从命令行构建和签署您的应用"><a href="#从命令行构建和签署您的应用" class="headerlink" title="从命令行构建和签署您的应用"></a>从命令行构建和签署您的应用</h3><p>不需要 Android Studio 也可以签署您的应用。您可以通过 apksigner 工具从命令行签署您的应用，或在构建期间配置 Gradle 来签署您的应用。无论使用哪一个方式，您必须首先使用 keytool 生成一个私钥。例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -<span class="built_in">alias</span> my-alias</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/13/cert2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/13/cert2/" data-id="cjzg7pbn8000i75s6cb8zrj4s" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -597,6 +586,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/26/allpairs/">allpairs</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/22/unit-test/">单元测试规范</a>
           </li>
         
@@ -610,10 +603,6 @@
         
           <li>
             <a href="/2019/08/22/springtest/">Spring的测试</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/22/jacoco/">Java代码覆盖率jacoco</a>
           </li>
         
       </ul>
