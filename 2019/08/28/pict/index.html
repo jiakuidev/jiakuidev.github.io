@@ -5,19 +5,19 @@
   
 
   
-  <title>Dropbox pincode分析 | 学习笔记</title>
+  <title>PICT工具进行正交实验法设计用例 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
+  <meta name="description" content="PICT generates test cases and test configurations. With PICT, you can generate tests that are more effective than manually generated tests and in a fraction of the time required by hands-on test case">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dropbox pincode分析">
-<meta property="og:url" content="http://jiakui.app/2018/09/03/dropbox/index.html">
+<meta property="og:title" content="PICT工具进行正交实验法设计用例">
+<meta property="og:url" content="http://jiakui.app/2019/08/28/pict/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
+<meta property="og:description" content="PICT generates test cases and test configurations. With PICT, you can generate tests that are more effective than manually generated tests and in a fraction of the time required by hands-on test case">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-03T14:16:43.000Z">
+<meta property="og:updated_time" content="2019-08-28T12:02:18.939Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dropbox pincode分析">
-<meta name="twitter:description" content="通过分析dropbox再建立账号后会使用android.accounts.Account  首先adb shell进入终端shell环境，su切换到root账户. 通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db 使用Sqlite3命令查询该数据。">
+<meta name="twitter:title" content="PICT工具进行正交实验法设计用例">
+<meta name="twitter:description" content="PICT generates test cases and test configurations. With PICT, you can generate tests that are more effective than manually generated tests and in a fraction of the time required by hands-on test case">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-dropbox" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-pict" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/03/dropbox/" class="article-date">
-  <time datetime="2018-09-03T14:07:02.000Z" itemprop="datePublished">2018-09-03</time>
+    <a href="/2019/08/28/pict/" class="article-date">
+  <time datetime="2019-08-28T12:01:15.000Z" itemprop="datePublished">2019-08-28</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Dropbox pincode分析
+      PICT工具进行正交实验法设计用例
     </h1>
   
 
@@ -90,29 +90,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>通过分析dropbox再建立账号后会使用android.accounts.Account</p>
-<ol>
-<li>首先adb shell进入终端shell环境，su切换到root账户.</li>
-<li>通过busybox find / -name ‘*.db’ 可查看如下有这个数据库文件，/data/system/users/0/accounts.db</li>
-<li><p>使用Sqlite3命令查询该数据。</p>
-<a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@ja3g:/ <span class="comment"># sqlite3 /data/system/users/0/accounts.db</span></span><br><span class="line">SQLite version 3.7.16 2013-03-18 11:39:23 [www.ptsoft.org] [www.ptdave.com]</span><br><span class="line">Enter <span class="string">".help"</span> <span class="keyword">for</span> instructions</span><br><span class="line">Enter SQL statements terminated with a “;<span class="string">"</span></span><br><span class="line"><span class="string">sqlite&gt; .tables</span></span><br><span class="line"><span class="string">accounts     authtokens    grants    shared_accounts  android_metadata  extras   meta</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对accounts表进行查询，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sqlite&gt; select * from accounts;</span><br><span class="line">……</span><br><span class="line">11|jiakui@live.cn|com.dropbox.android.account|</span><br><span class="line">dropbox账号id=11</span><br><span class="line"><span class="comment">#查询extras表中有dropbox账号信息如下：</span></span><br><span class="line">sqlite&gt; select * from extras;</span><br><span class="line">……</span><br><span class="line">82|11|com.dropbox.android-account|&#123;<span class="string">"INITIALIZED"</span>:<span class="string">"true"</span>,<span class="string">"KEY_ALLOW_UNPAIRED_BUSINESS_PHOTOS"</span>:<span class="string">"true"</span>&#125;</span><br><span class="line">83|11|shared-device|&#123;<span class="string">"LOCK_CODE_ERASE"</span>:<span class="string">"false"</span>,<span class="string">"LOCK_CODE_LOCKED_UNTIL"</span>:<span class="string">"0"</span>,<span class="string">"LOCK_CODE"</span>:<span class="string">"1234”&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>结论：</p>
-<ol>
-<li>通过查询该表id=82和id=83都属于dropbox的id.</li>
-<li>发现id=83的行中有”LOCK_CODE”:”1234”，通过验证此”LOCK_CODE”:”1234”即属于当时dropbox的passcode</li>
-<li>通过dropbox修改passcode，此数据相应变化。</li>
-</ol>
+        <blockquote>
+<p>PICT generates test cases and test configurations. With PICT, you can generate tests that are more effective than manually generated tests and in a fraction of the time required by hands-on test case design.</p>
+</blockquote>
+<p><a href="https://github.com/microsoft/pict" target="_blank" rel="noopener">https://github.com/microsoft/pict</a></p>
+<h4 id="1-首先看一个查询的接口"><a href="#1-首先看一个查询的接口" class="headerlink" title="1. 首先看一个查询的接口"></a>1. 首先看一个查询的接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//本条测试用例需要准备三个参数：name,page,size</span></span><br><span class="line">MultiValueMap&lt;String, String&gt; params = <span class="keyword">new</span> LinkedMultiValueMap&lt;&gt;();</span><br><span class="line">        params.add(<span class="string">"name"</span>, <span class="string">"奔驰"</span>);</span><br><span class="line">        params.add(<span class="string">"page"</span>, <span class="string">"2"</span>);</span><br><span class="line">        params.add(<span class="string">"size"</span>, <span class="string">"20"</span>);</span><br><span class="line">        System.out.println(<span class="string">"请求信息："</span> + JSONObject.toJSONString(params));</span><br></pre></td></tr></table></figure>
+<h4 id="2-设计测试用例示例如下："><a href="#2-设计测试用例示例如下：" class="headerlink" title="2. 设计测试用例示例如下："></a>2. 设计测试用例示例如下：</h4><h6 id="2-1-保存文件为txt文本文件，例如：findBrandsList-txt"><a href="#2-1-保存文件为txt文本文件，例如：findBrandsList-txt" class="headerlink" title="2.1 保存文件为txt文本文件，例如：findBrandsList.txt"></a>2.1 保存文件为txt文本文件，例如：findBrandsList.txt</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name:保时捷,奔驰</span><br><span class="line">page:1,10,2,null</span><br><span class="line">Size:5,10,20,null</span><br></pre></td></tr></table></figure>
+<h6 id="2-2-执行命令"><a href="#2-2-执行命令" class="headerlink" title="2.2 执行命令"></a>2.2 执行命令</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pict findBrandsList.txt &gt; findBrandsList.xls</span><br></pre></td></tr></table></figure>
+<h5 id="2-3-查看findBrandsList-xls"><a href="#2-3-查看findBrandsList-xls" class="headerlink" title="2.3 查看findBrandsList.xls"></a>2.3 查看findBrandsList.xls</h5><p>注意一点，这个excel文件中文打开“可能”会有乱码情况。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">name	page	Size</span><br><span class="line">保时捷	2	5</span><br><span class="line">奔驰	2	10</span><br><span class="line">保时捷	2	20</span><br><span class="line">奔驰	10	5</span><br><span class="line">保时捷	2	null</span><br><span class="line">奔驰	null	20</span><br><span class="line">保时捷	null	5</span><br><span class="line">保时捷	1	10</span><br><span class="line">保时捷	10	20</span><br><span class="line">奔驰	null	10</span><br><span class="line">奔驰	10	null</span><br><span class="line">奔驰	1	5</span><br><span class="line">保时捷	1	null</span><br><span class="line">保时捷	1	20</span><br><span class="line">保时捷	null	null</span><br><span class="line">奔驰	10	10</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/dropbox/" data-id="cjzg7pbng000w75s6k0879iih" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/28/pict/" data-id="cjzv7kogk000050fy3ylpxhz0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -121,19 +111,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/09/04/httpscert/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          java查看到网站https的证书信息
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/03/morelocale2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/28/pict-hsf-jacoco/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">测试过程中切换Android系统语言</div>
+      <div class="article-nav-title">单元测试集成HSF、Jacoco和PICT</div>
     </a>
   
 </nav>

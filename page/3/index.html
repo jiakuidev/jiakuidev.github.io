@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cert4" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/14/cert4/" class="article-date">
+  <time datetime="2018-09-13T21:15:00.000Z" itemprop="datePublished">2018-09-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/14/cert4/">Android签名apk后文件分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。</p>
+<p>给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义：</p>
+<p>（1）MANIFEST.MF：这是摘要文件。程序遍历Apk包中的所有文件(entry)，对非文件夹非签名文件的文件，逐个用SHA1生成摘要信息，再用Base64进行编码。如果你改变了apk包中的文件，那么在apk安装校验时，改变后的文件摘要信息与MANIFEST.MF的检验信息不同，于是程序就不能成功安装。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/14/cert4/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/14/cert4/" data-id="cjzg7pbna000m75s6gf43eikx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cert3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/13/cert3/" class="article-date">
@@ -473,54 +522,6 @@
 
 
   
-    <article id="post-uitesting20180903" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/uitesting20180903/" class="article-date">
-  <time datetime="2018-09-03T02:04:00.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/uitesting20180903/">WawaRobotUITests在调用app本身api时产生的报错</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="XCTest"><a href="#XCTest" class="headerlink" title="XCTest"></a>XCTest</h3><p>单元测试用例可以验证，app程序测试的相应方法和调用</p>
-<h3 id="XCUITest"><a href="#XCUITest" class="headerlink" title="XCUITest"></a>XCUITest</h3><p>目前在UI测试过程中，暂时不能调用应用的api，倒入头文件后虽然不抱错，但是编译的时候缺少链接库。应该就是不支持。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/03/uitesting20180903/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/uitesting20180903/" data-id="cjzg7pbnw001x75s6u8sw061z" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -578,11 +579,15 @@
       <ul>
         
           <li>
+            <a href="/2019/08/28/pict/">PICT工具进行正交实验法设计用例</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/28/pict-hsf-jacoco/">单元测试集成HSF、Jacoco和PICT</a>
           </li>
         
           <li>
-            <a href="/2019/08/26/allpairs/">allpairs</a>
+            <a href="/2019/08/26/allpairs/">AllPairs库进行正交实验法设计用例</a>
           </li>
         
           <li>
@@ -591,10 +596,6 @@
         
           <li>
             <a href="/2019/08/22/springboottest/">SpringBoot的测试</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/22/SpringMvc的测试/">SpringMvc的测试</a>
           </li>
         
       </ul>
