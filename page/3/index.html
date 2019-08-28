@@ -66,6 +66,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cert3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/cert3/" class="article-date">
+  <time datetime="2018-09-13T15:09:00.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/13/cert3/">如何获取cert.rsa的公钥</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="如何获取cert-rsa的公钥"><a href="#如何获取cert-rsa的公钥" class="headerlink" title="如何获取cert.rsa的公钥"></a>如何获取cert.rsa的公钥</h3><p>在Apk 包中的META-INF目录下，有一个CERT.RSA，它是一个PKCS7 格式的文件。</p>
+<p>下面介绍几种从中获取证书的方法。<br>在linux下openssl获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs7 -inform DER -<span class="keyword">in</span> CERT.RSA -noout -print_certs -text</span><br></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/13/cert3/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/13/cert3/" data-id="cjzg7pbnd000t75s6c0pcoqyk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cert2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/13/cert2/" class="article-date">
@@ -473,53 +521,6 @@
 
 
   
-    <article id="post-xctestsystemalerts" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/xctestsystemalerts/" class="article-date">
-  <time datetime="2018-09-03T01:39:00.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/xctestsystemalerts/">XCTest出现系统弹窗时的处理方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="当出现系统弹窗（权限确认，低电提醒等）"><a href="#当出现系统弹窗（权限确认，低电提醒等）" class="headerlink" title="当出现系统弹窗（权限确认，低电提醒等）"></a>当出现系统弹窗（权限确认，低电提醒等）</h3><p><strong><em>我们一般采取如下代码进行处理：</em></strong><br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/03/xctestsystemalerts/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/xctestsystemalerts/" data-id="cjzg7pbo0002a75s6wqoo989y" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -577,6 +578,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/28/pict-hsf-jacoco/">单元测试集成HSF、Jacoco和PICT</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/26/allpairs/">allpairs</a>
           </li>
         
@@ -590,10 +595,6 @@
         
           <li>
             <a href="/2019/08/22/SpringMvc的测试/">SpringMvc的测试</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/22/springtest/">Spring的测试</a>
           </li>
         
       </ul>
