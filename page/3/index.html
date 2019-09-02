@@ -66,6 +66,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-cert5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/18/cert5/" class="article-date">
+  <time datetime="2018-09-17T23:16:00.000Z" itemprop="datePublished">2018-09-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/18/cert5/">检查证书的信息和指纹</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>检查证书的信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jarsigner -verify -verbose -certs xxx.apk &gt;xxx.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查证书的指纹信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -printcert -file xxx.RSA</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/09/18/cert5/" data-id="cjzg7pbnb000o75s6q5etdf3w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cert4" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/14/cert4/" class="article-date">
@@ -475,58 +524,11 @@
 
 
   
-    <article id="post-XCTestExpectation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/03/XCTestExpectation/" class="article-date">
-  <time datetime="2018-09-03T04:14:00.000Z" itemprop="datePublished">2018-09-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/03/XCTestExpectation/">简单iOS单元测试-异步测试(XCTestExpectation)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="异步测试-XCTestExpectation"><a href="#异步测试-XCTestExpectation" class="headerlink" title="异步测试(XCTestExpectation)"></a>异步测试(XCTestExpectation)</h4><p>简单iOS单元测试-异步测试(XCTestExpectation)<br>这种测试不适合在UITest里面处理异步相关的操作，代码示例如下：</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/03/XCTestExpectation/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/XCTestExpectation/" data-id="cjzg7pbmr000275s6q3zhqhuy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -579,6 +581,10 @@
       <ul>
         
           <li>
+            <a href="/2019/08/31/pict-testool/">Pict-TestUtil遍历测试用例组合</a>
+          </li>
+        
+          <li>
             <a href="/2019/08/28/pict/">PICT工具进行正交实验法设计用例</a>
           </li>
         
@@ -592,10 +598,6 @@
         
           <li>
             <a href="/2019/08/22/unit-test/">单元测试规范</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/22/springboottest/">SpringBoot的测试</a>
           </li>
         
       </ul>
