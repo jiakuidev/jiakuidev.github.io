@@ -5,20 +5,19 @@
   
 
   
-  <title>xcpretty | 学习笔记</title>
+  <title>pipeline | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty">
-<meta name="keywords" content="xcpretty">
+  <meta name="description" content="1.首先在jenkins上新建pipeline风格项目2.输入如下的脚本123456789101112131415161718192021222324252627282930313233node(&apos;jnlp-slave-k8s&apos;)&amp;#123;   def mvnHome   stage(&apos;Dev&apos;) &amp;#123; // for display purposes      // Get some c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="xcpretty">
-<meta property="og:url" content="http://jiakui.app/2018/09/03/xcpretty/index.html">
+<meta property="og:title" content="pipeline">
+<meta property="og:url" content="http://jiakui.app/2019/09/21/pipeline/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty">
+<meta property="og:description" content="1.首先在jenkins上新建pipeline风格项目2.输入如下的脚本123456789101112131415161718192021222324252627282930313233node(&apos;jnlp-slave-k8s&apos;)&amp;#123;   def mvnHome   stage(&apos;Dev&apos;) &amp;#123; // for display purposes      // Get some c">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-02T17:17:12.000Z">
+<meta property="og:updated_time" content="2019-09-21T03:24:06.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xcpretty">
-<meta name="twitter:description" content="https://github.com/supermarin/xcpretty 用于对xcodebuild的输出进行格式化。并包含输出report功能。安装1gem install xcpretty">
+<meta name="twitter:title" content="pipeline">
+<meta name="twitter:description" content="1.首先在jenkins上新建pipeline风格项目2.输入如下的脚本123456789101112131415161718192021222324252627282930313233node(&apos;jnlp-slave-k8s&apos;)&amp;#123;   def mvnHome   stage(&apos;Dev&apos;) &amp;#123; // for display purposes      // Get some c">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -69,16 +68,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-xcpretty" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-pipeline" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/03/xcpretty/" class="article-date">
-  <time datetime="2018-09-02T17:00:00.000Z" itemprop="datePublished">2018-09-03</time>
+    <a href="/2019/09/21/pipeline/" class="article-date">
+  <time datetime="2019-09-21T03:02:54.000Z" itemprop="datePublished">2019-09-21</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -87,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      xcpretty
+      pipeline
     </h1>
   
 
@@ -95,40 +90,23 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://github.com/supermarin/xcpretty" target="_blank" rel="noopener">https://github.com/supermarin/xcpretty</a> 用于对xcodebuild的输出进行格式化。并包含输出report功能。<br>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install xcpretty</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>jenkins 安装的话,确保已安装command line tools<br>用法紧跟在xcodebuild 相关语句后面，比如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild [flags] | xcpretty</span><br></pre></td></tr></table></figure></p>
-<p>可以结合tee进行日志收集<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild [flags] | tee xcodebuild.log | xcpretty</span><br></pre></td></tr></table></figure></p>
-<p>重要的是，如果运行在jenkins上，需要exit参数来帮助jenkins确定是否运行失败。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -o pipefail &amp;&amp; xcodebuild [flags] | xcpretty <span class="comment"># # OR # $ xcodebuild [flags] | xcpretty &amp;&amp; exit $&#123;PIPESTATUS[0]&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>log展示输出格式：<br>默认状态 -s,会展示所有信息。<br>测试状态 -t,只展示测试信息。<br>如果需要输出报表：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">–report junit, -r junit：输出可集成在Jenkins中 JUnit-style XML report at build/reports/junit.xml</span><br><span class="line">–report html, -r html：输出html报表在build/reports/tests.html</span><br><span class="line">如果要指定报表保存位置：</span><br><span class="line">--output ~/Desktop/aaaaaaaaaa.html</span><br><span class="line">完整的例子</span><br><span class="line">xcodebuild \ -workspace Jovi.xcworkspace \ -scheme Jovi \ -destination <span class="string">'platform=iOS Simulator,name=iPhone 6'</span> \ SYMROOT=$(PWD)/build \ <span class="built_in">test</span> | tee xcodebuild.log | xcpretty -t -r html --output ~/Desktop/aaaaaaaaaa.html</span><br></pre></td></tr></table></figure></p>
-
+        <h5 id="1-首先在jenkins上新建pipeline风格项目"><a href="#1-首先在jenkins上新建pipeline风格项目" class="headerlink" title="1.首先在jenkins上新建pipeline风格项目"></a>1.首先在jenkins上新建pipeline风格项目</h5><h5 id="2-输入如下的脚本"><a href="#2-输入如下的脚本" class="headerlink" title="2.输入如下的脚本"></a>2.输入如下的脚本</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">node('jnlp-slave-k8s')&#123;</span><br><span class="line">   def mvnHome</span><br><span class="line">   stage('Dev') &#123; // for display purposes</span><br><span class="line">      // Get some code from a GitHub repository</span><br><span class="line">      git branch: 'dev', credentialsId: 'jenkins-git', url: 'http://github.com/demo/application.git'</span><br><span class="line">      // Get the Maven tool.</span><br><span class="line">      // ** NOTE: This 'M3' Maven tool must be configured</span><br><span class="line">      // **       in the global configuration.           </span><br><span class="line">      mvnHome = tool 'maven3.5.4'</span><br><span class="line">   &#125;</span><br><span class="line">   stage('Test') &#123;</span><br><span class="line">      // Run the maven build</span><br><span class="line">      if (isUnix()) &#123;</span><br><span class="line">         //sh "'$&#123;mvnHome&#125;/bin/mvn' -Dmaven.test.failure.ignore clean package"</span><br><span class="line">         sh "cp ~/pict $&#123;WORKSPACE&#125;/application-provider/src/test/resources/"</span><br><span class="line">         sh "sudo chmod +x $&#123;WORKSPACE&#125;/application-provider/src/test/resources/pict"</span><br><span class="line">         sh "ls -l -a /home/jenkins/k8s/kube-script/.secret/hsf"</span><br><span class="line">         if(params.BuildType=='Test') &#123;</span><br><span class="line">             sh "'$&#123;mvnHome&#125;/bin/mvn' -Dmaven.test.failure.ignore clean -Daddress.server.port=8080 -Dpandora.location='/home/jenkins/k8s/kube-script/.secret/hsf' -Dspring.hsf.version=0.9.9 test -e -U"</span><br><span class="line">         &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">         bat(/"$&#123;mvnHome&#125;\bin\mvn" -Dmaven.test.failure.ignore clean package/)</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   stage('Report') &#123;</span><br><span class="line">      // Modifying the test report creation time will succeed.</span><br><span class="line">      sh "cd $&#123;WORKSPACE&#125;/application-provider/target/surefire-reports;touch -d '2099-12-31' *.xml"  </span><br><span class="line">      junit '**/target/surefire-reports/TEST-*.xml'</span><br><span class="line">      jacoco()</span><br><span class="line">      archive 'target/*.jar'</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/03/xcpretty/" data-id="cjzg7pbny002575s64i4co5lb" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/09/21/pipeline/" data-id="ck0sywpah0000acfygwdtc60i" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcpretty/">xcpretty</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/09/03/xctestsystemalerts/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          XCTest出现系统弹窗时的处理方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/02/tcpdump/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/08/31/pict-testool/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">TCPDUMP 抓包实践</div>
+      <div class="article-nav-title">Pict-TestUtil遍历测试用例组合</div>
     </a>
   
 </nav>
