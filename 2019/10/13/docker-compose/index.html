@@ -5,15 +5,19 @@
   
 
   
-  <title>Archives: 2019/9 | 学习笔记</title>
+  <title>Install Compose on Linux systems | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="学习笔记">
-<meta property="og:url" content="http://jiakui.app/archives/2019/09/index.html">
+  <meta name="description" content="Run this command to download the current stable release of Docker Compose:  1sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Install Compose on Linux systems">
+<meta property="og:url" content="http://jiakui.app/2019/10/13/docker-compose/index.html">
 <meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="Run this command to download the current stable release of Docker Compose:  1sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/l">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-13T05:53:02.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习笔记">
+<meta name="twitter:title" content="Install Compose on Linux systems">
+<meta name="twitter:description" content="Run this command to download the current stable release of Docker Compose:  1sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/l">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -64,40 +68,61 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/09/21/pipeline/" class="archive-article-date">
-  <time datetime="2019-09-21T03:02:54.000Z" itemprop="datePublished">Sep 21</time>
+        <section id="main"><article id="post-docker-compose" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/13/docker-compose/" class="article-date">
+  <time datetime="2019-10-13T05:51:02.000Z" itemprop="datePublished">2019-10-13</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/21/pipeline/">pipeline</a>
+    <h1 class="article-title" itemprop="name">
+      Install Compose on Linux systems
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>Run this command to download the current stable release of Docker Compose:</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>To install a different version of Compose, substitute 1.24.1 with the version of Compose you want to use.</p>
+<p>If you have problems installing with curl, see Alternative Install Options tab above.</p>
+<ol start="2">
+<li>Apply executable permissions to the binary: <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure></li>
+</ol>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/10/13/docker-compose/" data-id="ck1okp5460018jas6nrklelve" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/21/pipeline/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">pipeline</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
