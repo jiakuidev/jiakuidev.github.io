@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>harbor | 学习笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 首先下载最新稳定版本https://github.com/goharbor/harbor/releases 2. 解压安装选择离线版本安装1tar xvf harbor-offline-installer-&amp;lt;version&amp;gt;.tgz 3. 安装过程1234###首先执行准备安装环境./prepare###在执行安装脚本./install.sh">
+<meta name="keywords" content="harbo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="harbor">
+<meta property="og:url" content="http://jiakui.app/2019/10/14/harbor/index.html">
+<meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="1. 首先下载最新稳定版本https://github.com/goharbor/harbor/releases 2. 解压安装选择离线版本安装1tar xvf harbor-offline-installer-&amp;lt;version&amp;gt;.tgz 3. 安装过程1234###首先执行准备安装环境./prepare###在执行安装脚本./install.sh">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-14T02:18:37.165Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="harbor">
+<meta name="twitter:description" content="1. 首先下载最新稳定版本https://github.com/goharbor/harbor/releases 2. 解压安装选择离线版本安装1tar xvf harbor-offline-installer-&amp;lt;version&amp;gt;.tgz 3. 安装过程1234###首先执行准备安装环境./prepare###在执行安装脚本./install.sh">
+  
+    <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">学习笔记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">三天打鱼两天晒网！</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://jiakui.app"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-harbor" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/14/harbor/" class="article-date">
+  <time datetime="2019-10-14T02:08:00.000Z" itemprop="datePublished">2019-10-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      harbor
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="1-首先下载最新稳定版本"><a href="#1-首先下载最新稳定版本" class="headerlink" title="1. 首先下载最新稳定版本"></a>1. 首先下载最新稳定版本</h4><p><a href="https://github.com/goharbor/harbor/releases" target="_blank" rel="noopener">https://github.com/goharbor/harbor/releases</a></p>
+<h4 id="2-解压安装"><a href="#2-解压安装" class="headerlink" title="2. 解压安装"></a>2. 解压安装</h4><p>选择离线版本安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf harbor-offline-installer-&lt;version&gt;.tgz</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-安装过程"><a href="#3-安装过程" class="headerlink" title="3. 安装过程"></a>3. 安装过程</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##首先执行准备安装环境</span></span></span><br><span class="line">./prepare</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##在执行安装脚本</span></span></span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="4-harbor-yml配置文件"><a href="#4-harbor-yml配置文件" class="headerlink" title="4. harbor.yml配置文件"></a>4. harbor.yml配置文件</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Configuration file of Harbor</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The IP address or hostname to access admin UI and registry service.</span></span><br><span class="line"><span class="comment"># DO NOT use localhost or 127.0.0.1, because Harbor needs to be accessed by external clients.</span></span><br><span class="line"><span class="attr">hostname:</span> <span class="number">192.168</span><span class="number">.207</span><span class="number">.31</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># http related config</span></span><br><span class="line"><span class="attr">http:</span></span><br><span class="line">  <span class="comment"># port for http, default is 80. If https enabled, this port will redirect to https port</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">90</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># https related config</span></span><br><span class="line"><span class="comment"># https:</span></span><br><span class="line"><span class="comment">#   # https port for harbor, default is 443</span></span><br><span class="line"><span class="comment">#   port: 443</span></span><br><span class="line"><span class="comment">#   # The path of cert and key files for nginx</span></span><br><span class="line"><span class="comment">#   certificate: /your/certificate/path</span></span><br><span class="line"><span class="comment">#   private_key: /your/private/key/path</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment external_url if you want to enable external proxy</span></span><br><span class="line"><span class="comment"># And when it enabled the hostname will no longer used</span></span><br><span class="line"><span class="comment"># external_url: https://reg.mydomain.com:8433</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The initial password of Harbor admin</span></span><br><span class="line"><span class="comment"># It only works in first time to install harbor</span></span><br><span class="line"><span class="comment"># Remember Change the admin password from UI after launching Harbor.</span></span><br><span class="line"><span class="attr">harbor_admin_password:</span> <span class="string">Harbor12345</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Harbor DB configuration</span></span><br><span class="line"><span class="attr">database:</span></span><br><span class="line">  <span class="comment"># The password for the root user of Harbor DB. Change this before any production use.</span></span><br><span class="line"><span class="attr">  password:</span> <span class="string">root123</span></span><br><span class="line">  <span class="comment"># The maximum number of connections in the idle connection pool. If it &lt;=0, no idle connections are retained.</span></span><br><span class="line"><span class="attr">  max_idle_conns:</span> <span class="number">50</span></span><br><span class="line">  <span class="comment"># The maximum number of open connections to the database. If it &lt;= 0, then there is no limit on the number of open connections.</span></span><br><span class="line">  <span class="comment"># Note: the default number of connections is 100 for postgres.</span></span><br><span class="line"><span class="attr">  max_open_conns:</span> <span class="number">100</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The default data volume</span></span><br><span class="line"><span class="attr">data_volume:</span> <span class="string">/data</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Harbor Storage settings by default is using /data dir on local filesystem</span></span><br><span class="line"><span class="comment"># Uncomment storage_service setting If you want to using external storage</span></span><br><span class="line"><span class="comment"># storage_service:</span></span><br><span class="line"><span class="comment">#   # ca_bundle is the path to the custom root ca certificate, which will be injected into the truststore</span></span><br><span class="line"><span class="comment">#   # of registry's and chart repository's containers.  This is usually needed when the user hosts a internal storage with self signed certificate.</span></span><br><span class="line"><span class="comment">#   ca_bundle:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#   # storage backend, default is filesystem, options include filesystem, azure, gcs, s3, swift and oss</span></span><br><span class="line"><span class="comment">#   # for more info about this configuration please refer https://docs.docker.com/registry/configuration/</span></span><br><span class="line"><span class="comment">#   filesystem:</span></span><br><span class="line"><span class="comment">#     maxthreads: 100</span></span><br><span class="line"><span class="comment">#   # set disable to true when you want to disable registry redirect</span></span><br><span class="line"><span class="comment">#   redirect:</span></span><br><span class="line"><span class="comment">#     disabled: false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Clair configuration</span></span><br><span class="line"><span class="attr">clair:</span></span><br><span class="line">  <span class="comment"># The interval of clair updaters, the unit is hour, set to 0 to disable the updaters.</span></span><br><span class="line"><span class="attr">  updaters_interval:</span> <span class="number">12</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobservice:</span></span><br><span class="line">  <span class="comment"># Maximum number of job workers in job service</span></span><br><span class="line"><span class="attr">  max_job_workers:</span> <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="attr">notification:</span></span><br><span class="line">  <span class="comment"># Maximum retry count for webhook job</span></span><br><span class="line"><span class="attr">  webhook_job_max_retry:</span> <span class="number">10</span></span><br><span class="line"></span><br><span class="line"><span class="attr">chart:</span></span><br><span class="line">  <span class="comment"># Change the value of absolute_url to enabled can enable absolute url in chart</span></span><br><span class="line"><span class="attr">  absolute_url:</span> <span class="string">disabled</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log configurations</span></span><br><span class="line"><span class="attr">log:</span></span><br><span class="line">  <span class="comment"># options are debug, info, warning, error, fatal</span></span><br><span class="line"><span class="attr">  level:</span> <span class="string">info</span></span><br><span class="line">  <span class="comment"># configs for logs in local storage</span></span><br><span class="line"><span class="attr">  local:</span></span><br><span class="line">    <span class="comment"># Log files are rotated log_rotate_count times before being removed. If count is 0, old versions are removed rather than rotated.</span></span><br><span class="line"><span class="attr">    rotate_count:</span> <span class="number">50</span></span><br><span class="line">    <span class="comment"># Log files are rotated only if they grow bigger than log_rotate_size bytes. If size is followed by k, the size is assumed to be in kilobytes.</span></span><br><span class="line">    <span class="comment"># If the M is used, the size is in megabytes, and if G is used, the size is in gigabytes. So size 100, size 100k, size 100M and size 100G</span></span><br><span class="line">    <span class="comment"># are all valid.</span></span><br><span class="line"><span class="attr">    rotate_size:</span> <span class="number">200</span><span class="string">M</span></span><br><span class="line">    <span class="comment"># The directory on your host that store log</span></span><br><span class="line"><span class="attr">    location:</span> <span class="string">/var/log/harbor</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Uncomment following lines to enable external syslog endpoint.</span></span><br><span class="line">  <span class="comment"># external_endpoint:</span></span><br><span class="line">  <span class="comment">#   # protocol used to transmit log to external endpoint, options is tcp or udp</span></span><br><span class="line">  <span class="comment">#   protocol: tcp</span></span><br><span class="line">  <span class="comment">#   # The host of external endpoint</span></span><br><span class="line">  <span class="comment">#   host: localhost</span></span><br><span class="line">  <span class="comment">#   # Port of external endpoint</span></span><br><span class="line">  <span class="comment">#   port: 5140</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#This attribute is for migrator to detect the version of the .cfg file, DO NOT MODIFY!</span></span><br><span class="line"><span class="attr">_version:</span> <span class="number">1.9</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment external_database if using external database.</span></span><br><span class="line"><span class="comment"># external_database:</span></span><br><span class="line"><span class="comment">#   harbor:</span></span><br><span class="line"><span class="comment">#     host: harbor_db_host</span></span><br><span class="line"><span class="comment">#     port: harbor_db_port</span></span><br><span class="line"><span class="comment">#     db_name: harbor_db_name</span></span><br><span class="line"><span class="comment">#     username: harbor_db_username</span></span><br><span class="line"><span class="comment">#     password: harbor_db_password</span></span><br><span class="line"><span class="comment">#     ssl_mode: disable</span></span><br><span class="line"><span class="comment">#     max_idle_conns: 2</span></span><br><span class="line"><span class="comment">#     max_open_conns: 0</span></span><br><span class="line"><span class="comment">#   clair:</span></span><br><span class="line"><span class="comment">#     host: clair_db_host</span></span><br><span class="line"><span class="comment">#     port: clair_db_port</span></span><br><span class="line"><span class="comment">#     db_name: clair_db_name</span></span><br><span class="line"><span class="comment">#     username: clair_db_username</span></span><br><span class="line"><span class="comment">#     password: clair_db_password</span></span><br><span class="line"><span class="comment">#     ssl_mode: disable</span></span><br><span class="line"><span class="comment">#   notary_signer:</span></span><br><span class="line"><span class="comment">#     host: notary_signer_db_host</span></span><br><span class="line"><span class="comment">#     port: notary_signer_db_port</span></span><br><span class="line"><span class="comment">#     db_name: notary_signer_db_name</span></span><br><span class="line"><span class="comment">#     username: notary_signer_db_username</span></span><br><span class="line"><span class="comment">#     password: notary_signer_db_password</span></span><br><span class="line"><span class="comment">#     ssl_mode: disable</span></span><br><span class="line"><span class="comment">#   notary_server:</span></span><br><span class="line"><span class="comment">#     host: notary_server_db_host</span></span><br><span class="line"><span class="comment">#     port: notary_server_db_port</span></span><br><span class="line"><span class="comment">#     db_name: notary_server_db_name</span></span><br><span class="line"><span class="comment">#     username: notary_server_db_username</span></span><br><span class="line"><span class="comment">#     password: notary_server_db_password</span></span><br><span class="line"><span class="comment">#     ssl_mode: disable</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment external_redis if using external Redis server</span></span><br><span class="line"><span class="comment"># external_redis:</span></span><br><span class="line"><span class="comment">#   host: redis</span></span><br><span class="line"><span class="comment">#   port: 6379</span></span><br><span class="line"><span class="comment">#   password:</span></span><br><span class="line"><span class="comment">#   # db_index 0 is for core, it's unchangeable</span></span><br><span class="line"><span class="comment">#   registry_db_index: 1</span></span><br><span class="line"><span class="comment">#   jobservice_db_index: 2</span></span><br><span class="line"><span class="comment">#   chartmuseum_db_index: 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Uncomment uaa for trusting the certificate of uaa instance that is hosted via self-signed cert.</span></span><br><span class="line"><span class="comment"># uaa:</span></span><br><span class="line"><span class="comment">#   ca_file: /path/to/ca</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Global proxy</span></span><br><span class="line"><span class="comment"># Config http proxy for components, e.g. http://my.proxy.com:3128</span></span><br><span class="line"><span class="comment"># Components doesn't need to connect to each others via http proxy.</span></span><br><span class="line"><span class="comment"># Remove component from `components` array if want disable proxy</span></span><br><span class="line"><span class="comment"># for it. If you want use proxy for replication, MUST enable proxy</span></span><br><span class="line"><span class="comment"># for core and jobservice, and set `http_proxy` and `https_proxy`.</span></span><br><span class="line"><span class="comment"># Add domain to the `no_proxy` field, when you want disable proxy</span></span><br><span class="line"><span class="comment"># for some special registry.</span></span><br><span class="line"><span class="attr">proxy:</span></span><br><span class="line"><span class="attr">  http_proxy:</span></span><br><span class="line"><span class="attr">  https_proxy:</span></span><br><span class="line"><span class="attr">  no_proxy:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">,localhost,.local,.internal,log,db,redis,nginx,core,portal,postgresql,jobservice,registry,registryctl,clair</span></span><br><span class="line"><span class="attr">  components:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">core</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">jobservi</span></span><br></pre></td></tr></table></figure>
+<p>The installation steps boil down to the following</p>
+<p>Download the installer;<br>Configure harbor.yml;<br>Run install.sh to install and start Harbor;<br>Downloading the installer:<br>The binary of the installer can be downloaded from the release page. Choose either online or offline installer. Use tar command to extract the package.</p>
+<p>Offline installer:</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/10/14/harbor/" data-id="ck1psi32c001oxefyd0064nht" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/harbo/">harbo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/13/docker-compose/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Install Compose on Linux systems</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Appium/">Appium</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/ELK/">ELK</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/TCP-IP/">TCP/IP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Appium/">Appium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/harbo/">harbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Appium/" style="font-size: 10px;">Appium</a> <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/broadcast/" style="font-size: 13.33px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 10px;">docker compose</a> <a href="/tags/harbo/" style="font-size: 10px;">harbo</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 16.67px;">xctest</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/10/14/harbor/">harbor</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/13/docker-compose/">Install Compose on Linux systems</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/21/pipeline/">pipeline</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/31/pict-testool/">Pict-TestUtil遍历测试用例组合</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/28/pict/">PICT工具进行正交实验法设计用例</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Jiakui<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
