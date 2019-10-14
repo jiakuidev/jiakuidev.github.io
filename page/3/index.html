@@ -66,6 +66,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-appium-python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/07/appium-python/" class="article-date">
+  <time datetime="2018-12-07T04:30:00.000Z" itemprop="datePublished">2018-12-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Appium/">Appium</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/07/appium-python/">appium python应用实例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以下提供官方示例代码的github仓库：<br><br><a href="https://github.com/appium-boneyard/sample-code/tree/master/sample-code/examples" target="_blank" rel="noopener">https://github.com/appium-boneyard/sample-code/tree/master/sample-code/examples</a></p>
+<p>以下为官方提供的示例脚本文件</p>
+        
+          <p class="article-more-link">
+            <a href="/2018/12/07/appium-python/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="ck1psi31l0008xefycqo7rqel" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-appium" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/05/appium/" class="article-date">
@@ -495,43 +543,6 @@
 
 
   
-    <article id="post-httpscert" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/04/httpscert/" class="article-date">
-  <time datetime="2018-09-04T09:55:18.000Z" itemprop="datePublished">2018-09-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/04/httpscert/">java查看到网站https的证书信息</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>java代码查看到网站https的证书信息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHttps</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		URL url = <span class="keyword">new</span> URL(<span class="string">"https://www.baidu.com"</span>);</span><br><span class="line">		HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();</span><br><span class="line">		conn.connect();</span><br><span class="line">		Certificate[] certs = conn.getServerCertificates(); <span class="comment">// 会拿到完整的证书链</span></span><br><span class="line">		X509Certificate cert = (X509Certificate) certs[<span class="number">0</span>]; <span class="comment">// cert[0]是证书链的最下层</span></span><br><span class="line">		System.out.println(<span class="string">"序号："</span> + cert.getSerialNumber());</span><br><span class="line">		System.out.println(<span class="string">"颁发给："</span> + cert.getSubjectDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"颁发者："</span> + cert.getIssuerDN().getName());</span><br><span class="line">		System.out.println(<span class="string">"起始："</span> + cert.getNotBefore());</span><br><span class="line">		System.out.println(<span class="string">"过期："</span> + cert.getNotAfter());</span><br><span class="line">		System.out.println(<span class="string">"算法："</span> + cert.getSigAlgName());</span><br><span class="line">		System.out.println(<span class="string">"指纹："</span> + getThumbPrint(cert));</span><br><span class="line">		conn.disconnect();</span><br><span class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/04/httpscert/" data-id="ck1psi32d001sxefywg2jqh05" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -557,7 +568,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Appium/">Appium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/harbo/">harbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Appium/">Appium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/harbo/">harbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/harbor/">harbor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
     </div>
   </div>
 
@@ -567,7 +578,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Appium/" style="font-size: 10px;">Appium</a> <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/broadcast/" style="font-size: 13.33px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 10px;">docker compose</a> <a href="/tags/harbo/" style="font-size: 10px;">harbo</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 16.67px;">xctest</a>
+      <a href="/tags/Appium/" style="font-size: 10px;">Appium</a> <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/broadcast/" style="font-size: 13.33px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 10px;">docker compose</a> <a href="/tags/harbo/" style="font-size: 10px;">harbo</a> <a href="/tags/harbor/" style="font-size: 10px;">harbor</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 16.67px;">xctest</a>
     </div>
   </div>
 
@@ -589,6 +600,10 @@
       <ul>
         
           <li>
+            <a href="/2019/10/14/docker-login/">docker login harbor</a>
+          </li>
+        
+          <li>
             <a href="/2019/10/14/harbor/">harbor</a>
           </li>
         
@@ -602,10 +617,6 @@
         
           <li>
             <a href="/2019/08/31/pict-testool/">Pict-TestUtil遍历测试用例组合</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/28/pict/">PICT工具进行正交实验法设计用例</a>
           </li>
         
       </ul>

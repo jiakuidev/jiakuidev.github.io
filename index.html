@@ -66,6 +66,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-docker-login" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/14/docker-login/" class="article-date">
+  <time datetime="2019-10-14T05:07:00.000Z" itemprop="datePublished">2019-10-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/14/docker-login/">docker login harbor</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>安装完成harbor，在客户端执行docker login 后，docker 会记住对应 registry的登陆用户名，方便下次登陆。这个信息存储在用户Home下的.docker 文件夹下的，例如:/root/.docker/config.json</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat .docker/config.json </span><br><span class="line">&#123;</span><br><span class="line">	"auths": &#123;</span><br><span class="line">		"192.168.206.72:80": &#123;</span><br><span class="line">			"auth": "amlha3VpOlhpYW4xOTg2MDkwNA=="</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用http登录harbor服务器需要改文件:/etc/docker/daemon.json</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  "insecure-registries":["192.168.206.72:80"]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果以http形式进行登录使用insecure-registries进行登录即可文件修改后重启docker即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>##重启docker</span><br><span class="line">sudo service docker restart</span><br><span class="line"><span class="meta">#</span>##登录私服带上端口</span><br><span class="line">docker login 192.168.206.72:80</span><br><span class="line"><span class="meta">#</span>##制作镜像tag</span><br><span class="line">docker tag centos7-base:dockerfile 192.168.206.72:80/base-os/centos7-base:latest</span><br><span class="line"><span class="meta">#</span>##推动镜像</span><br><span class="line">docker push 192.168.206.72:80/base-os/centos7-base:latest</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/10/14/docker-login/" data-id="ck1pyi22e0000anfyeu765q65" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/harbor/">harbor</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-harbor" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/14/harbor/" class="article-date">
@@ -94,7 +147,7 @@
       
         <h4 id="1-首先下载最新稳定版本"><a href="#1-首先下载最新稳定版本" class="headerlink" title="1. 首先下载最新稳定版本"></a>1. 首先下载最新稳定版本</h4><p><a href="https://github.com/goharbor/harbor/releases" target="_blank" rel="noopener">https://github.com/goharbor/harbor/releases</a></p>
 <h4 id="2-解压安装"><a href="#2-解压安装" class="headerlink" title="2. 解压安装"></a>2. 解压安装</h4><p>选择离线版本安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf harbor-offline-installer-&lt;version&gt;.tgz</span><br></pre></td></tr></table></figure></p>
-<h4 id="3-安装过程"><a href="#3-安装过程" class="headerlink" title="3. 安装过程"></a>3. 安装过程</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##首先执行准备安装环境</span></span></span><br><span class="line">./prepare</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">##在执行安装脚本</span></span></span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<h4 id="3-安装过程"><a href="#3-安装过程" class="headerlink" title="3. 安装过程"></a>3. 安装过程</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>##首先执行准备安装环境</span><br><span class="line">./prepare</span><br><span class="line"><span class="meta">#</span>##在执行安装脚本</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
             <a href="/2019/10/14/harbor/#more">Read More</a>
@@ -478,57 +531,6 @@
 
 
   
-    <article id="post-SpringMvc的测试" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/22/SpringMvc的测试/" class="article-date">
-  <time datetime="2019-08-22T12:41:42.000Z" itemprop="datePublished">2019-08-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/22/SpringMvc的测试/">SpringMvc的测试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Spring MVC的测试，主要涉及控制器的测试，为了测试Web项目通常不需要启动项目，我们需要一些Servlet相关的模拟对象:</p>
-<ol>
-<li>MockMVC</li>
-<li>MockHttpServletRequest</li>
-<li>MockHttpServletResponse</li>
-<li>MockHttpSession</li>
-</ol>
-<p>在spring里，我们使用@WebAppConfiguration指定加载的ApplicationContext是一个WebApplicationContext</p>
-</blockquote>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="1-依赖配置"><a href="#1-依赖配置" class="headerlink" title="1. 依赖配置"></a>1. 依赖配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span></span></span><br><span class="line">     &lt;artifactId&gt;spring-test&lt;/artifactId</span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-framework.version&#125;<span class="tag">&lt;/<span class="name">version</span></span></span><br><span class="line">     &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span></span></span><br><span class="line">    &lt;artifactId&gt;junit&lt;/artifactId</span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.11<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2019/08/22/SpringMvc的测试/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/22/SpringMvc的测试/" data-id="ck1psi31a0002xefyjwd6e6hr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -554,7 +556,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Appium/">Appium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/harbo/">harbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Appium/">Appium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CocoaPods/">CocoaPods</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kibana/">Kibana</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/broadcast/">broadcast</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cert/">cert</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker-compose/">docker compose</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/harbo/">harbo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/harbor/">harbor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/logstash/">logstash</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tcpdump/">tcpdump</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xcpretty/">xcpretty</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/xctest/">xctest</a></li></ul>
     </div>
   </div>
 
@@ -564,7 +566,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Appium/" style="font-size: 10px;">Appium</a> <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/broadcast/" style="font-size: 13.33px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 10px;">docker compose</a> <a href="/tags/harbo/" style="font-size: 10px;">harbo</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 16.67px;">xctest</a>
+      <a href="/tags/Appium/" style="font-size: 10px;">Appium</a> <a href="/tags/CocoaPods/" style="font-size: 10px;">CocoaPods</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Kibana/" style="font-size: 10px;">Kibana</a> <a href="/tags/Python/" style="font-size: 13.33px;">Python</a> <a href="/tags/broadcast/" style="font-size: 13.33px;">broadcast</a> <a href="/tags/cert/" style="font-size: 20px;">cert</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/docker-compose/" style="font-size: 10px;">docker compose</a> <a href="/tags/harbo/" style="font-size: 10px;">harbo</a> <a href="/tags/harbor/" style="font-size: 10px;">harbor</a> <a href="/tags/logstash/" style="font-size: 10px;">logstash</a> <a href="/tags/tcpdump/" style="font-size: 10px;">tcpdump</a> <a href="/tags/xcpretty/" style="font-size: 10px;">xcpretty</a> <a href="/tags/xctest/" style="font-size: 16.67px;">xctest</a>
     </div>
   </div>
 
@@ -586,6 +588,10 @@
       <ul>
         
           <li>
+            <a href="/2019/10/14/docker-login/">docker login harbor</a>
+          </li>
+        
+          <li>
             <a href="/2019/10/14/harbor/">harbor</a>
           </li>
         
@@ -599,10 +605,6 @@
         
           <li>
             <a href="/2019/08/31/pict-testool/">Pict-TestUtil遍历测试用例组合</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/28/pict/">PICT工具进行正交实验法设计用例</a>
           </li>
         
       </ul>

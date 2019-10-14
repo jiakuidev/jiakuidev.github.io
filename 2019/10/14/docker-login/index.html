@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: logstash | 学习笔记</title>
+  <title>docker login harbor | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="学习笔记">
-<meta property="og:url" content="http://jiakui.app/tags/logstash/index.html">
+  <meta name="description" content="安装完成harbor，在客户端执行docker login 后，docker 会记住对应 registry的登陆用户名，方便下次登陆。这个信息存储在用户Home下的.docker 文件夹下的，例如:/root/.docker/config.json 12345678[root@localhost ~]# cat .docker/config.json &amp;#123;	&quot;auths&quot;: &amp;#123;">
+<meta name="keywords" content="harbor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker login harbor">
+<meta property="og:url" content="http://jiakui.app/2019/10/14/docker-login/index.html">
 <meta property="og:site_name" content="学习笔记">
+<meta property="og:description" content="安装完成harbor，在客户端执行docker login 后，docker 会记住对应 registry的登陆用户名，方便下次登陆。这个信息存储在用户Home下的.docker 文件夹下的，例如:/root/.docker/config.json 12345678[root@localhost ~]# cat .docker/config.json &amp;#123;	&quot;auths&quot;: &amp;#123;">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-10-14T05:20:35.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="学习笔记">
+<meta name="twitter:title" content="docker login harbor">
+<meta name="twitter:description" content="安装完成harbor，在客户端执行docker login 后，docker 会记住对应 registry的登陆用户名，方便下次登陆。这个信息存储在用户Home下的.docker 文件夹下的，例如:/root/.docker/config.json 12345678[root@localhost ~]# cat .docker/config.json &amp;#123;	&quot;auths&quot;: &amp;#123;">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -64,40 +69,68 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/02/logstash/" class="archive-article-date">
-  <time datetime="2018-09-02T07:34:00.000Z" itemprop="datePublished">Sep 2</time>
+        <section id="main"><article id="post-docker-login" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/14/docker-login/" class="article-date">
+  <time datetime="2019-10-14T05:07:00.000Z" itemprop="datePublished">2019-10-14</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/02/logstash/">ELK日志分析系统-Logstash</a>
+    <h1 class="article-title" itemprop="name">
+      docker login harbor
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>安装完成harbor，在客户端执行docker login 后，docker 会记住对应 registry的登陆用户名，方便下次登陆。这个信息存储在用户Home下的.docker 文件夹下的，例如:/root/.docker/config.json</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat .docker/config.json </span><br><span class="line">&#123;</span><br><span class="line">	"auths": &#123;</span><br><span class="line">		"192.168.206.72:80": &#123;</span><br><span class="line">			"auth": "amlha3VpOlhpYW4xOTg2MDkwNA=="</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用http登录harbor服务器需要改文件:/etc/docker/daemon.json</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  "insecure-registries":["192.168.206.72:80"]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果以http形式进行登录使用insecure-registries进行登录即可文件修改后重启docker即可：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>##重启docker</span><br><span class="line">sudo service docker restart</span><br><span class="line"><span class="meta">#</span>##登录私服带上端口</span><br><span class="line">docker login 192.168.206.72:80</span><br><span class="line"><span class="meta">#</span>##制作镜像tag</span><br><span class="line">docker tag centos7-base:dockerfile 192.168.206.72:80/base-os/centos7-base:latest</span><br><span class="line"><span class="meta">#</span>##推动镜像</span><br><span class="line">docker push 192.168.206.72:80/base-os/centos7-base:latest</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/10/14/docker-login/" data-id="ck1pyi22e0000anfyeu765q65" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/harbor/">harbor</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/10/14/harbor/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">harbor</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
