@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="安装完成harbor，在客户端执行docker login 后，docker 会记住对应 registry的登陆用户名，方便下次登陆。这个信息存储在用户Home下的.docker 文件夹下的，例如:/root/.docker/config.json 12345678[root@localhost ~]# cat .docker/config.json &amp;#123;	&quot;auths&quot;: &amp;#123;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-14T05:20:35.558Z">
+<meta property="og:updated_time" content="2019-10-15T05:04:46.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker login harbor">
 <meta name="twitter:description" content="安装完成harbor，在客户端执行docker login 后，docker 会记住对应 registry的登陆用户名，方便下次登陆。这个信息存储在用户Home下的.docker 文件夹下的，例如:/root/.docker/config.json 12345678[root@localhost ~]# cat .docker/config.json &amp;#123;	&quot;auths&quot;: &amp;#123;">
@@ -102,9 +102,10 @@
 <li><p>使用http登录harbor服务器需要改文件:/etc/docker/daemon.json</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# cat /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  "insecure-registries":["192.168.206.72:80"]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>如果以http形式进行登录使用insecure-registries进行登录即可文件修改后重启docker即可：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>##重启docker</span><br><span class="line">sudo service docker restart</span><br><span class="line"><span class="meta">#</span>##登录私服带上端口</span><br><span class="line">docker login 192.168.206.72:80</span><br><span class="line"><span class="meta">#</span>##制作镜像tag</span><br><span class="line">docker tag centos7-base:dockerfile 192.168.206.72:80/base-os/centos7-base:latest</span><br><span class="line"><span class="meta">#</span>##推动镜像</span><br><span class="line">docker push 192.168.206.72:80/base-os/centos7-base:latest</span><br></pre></td></tr></table></figure>
-</li>
+</ol>
+<a id="more"></a>
+<ol start="3">
+<li>如果以http形式进行登录使用insecure-registries进行登录即可文件修改后重启docker即可：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>##重启docker</span><br><span class="line">sudo service docker restart</span><br><span class="line"><span class="meta">#</span>##登录私服带上端口</span><br><span class="line">docker login 192.168.206.72:80</span><br><span class="line"><span class="meta">#</span>##制作镜像tag</span><br><span class="line">docker tag centos7-base:dockerfile 192.168.206.72:80/base-os/centos7-base:latest</span><br><span class="line"><span class="meta">#</span>##推动镜像</span><br><span class="line">docker push 192.168.206.72:80/base-os/centos7-base:latest</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
