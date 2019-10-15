@@ -66,6 +66,57 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jenkins-kubectl" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/15/jenkins-kubectl/" class="article-date">
+  <time datetime="2019-10-15T04:03:17.000Z" itemprop="datePublished">2019-10-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/15/jenkins-kubectl/">jenkins-kubectl</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="1-jenkins连接jnlp连接动态slave"><a href="#1-jenkins连接jnlp连接动态slave" class="headerlink" title="1. jenkins连接jnlp连接动态slave"></a>1. jenkins连接jnlp连接动态slave</h6><p>首先通过rancher搭建好k8s集群，此时通过集群监控面板下载kubecofig配置文件，将设置保存到~/.kube/config</p>
+<h6 id="2-安装kubectl工具"><a href="#2-安装kubectl工具" class="headerlink" title="2. 安装kubectl工具"></a>2. 安装kubectl工具</h6><p><a href="https://www.cnrancher.com/docs/rancher/v2.x/cn/install-prepare/download/kubernetes/" target="_blank" rel="noopener">‘下载地址’</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.rancher.cn/download/kubernetes/linux-amd64-v1.16.0-kubectl</span><br></pre></td></tr></table></figure></p>
+<p>下载后执行运行即可<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./linux-amd64-v1.16.0-kubectl</span><br></pre></td></tr></table></figure></p>
+<h6 id="3-Jenkins当中配置"><a href="#3-Jenkins当中配置" class="headerlink" title="3.Jenkins当中配置"></a>3.Jenkins当中配置</h6><ol>
+<li>jenkins主页点击Manage Jenkins-&gt;Configure System</li>
+<li>点击新增一个云-&gt;选择kubernetes<ol>
+<li>填写Jenkins 地址等相关信息。</li>
+<li>新增镜像进行卷挂载<ol>
+<li>/var/run/docker.sock</li>
+<li>/usr/bin/docker</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h5 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/10/15/jenkins-kubectl/" data-id="ck1rbmsjq0000rpx2mdt9b02g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-docker-login" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/10/14/docker-login/" class="article-date">
@@ -487,50 +538,6 @@
 
 
   
-    <article id="post-springboottest" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/22/springboottest/" class="article-date">
-  <time datetime="2019-08-22T12:55:08.000Z" itemprop="datePublished">2019-08-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/22/springboottest/">SpringBoot的测试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>Spring Boot的测试和Spring MVC的测试类似。Spring Boot为我们提供了一个SpringApplicationConfiguration来代替ContextConfiguration，用来配置Application Context。</p>
-</blockquote>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="1-项目依赖"><a href="#1-项目依赖" class="headerlink" title="1. 项目依赖"></a>1. 项目依赖</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hsqldb<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hsqldb<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2019/08/22/springboottest/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/22/springboottest/" data-id="ck1psi32n002gxefybqc3ibhi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -588,6 +595,10 @@
       <ul>
         
           <li>
+            <a href="/2019/10/15/jenkins-kubectl/">jenkins-kubectl</a>
+          </li>
+        
+          <li>
             <a href="/2019/10/14/docker-login/">docker login harbor</a>
           </li>
         
@@ -601,10 +612,6 @@
         
           <li>
             <a href="/2019/09/21/pipeline/">pipeline</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/31/pict-testool/">Pict-TestUtil遍历测试用例组合</a>
           </li>
         
       </ul>
