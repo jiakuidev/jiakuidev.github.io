@@ -5,20 +5,19 @@
   
 
   
-  <title>Android签名apk后文件分析 | 学习笔记</title>
+  <title>rocketmq启动 | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。 给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义： （1）MANIFEST.MF：这是摘要文件。">
-<meta name="keywords" content="cert">
+  <meta name="description" content="1.name server 启动  ip修改为你服务器对应公网ip1nohup ./bin/mqnamesrv -n IP:9876 &amp;amp; 2.broker 启动在conf/broker.conf 中 加入 brokerIP1=IP1nohup sh bin/mqbroker -n IP:9876 -c conf/broker.conf autoCreateTopicEnable=true">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android签名apk后文件分析">
-<meta property="og:url" content="http://jiakui.app/2018/09/14/cert4/index.html">
+<meta property="og:title" content="rocketmq启动">
+<meta property="og:url" content="http://jiakui.app/2019/11/24/rocketmq/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。 给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义： （1）MANIFEST.MF：这是摘要文件。">
+<meta property="og:description" content="1.name server 启动  ip修改为你服务器对应公网ip1nohup ./bin/mqnamesrv -n IP:9876 &amp;amp; 2.broker 启动在conf/broker.conf 中 加入 brokerIP1=IP1nohup sh bin/mqbroker -n IP:9876 -c conf/broker.conf autoCreateTopicEnable=true">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-17T23:15:08.000Z">
+<meta property="og:updated_time" content="2019-11-24T06:14:28.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android签名apk后文件分析">
-<meta name="twitter:description" content="Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。 给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义： （1）MANIFEST.MF：这是摘要文件。">
+<meta name="twitter:title" content="rocketmq启动">
+<meta name="twitter:description" content="1.name server 启动  ip修改为你服务器对应公网ip1nohup ./bin/mqnamesrv -n IP:9876 &amp;amp; 2.broker 启动在conf/broker.conf 中 加入 brokerIP1=IP1nohup sh bin/mqbroker -n IP:9876 -c conf/broker.conf autoCreateTopicEnable=true">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -69,16 +68,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-cert4" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-rocketmq" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/09/14/cert4/" class="article-date">
-  <time datetime="2018-09-13T21:15:00.000Z" itemprop="datePublished">2018-09-14</time>
+    <a href="/2019/11/24/rocketmq/" class="article-date">
+  <time datetime="2019-11-24T06:12:06.000Z" itemprop="datePublished">2019-11-24</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -87,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Android签名apk后文件分析
+      rocketmq启动
     </h1>
   
 
@@ -95,42 +90,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。</p>
-<p>给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义：</p>
-<p>（1）MANIFEST.MF：这是摘要文件。程序遍历Apk包中的所有文件(entry)，对非文件夹非签名文件的文件，逐个用SHA1生成摘要信息，再用Base64进行编码。如果你改变了apk包中的文件，那么在apk安装校验时，改变后的文件摘要信息与MANIFEST.MF的检验信息不同，于是程序就不能成功安装。<br><a id="more"></a><br>说明：如果攻击者修改了程序的内容，有重新生成了新的摘要，那么就可以通过验证，所以这是一个非常简单的验证。</p>
-<p>（2）CERT.SF：这是对摘要的签名文件。对前一步生成的MANIFEST.MF，使用SHA1-RSA算法，用开发者的私钥进行签名。在安装时只能使用公钥才能解密它。解密之后，将它与未加密的摘要信息（即，MANIFEST.MF文件）进行对比，如果相符，则表明内容没有被异常修改。</p>
-<p>说明：在这一步，即使开发者修改了程序内容，并生成了新的摘要文件，但是攻击者没有开发者的私钥，所以不能生成正确的签名文件（CERT.SF）。系统在对程序进行验证的时候，用开发者公钥对不正确的签名文件进行解密，得到的结果和摘要文件（MANIFEST.MF）对应不起来，所以不能通过检验，不能成功安装文件。</p>
-<p>（3）CERT.RSA文件中保存了公钥、所采用的加密算法等信息。</p>
-<p>说明：系统对签名文件进行解密，所需要的公钥就是从这个文件里取出来的。</p>
-<p>结论：从上面的总结可以看出，META-INF里面的说那个文件环环相扣，从而保证Android程序的安全性。（只是防止开发者的程序不被攻击者修改，如果开发者的公私钥对对攻击者得到或者开发者开发出攻击程序，Android系统都无法检测出来。）</p>
+        <h4 id="1-name-server-启动-ip修改为你服务器对应公网ip"><a href="#1-name-server-启动-ip修改为你服务器对应公网ip" class="headerlink" title="1.name server 启动  ip修改为你服务器对应公网ip"></a>1.name server 启动  ip修改为你服务器对应公网ip</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ./bin/mqnamesrv -n IP:9876 &amp;</span><br></pre></td></tr></table></figure>
+<h4 id="2-broker-启动"><a href="#2-broker-启动" class="headerlink" title="2.broker 启动"></a>2.broker 启动</h4><p>在conf/broker.conf 中 加入 brokerIP1=IP<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup sh bin/mqbroker -n IP:9876 -c conf/broker.conf autoCreateTopicEnable=true &amp;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/14/cert4/" data-id="ck3clyb0l000zoofy9gtaeg37" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/11/24/rocketmq/" data-id="ck3clyb1d002poofycb6hu68w" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/09/18/cert5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          检查证书的信息和指纹
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/13/cert3/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/10/15/jenkins-kubectl/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">如何获取cert.rsa的公钥</div>
+      <div class="article-nav-title">jenkins-kubectl</div>
     </a>
   
 </nav>
