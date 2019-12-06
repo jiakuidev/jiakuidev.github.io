@@ -66,6 +66,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-allpairs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/26/allpairs/" class="article-date">
+  <time datetime="2019-08-26T05:40:51.000Z" itemprop="datePublished">2019-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/26/allpairs/">AllPairs库进行正交实验法设计用例</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>正交实验法设计测试用例，需要先列出因素数和水平，过程较为复杂。本文介绍一下AllPairs这个Python库</p>
+</blockquote>
+<h2 id="1-软件安装"><a href="#1-软件安装" class="headerlink" title="1. 软件安装"></a>1. 软件安装</h2><p><a href="https://sourceforge.net/projects/allpairs/" target="_blank" rel="noopener">AllPairs代码托管地址</a></p>
+<p>安装有2中方式</p>
+<h4 id="1-1-pip包管理方式"><a href="#1-1-pip包管理方式" class="headerlink" title="1.1 pip包管理方式"></a>1.1 pip包管理方式</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install AllPairs</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/26/allpairs/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/26/allpairs/" data-id="ck3clyb0e000ioofym6scxgq0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-unit-test" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/22/unit-test/" class="article-date">
@@ -499,42 +545,6 @@
 
 
   
-    <article id="post-appium-getpullfile" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/02/appium-getpullfile/" class="article-date">
-  <time datetime="2019-08-02T10:20:49.000Z" itemprop="datePublished">2019-08-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/02/appium-getpullfile/">appium从手机端获取文件内容</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="appium从手机端获取文件内容"><a href="#appium从手机端获取文件内容" class="headerlink" title="appium从手机端获取文件内容"></a>appium从手机端获取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>[] file = mobiledriver.pullFile(<span class="string">"/sdcard/verfiyCode.dat"</span>);</span><br><span class="line">InputStream bis = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> ByteArrayInputStream(file));</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	String result = <span class="string">""</span>;</span><br><span class="line">	BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(bis));</span><br><span class="line">	String line = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">while</span> ((line = bufferedReader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">		log.info(line);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			<span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">	e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="ck3clyb050007oofyima4ft8j" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -579,7 +589,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
     </div>
   </div>
 
@@ -590,6 +600,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/12/06/smallapp/">smallapp</a>
+          </li>
         
           <li>
             <a href="/2019/11/24/rocketmq/">rocketmq启动</a>
@@ -605,10 +619,6 @@
         
           <li>
             <a href="/2019/10/14/harbor/">harbor</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/13/docker-compose/">Install Compose on Linux systems</a>
           </li>
         
       </ul>
