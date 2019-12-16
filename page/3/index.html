@@ -66,6 +66,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-centos-svn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/08/centos-svn/" class="article-date">
+  <time datetime="2019-08-08T14:29:38.000Z" itemprop="datePublished">2019-08-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/08/centos-svn/">centos下svn搭建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install subversion</span><br></pre></td></tr></table></figure>
+<h2 id="2-创建版本库目录"><a href="#2-创建版本库目录" class="headerlink" title="2.创建版本库目录"></a>2.创建版本库目录</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/svn</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/08/centos-svn/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/08/centos-svn/" data-id="ck43n0scd0014a0x278y8vnbn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-centos-mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/05/centos-mysql/" class="article-date">
+  <time datetime="2019-08-05T05:49:08.000Z" itemprop="datePublished">2019-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/05/centos-mysql/">centos7中mysql5.7安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、安装YUM-Repo"><a href="#1、安装YUM-Repo" class="headerlink" title="1、安装YUM Repo"></a>1、安装YUM Repo</h2><p>由于CentOS 的yum源中没有mysql，需要到mysql的官网下载yum repo配置文件。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>然后进行repo的安装：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql57-community-release-el7-9.noarch.rpm</span><br></pre></td></tr></table></figure></p>
+<p>执行完成后会在/etc/yum.repos.d/目录下生成两个repo文件mysql-community.repo mysql-community-source.repo<br>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/05/centos-mysql/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="ck43n0sc6000ra0x2pf5g3eob" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-appium-getpullfile" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/02/appium-getpullfile/" class="article-date">
@@ -432,103 +517,6 @@
 
 
   
-    <article id="post-cert4" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/14/cert4/" class="article-date">
-  <time datetime="2018-09-13T21:15:00.000Z" itemprop="datePublished">2018-09-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/14/cert4/">Android签名apk后文件分析</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Android对每一个Apk文件都会进行签名，在Apk文件安装时，系统会对其签名信息进行比对，判断程序的完整性，从而决定该Apk文件是否可以安装，在一定程度上达到安全的目的。</p>
-<p>给定一个Apk文件，解压，可以看到一个META-INF文件夹，在该文件夹下有三个文件：分别为MANIFEST.MF、CERT.SF和CERT.RSA。这三个文件分别表征以下含义：</p>
-<p>（1）MANIFEST.MF：这是摘要文件。程序遍历Apk包中的所有文件(entry)，对非文件夹非签名文件的文件，逐个用SHA1生成摘要信息，再用Base64进行编码。如果你改变了apk包中的文件，那么在apk安装校验时，改变后的文件摘要信息与MANIFEST.MF的检验信息不同，于是程序就不能成功安装。<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/14/cert4/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/14/cert4/" data-id="ck43n0scc000ya0x2871y1sg4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-cert3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/cert3/" class="article-date">
-  <time datetime="2018-09-13T15:09:00.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/cert3/">如何获取cert.rsa的公钥</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="如何获取cert-rsa的公钥"><a href="#如何获取cert-rsa的公钥" class="headerlink" title="如何获取cert.rsa的公钥"></a>如何获取cert.rsa的公钥</h3><p>在Apk 包中的META-INF目录下，有一个CERT.RSA，它是一个PKCS7 格式的文件。</p>
-<p>下面介绍几种从中获取证书的方法。<br>在linux下openssl获取<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs7 -inform DER -<span class="keyword">in</span> CERT.RSA -noout -print_certs -text</span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/13/cert3/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/13/cert3/" data-id="ck43n0scb000va0x2vr774g1h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cert/">cert</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -586,6 +574,14 @@
       <ul>
         
           <li>
+            <a href="/2019/12/16/letsencrypt/">Let’s Encrypt证书</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/13/matchtemplate/">Android中OpenCV的matchtemplate</a>
+          </li>
+        
+          <li>
             <a href="/2019/12/06/smallapp/">小程序jest测试</a>
           </li>
         
@@ -595,14 +591,6 @@
         
           <li>
             <a href="/2019/10/15/jenkins-kubectl/">jenkins-kubectl</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/14/docker-login/">docker login harbor</a>
-          </li>
-        
-          <li>
-            <a href="/2019/10/14/harbor/">harbor</a>
           </li>
         
       </ul>
