@@ -93,7 +93,7 @@
         <blockquote>
 <p><a href="https://letsencrypt.org/" target="_blank" rel="noopener">https://letsencrypt.org/</a></p>
 </blockquote>
-<h3 id="1-首先关闭ngnix然后在执行"><a href="#1-首先关闭ngnix然后在执行" class="headerlink" title="1.首先关闭ngnix然后在执行"></a>1.首先关闭ngnix然后在执行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>首先获取letsencrypt源码</span><br><span class="line">git clone https://github.com/letsencrypt/letsencrypt</span><br><span class="line"><span class="meta">#</span>在根目录下执行如下命令，其中邮箱填写自己的，-d后跟的是要生成证书的域名</span><br><span class="line">./letsencrypt-auto certonly --standalone --email xxxxx@gmail.com -d xxxx.example.com</span><br></pre></td></tr></table></figure>
+<h3 id="1-首先关闭ngnix然后在执行"><a href="#1-首先关闭ngnix然后在执行" class="headerlink" title="1.首先关闭ngnix然后在执行"></a>1.首先关闭ngnix然后在执行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先获取letsencrypt源码</span></span><br><span class="line">git clone https://github.com/letsencrypt/letsencrypt</span><br><span class="line"><span class="meta">#</span><span class="bash">在根目录下执行如下命令，其中邮箱填写自己的，-d后跟的是要生成证书的域名</span></span><br><span class="line">./letsencrypt-auto certonly --standalone --email xxxxx@gmail.com -d xxxx.example.com</span><br></pre></td></tr></table></figure>
 <h3 id="2-生成dhparams"><a href="#2-生成dhparams" class="headerlink" title="2.生成dhparams"></a>2.生成dhparams</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -out /etc/ssl/certs/dhparams.pem 2048</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="3-nginx配置"><a href="#3-nginx配置" class="headerlink" title="3.nginx配置"></a>3.nginx配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl;</span><br><span class="line">    server_name  xxxx.example.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        # root   html;</span><br><span class="line">        # index  index.html index.htm;</span><br><span class="line">        proxy_pass http://xxxx.example.com:8090;</span><br><span class="line">        # root /home/tomcat/apache-tomcat-default/webapps/xxxxx;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    # 开启ssl</span><br><span class="line">    ssl on; </span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/xxxx.example.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/xxxx.example.com/privkey.pem;</span><br><span class="line">    ssl_dhparam /etc/ssl/certs/dhparams.pem;</span><br><span class="line">    ssl_protocols SSLv3  TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers  on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -102,16 +102,16 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto renew --force-renewal</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>自动更新脚本<br>假设脚本名为letsencrypt_renew.sh</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line"></span><br><span class="line">if ! /usr/local/letsencrypt/letsencrypt-auto renew &gt; /var/log/letsencrypt/renew.log 2&gt;&amp;1 ; then</span><br><span class="line">    echo Automated renewal failed:</span><br><span class="line">    cat /var/log/letsencrypt/renew.log</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line"></span><br><span class="line">if ! /usr/local/letsencrypt/letsencrypt-auto renew &gt; /var/log/letsencrypt/renew.log 2&gt;&amp;1 ; then</span><br><span class="line">    echo Automated renewal failed:</span><br><span class="line">    cat /var/log/letsencrypt/renew.log</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>设置定时器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>首先进入当前用户的定时器编辑</span><br><span class="line">crontab -e</span><br><span class="line"><span class="meta">#</span>输入如下内容，定时器遵循linux定时器cron规则</span><br><span class="line">* * 1 * * /bin/sh /opt/letsencrypt_renew.sh</span><br><span class="line"><span class="meta">#</span>查看定时器当前内容</span><br><span class="line">crontab -l</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先进入当前用户的定时器编辑</span></span><br><span class="line">crontab -e</span><br><span class="line"><span class="meta">#</span><span class="bash">输入如下内容，定时器遵循linux定时器cron规则</span></span><br><span class="line">* * 1 * * /bin/sh /opt/letsencrypt_renew.sh</span><br><span class="line"><span class="meta">#</span><span class="bash">查看定时器当前内容</span></span><br><span class="line">crontab -l</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/12/16/letsencrypt/" data-id="ck47uk4pm0000rpx266zmj7v5" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/12/16/letsencrypt/" data-id="ck769pdof002c49s6xhg3nbrm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,11 +212,12 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 Jiakui<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      &copy; 2020 Jiakui<br>
+      Powered by Hexo <a href="http://hexo.io/" target="_blank"><span><a href="http://www.miitbeian.gov.cn/ "rel="external nofollow" target="_blank" style='text-decoration:none;'><span style="color:white;" >京ICP备案G17075050号-1</span></a></span><span>&nbsp;<img src="http://zixiapps.com/image/beian.png" style="vertical-align:text-bottom;"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11011502003019 "rel="external nofollow" target="_blank" style='text-decoration:none;'><span style="color:white;">京公网安备 11010102002019号</span></a>
     </div>
   </div>
 </footer>
+
     </div>
     <nav id="mobile-nav">
   
