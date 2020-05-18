@@ -125,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/08/test-upgrade/" data-id="ckac7kxe0002zfxlawsdgk3d4" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/08/test-upgrade/" data-id="ckac7mfem0039igla9wyq2uhq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -167,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/08/centos-svn/" data-id="ckac7kxd2000lfxla6sgrbjo8" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/08/centos-svn/" data-id="ckac7mfdj000liglavzykz4b4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +210,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="ckac7kxcy000gfxlawgmrovpq" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="ckac7mfdi000kiglad0knvmzd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="ckac7kxco0007fxlauqew7nco" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="ckac7mfd70007iglaqvfvd1wb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="ckac7kxdw002ofxla7dyx4yo2" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="ckac7mfeg002tiglamwl0hne4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +325,7 @@
         <blockquote>
 <p>centos7 自带python2,如果安装python3要从github上把源码clone下来进行编译安装,由于因为 yum 源中并没有现成的 python3 程序，所以手动编译安装。</p>
 </blockquote>
-<h3 id="1-首先，查询系统现在的python的位置："><a href="#1-首先，查询系统现在的python的位置：" class="headerlink" title="1.首先，查询系统现在的python的位置："></a>1.首先，查询系统现在的python的位置：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# whereis python</span><br><span class="line">python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</span><br><span class="line"><span class="meta">#</span>#可以知道我们的python在 /usr/bin目录中</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">[root@root ~]# cd /usr/bin/</span><br><span class="line">[root@root bin]# ll python*</span><br><span class="line">lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2</span><br><span class="line">lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7</span><br><span class="line">-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</span><br></pre></td></tr></table></figure>
+<h3 id="1-首先，查询系统现在的python的位置："><a href="#1-首先，查询系统现在的python的位置：" class="headerlink" title="1.首先，查询系统现在的python的位置："></a>1.首先，查询系统现在的python的位置：</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@root ~]# whereis python</span><br><span class="line">python: /usr/bin/python2.7 /usr/bin/python /usr/lib/python2.7 /usr/lib64/python2.7 /etc/python /usr/include/python2.7 /usr/share/man/man1/python.1.gz</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#可以知道我们的python在 /usr/bin目录中</span></span></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line">[root@root ~]# cd /usr/bin/</span><br><span class="line">[root@root bin]# ll python*</span><br><span class="line">lrwxrwxrwx. 1 root root    7 2月   7 09:30 python -&gt; python2</span><br><span class="line">lrwxrwxrwx. 1 root root    9 2月   7 09:30 python2 -&gt; python2.7</span><br><span class="line">-rwxr-xr-x. 1 root root 7136 8月   4 2017 python2.7</span><br></pre></td></tr></table></figure>
 <p>可以看到，python指向的是python2，python2指向的是python2.7，因此我们可以装个python3，然后将python指向python3，然后python2指向python2.7，那么两个版本的python就能共存了。<br>
         
           <p class="article-more-link">
@@ -335,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="ckac7kxd1000kfxlaoxqhbisn" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="ckac7mfdl000siglaosljypvz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -381,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="ckac7kxcq0008fxla3ix15roi" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="ckac7mfde000eiglaeq6yyzlp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -429,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="ckac7kxcr0009fxlanxfi7j61" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="ckac7mfdb000digla0v93t6pi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Appium/">Appium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -477,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/19/broadcast2/" data-id="ckac7kxcx000efxlatix3xo0h" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/19/broadcast2/" data-id="ckac7mfd80008iglasse4fguc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
@@ -525,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/19/broadcast/" data-id="ckac7kxct000dfxlaavqgynjf" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/09/19/broadcast/" data-id="ckac7mfd90009iglacx84qcp2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
