@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="学习笔记">
 <meta property="og:description" content="1.P12(PKCS12)和JKS互相转换1)P12 ——&amp;gt; JKS1keytool -importkeystore -srckeystore test.p12 -srcstoretype PKCS12 -deststoretype JKS -destkeystore test.jks 2）JSK ——&amp;gt;P121keytool -importkeystore -srckeystore">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-05-21T04:40:59.824Z">
+<meta property="og:updated_time" content="2021-05-21T04:42:49.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="key-cert">
 <meta name="twitter:description" content="1.P12(PKCS12)和JKS互相转换1)P12 ——&amp;gt; JKS1keytool -importkeystore -srckeystore test.p12 -srcstoretype PKCS12 -deststoretype JKS -destkeystore test.jks 2）JSK ——&amp;gt;P121keytool -importkeystore -srckeystore">
@@ -92,6 +92,7 @@
       
         <h2 id="1-P12-PKCS12-和JKS互相转换"><a href="#1-P12-PKCS12-和JKS互相转换" class="headerlink" title="1.P12(PKCS12)和JKS互相转换"></a>1.P12(PKCS12)和JKS互相转换</h2><h5 id="1-P12-——-gt-JKS"><a href="#1-P12-——-gt-JKS" class="headerlink" title="1)P12 ——&gt; JKS"></a>1)P12 ——&gt; JKS</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -importkeystore -srckeystore test.p12 -srcstoretype PKCS12 -deststoretype JKS -destkeystore test.jks</span><br></pre></td></tr></table></figure>
 <h5 id="2）JSK-——-gt-P12"><a href="#2）JSK-——-gt-P12" class="headerlink" title="2）JSK ——&gt;P12"></a>2）JSK ——&gt;P12</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -importkeystore -srckeystore test.jks -srcstoretype JKS -deststoretype PKCS12 -destkeystore test1.p12</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="2-JKS和CER相互转换"><a href="#2-JKS和CER相互转换" class="headerlink" title="2.JKS和CER相互转换"></a>2.JKS和CER相互转换</h2><h5 id="1-JKS——-gt-CER"><a href="#1-JKS——-gt-CER" class="headerlink" title="1)JKS——-&gt;CER"></a>1)JKS——-&gt;CER</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -export -alias test -keystore test.jks -storepass 123456 -file test.cer</span><br></pre></td></tr></table></figure>
 <h5 id="2-CER——-gt-JKS"><a href="#2-CER——-gt-JKS" class="headerlink" title="2)CER——-&gt;JKS"></a>2)CER——-&gt;JKS</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -import -v -alias test -file test.cer -keystore test.jks -storepass 123456 -noprompt</span><br></pre></td></tr></table></figure>
 <h2 id="3-PFX-P12-与pEM转换"><a href="#3-PFX-P12-与pEM转换" class="headerlink" title="3.PFX(P12)与pEM转换"></a>3.PFX(P12)与pEM转换</h2><p>使用比较少</p>
