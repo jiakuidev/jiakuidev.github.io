@@ -5,19 +5,19 @@
   
 
   
-  <title>Let’s Encrypt证书 | 学习笔记</title>
+  <title>k8s-rancher | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://letsencrypt.org/  1.首先关闭ngnix然后在执行1234#首先获取letsencrypt源码git clone https://github.com/letsencrypt/letsencrypt#在根目录下执行如下命令，其中邮箱填写自己的，-d后跟的是要生成证书的域名./letsencrypt-auto certonly --standalone --ema">
+  <meta name="description" content="1.首先安装完系统后执行获取安装网络工具和获取ip地址1234vi /etc/sysconfig/network-scripts/ifcfg-eth0修改改onboot=yes重启网卡systemctl restart networ 2.安装网络工具1yum -y install net-tools">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Let’s Encrypt证书">
-<meta property="og:url" content="http://jiakui.app/2019/12/16/letsencrypt/index.html">
+<meta property="og:title" content="k8s-rancher">
+<meta property="og:url" content="http://jiakui.app/2022/02/16/k8s-rancher/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="https://letsencrypt.org/  1.首先关闭ngnix然后在执行1234#首先获取letsencrypt源码git clone https://github.com/letsencrypt/letsencrypt#在根目录下执行如下命令，其中邮箱填写自己的，-d后跟的是要生成证书的域名./letsencrypt-auto certonly --standalone --ema">
+<meta property="og:description" content="1.首先安装完系统后执行获取安装网络工具和获取ip地址1234vi /etc/sysconfig/network-scripts/ifcfg-eth0修改改onboot=yes重启网卡systemctl restart networ 2.安装网络工具1yum -y install net-tools">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-16T03:13:04.211Z">
+<meta property="og:updated_time" content="2022-02-16T11:23:57.037Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Let’s Encrypt证书">
-<meta name="twitter:description" content="https://letsencrypt.org/  1.首先关闭ngnix然后在执行1234#首先获取letsencrypt源码git clone https://github.com/letsencrypt/letsencrypt#在根目录下执行如下命令，其中邮箱填写自己的，-d后跟的是要生成证书的域名./letsencrypt-auto certonly --standalone --ema">
+<meta name="twitter:title" content="k8s-rancher">
+<meta name="twitter:description" content="1.首先安装完系统后执行获取安装网络工具和获取ip地址1234vi /etc/sysconfig/network-scripts/ifcfg-eth0修改改onboot=yes重启网卡systemctl restart networ 2.安装网络工具1yum -y install net-tools">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -68,10 +68,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-letsencrypt" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-k8s-rancher" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/12/16/letsencrypt/" class="article-date">
-  <time datetime="2019-12-16T02:56:54.000Z" itemprop="datePublished">2019-12-16</time>
+    <a href="/2022/02/16/k8s-rancher/" class="article-date">
+  <time datetime="2022-02-16T11:16:31.000Z" itemprop="datePublished">2022-02-16</time>
 </a>
     
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Let’s Encrypt证书
+      k8s-rancher
     </h1>
   
 
@@ -90,28 +90,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p><a href="https://letsencrypt.org/" target="_blank" rel="noopener">https://letsencrypt.org/</a></p>
-</blockquote>
-<h3 id="1-首先关闭ngnix然后在执行"><a href="#1-首先关闭ngnix然后在执行" class="headerlink" title="1.首先关闭ngnix然后在执行"></a>1.首先关闭ngnix然后在执行</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先获取letsencrypt源码</span></span><br><span class="line">git clone https://github.com/letsencrypt/letsencrypt</span><br><span class="line"><span class="meta">#</span><span class="bash">在根目录下执行如下命令，其中邮箱填写自己的，-d后跟的是要生成证书的域名</span></span><br><span class="line">./letsencrypt-auto certonly --standalone --email xxxxx@gmail.com -d xxxx.example.com</span><br></pre></td></tr></table></figure>
-<h3 id="2-生成dhparams"><a href="#2-生成dhparams" class="headerlink" title="2.生成dhparams"></a>2.生成dhparams</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl dhparam -out /etc/ssl/certs/dhparams.pem 2048</span><br></pre></td></tr></table></figure>
+        <h3 id="1-首先安装完系统后执行获取安装网络工具和获取ip地址"><a href="#1-首先安装完系统后执行获取安装网络工具和获取ip地址" class="headerlink" title="1.首先安装完系统后执行获取安装网络工具和获取ip地址"></a>1.首先安装完系统后执行获取安装网络工具和获取ip地址</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line">修改改onboot=yes</span><br><span class="line">重启网卡</span><br><span class="line">systemctl restart networ</span><br></pre></td></tr></table></figure>
+<h3 id="2-安装网络工具"><a href="#2-安装网络工具" class="headerlink" title="2.安装网络工具"></a>2.安装网络工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install net-tools</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="3-nginx配置"><a href="#3-nginx配置" class="headerlink" title="3.nginx配置"></a>3.nginx配置</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       443 ssl;</span><br><span class="line">    server_name  xxxx.example.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        # root   html;</span><br><span class="line">        # index  index.html index.htm;</span><br><span class="line">        proxy_pass http://xxxx.example.com:8090;</span><br><span class="line">        # root /home/tomcat/apache-tomcat-default/webapps/xxxxx;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    # 开启ssl</span><br><span class="line">    ssl on; </span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/xxxx.example.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/xxxx.example.com/privkey.pem;</span><br><span class="line">    ssl_dhparam /etc/ssl/certs/dhparams.pem;</span><br><span class="line">    ssl_protocols SSLv3  TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers  on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="3-证书续期"><a href="#3-证书续期" class="headerlink" title="3.证书续期"></a>3.证书续期</h3><ol>
-<li><p>手动更新</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./letsencrypt-auto renew --force-renewal</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自动更新脚本<br>假设脚本名为letsencrypt_renew.sh</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line"></span><br><span class="line">if ! /usr/local/letsencrypt/letsencrypt-auto renew &gt; /var/log/letsencrypt/renew.log 2&gt;&amp;1 ; then</span><br><span class="line">    echo Automated renewal failed:</span><br><span class="line">    cat /var/log/letsencrypt/renew.log</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置定时器</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先进入当前用户的定时器编辑</span></span><br><span class="line">crontab -e</span><br><span class="line"><span class="meta">#</span><span class="bash">输入如下内容，定时器遵循linux定时器cron规则</span></span><br><span class="line">* * 1 * * /bin/sh /opt/letsencrypt_renew.sh</span><br><span class="line"><span class="meta">#</span><span class="bash">查看定时器当前内容</span></span><br><span class="line">crontab -l</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+<h3 id="3-安装docker"><a href="#3-安装docker" class="headerlink" title="3.安装docker"></a>3.安装docker</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.Uninstall old versions</span></span><br><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br><span class="line"><span class="meta"> #</span><span class="bash">2.Install required packages. yum-utils provides the yum-config-manager utility, and device-mapper-persistent-data and lvm2 are required by the devicemapper storage driver.</span></span><br><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">  device-mapper-persistent-data \</span><br><span class="line">  lvm2</span><br><span class="line"><span class="meta">#</span><span class="bash">3.Use the following <span class="built_in">command</span> to <span class="built_in">set</span> up the stable repository.</span></span><br><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<p>安装docker<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure></p>
+<p>关闭防火墙<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">1.关闭防火墙</span></span><br><span class="line">systemctl stop firewalld &amp;&amp; systemctl disable firewalld</span><br><span class="line"><span class="meta">#</span><span class="bash">2.设置selinux</span></span><br><span class="line">sed -i 's/enforcing/disabled/g' /etc/selinux/config; setenforce 0</span><br><span class="line"><span class="meta">#</span><span class="bash">3.重启docker</span></span><br><span class="line">systemctl start docker &amp;&amp; systemctl enable docker</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-安装rancher"><a href="#4-安装rancher" class="headerlink" title="4.安装rancher"></a>4.安装rancher</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher</span><br></pre></td></tr></table></figure>
+<p><a href="https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts" target="_blank" rel="noopener">https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts</a></p>
+<h3 id="5-设置主机名"><a href="#5-设置主机名" class="headerlink" title="5.设置主机名"></a>5.设置主机名</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostnamectl set-hostname master</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/12/16/letsencrypt/" data-id="ckzpk6uft002am0lany0fbks4" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2022/02/16/k8s-rancher/" data-id="ckzpk6ufp001zm0la8bk7fr8s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -120,19 +111,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/05/18/letest/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          LeTest基于Android UiAutomater1自动化测试框架设计
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/13/matchtemplate/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/05/21/key-cert/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Android中OpenCV的matchtemplate</div>
+      <div class="article-nav-title">key-cert</div>
     </a>
   
 </nav>

@@ -66,6 +66,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-jacoco" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/22/jacoco/" class="article-date">
+  <time datetime="2019-08-22T12:37:55.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/22/jacoco/">Java代码覆盖率jacoco</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>由于采用sprintboot项目风格，故在单元测试和代码覆盖率测试中选择junit4和jacoco来集成步骤如下：</p>
+</blockquote>
+<h2 id="1-maven项目配置代码覆盖率插件"><a href="#1-maven项目配置代码覆盖率插件" class="headerlink" title="1. maven项目配置代码覆盖率插件"></a>1. maven项目配置代码覆盖率插件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.jacoco<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jacoco-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.7.8<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">destFile</span>&gt;</span>$&#123;basedir&#125;/../target/coverage-reports/jacoco-unit.exec<span class="tag">&lt;/<span class="name">destFile</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dataFile</span>&gt;</span>$&#123;basedir&#125;/../target/coverage-reports/jacoco-unit.exec<span class="tag">&lt;/<span class="name">dataFile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>jacoco-initialize<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>prepare-agent<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>jacoco-site<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>test<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>report<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2019/08/22/jacoco/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://jiakui.app/2019/08/22/jacoco/" data-id="ckzpk6ufo001wm0la225ggzg6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-cobertura" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/14/cobertura/" class="article-date">
@@ -100,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/14/cobertura/" data-id="ckzpg82uv001m8alanv6tulm0" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/14/cobertura/" data-id="ckzpk6ufa0011m0lagfjf89wv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -169,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/08/test-upgrade/" data-id="ckzpg82vd002z8ala5edpl1ct" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/08/test-upgrade/" data-id="ckzpk6ug30033m0lasw4xaasq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/08/centos-svn/" data-id="ckzpg82ud000k8ala03zczgrl" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/08/centos-svn/" data-id="ckzpk6uf4000im0la7psz5hom" class="article-share-link">Share</a>
       
       
     </footer>
@@ -254,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="ckzpg82uo00118alaqie6j2q9" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/05/centos-mysql/" data-id="ckzpk6uez000em0la1uzkyntt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="ckzpg82u000038alab7cjzahz" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/08/02/appium-getpullfile/" data-id="ckzpk6ueu0005m0la29t9vj7x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -334,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="ckzpg82v7002m8ala3pwfuxzy" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/python-venv/" data-id="ckzpk6ufz002rm0lahit1saky" class="article-share-link">Share</a>
       
       
     </footer>
@@ -379,7 +423,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="ckzpg82u600098alakeqs1t61" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2019/05/21/centos-python3-7/" data-id="ckzpk6uf3000hm0la0ui1y376" class="article-share-link">Share</a>
       
       
     </footer>
@@ -425,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="ckzpg82tw00018ala75fqmsxg" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/12/07/appium-python/" data-id="ckzpk6uev0007m0la1488i6z3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
@@ -473,58 +517,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="ckzpg82ub000g8alawm1xuokv" class="article-share-link">Share</a>
+      <a data-url="http://jiakui.app/2018/12/05/appium/" data-id="ckzpk6uev0006m0lako7803cm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Appium/">Appium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-broadcast2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/19/broadcast2/" class="article-date">
-  <time datetime="2018-09-19T04:08:00.000Z" itemprop="datePublished">2018-09-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/19/broadcast2/">Android8.0以上广播的限制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>除了有限的例外情况，应用无法使用清单注册隐式广播。 它们仍然可以在运行时注册这些广播，并且可以使用清单注册专门针对它们的显式广播。</p>
-<h2 id="1-清单无法注册隐式广播"><a href="#1-清单无法注册隐式广播" class="headerlink" title="1. 清单无法注册隐式广播"></a>1. 清单无法注册隐式广播</h2><p>下面的test_click_action为自定义的一个广播意图action<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">receiver</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:name</span>=<span class="string">".WifiRecevier"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">     <span class="attr">android:exported</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.WIFI_STATE_CHANGED"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.net.wifi.STATE_CHANGE"</span> /&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"test_click_action"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.BOOT_COMPLETED"</span>/&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"> <span class="tag">&lt;/<span class="name">receiver</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2018/09/19/broadcast2/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/19/broadcast2/" data-id="ckzpg82u9000e8alagkh1eseo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/broadcast/">broadcast</a></li></ul>
 
     </footer>
   </div>
@@ -577,7 +573,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">February 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li></ul>
     </div>
   </div>
 
@@ -588,6 +584,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2022/02/16/k8s-rancher/">k8s-rancher</a>
+          </li>
         
           <li>
             <a href="/2021/05/21/key-cert/">key-cert</a>
@@ -603,10 +603,6 @@
         
           <li>
             <a href="/2019/12/13/matchtemplate/">Android中OpenCV的matchtemplate</a>
-          </li>
-        
-          <li>
-            <a href="/2019/12/06/smallapp/">小程序jest测试</a>
           </li>
         
       </ul>
