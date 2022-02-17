@@ -5,20 +5,15 @@
   
 
   
-  <title>ELK日志分析系统-Logstash | 学习笔记</title>
+  <title>Tag: k8s | 学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="启动logstash12cd /usr/logstash-5.5.0/binnohup ./logstash -f ~/log4j_to_es.conf &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;amp; 查看这个文件里面配置信息">
-<meta name="keywords" content="logstash">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ELK日志分析系统-Logstash">
-<meta property="og:url" content="http://jiakui.app/2018/09/02/logstash/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="学习笔记">
+<meta property="og:url" content="http://jiakui.app/tags/k8s/index.html">
 <meta property="og:site_name" content="学习笔记">
-<meta property="og:description" content="启动logstash12cd /usr/logstash-5.5.0/binnohup ./logstash -f ~/log4j_to_es.conf &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;amp; 查看这个文件里面配置信息">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-02T07:44:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ELK日志分析系统-Logstash">
-<meta name="twitter:description" content="启动logstash12cd /usr/logstash-5.5.0/binnohup ./logstash -f ~/log4j_to_es.conf &amp;gt;/dev/null 2&amp;gt;&amp;amp;1&amp;amp; 查看这个文件里面配置信息">
+<meta name="twitter:title" content="学习笔记">
   
     <link rel="alternate" href="/atom.xml" title="学习笔记" type="application/atom+xml">
   
@@ -69,68 +64,40 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-logstash" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/02/logstash/" class="article-date">
-  <time datetime="2018-09-02T07:34:00.000Z" itemprop="datePublished">2018-09-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ELK/">ELK</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      ELK日志分析系统-Logstash
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2022/02/16/k8s-rancher/" class="archive-article-date">
+  <time datetime="2022-02-16T11:16:00.000Z" itemprop="datePublished">Feb 16</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/02/16/k8s-rancher/">k8s-rancher</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="启动logstash"><a href="#启动logstash" class="headerlink" title="启动logstash"></a>启动logstash</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/logstash-5.5.0/bin</span><br><span class="line">nohup ./logstash -f ~/log4j_to_es.conf &gt;/dev/null 2&gt;&amp;1&amp;</span><br></pre></td></tr></table></figure>
-<p>查看这个文件里面配置信息<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">cat /root/log4j_to_es.conf</span><br><span class="line"><span class="comment"># For detail structure of this file</span></span><br><span class="line"><span class="comment"># Set: https://www.elastic.co/guide/en/logstash/current/configuration-file-structure.html</span></span><br><span class="line">input &#123;</span><br><span class="line">  <span class="comment"># For detail config for log4j as input, </span></span><br><span class="line">  <span class="comment"># See: https://www.elastic.co/guide/en/logstash/current/plugins-inputs-log4j.html</span></span><br><span class="line">  log4j &#123;</span><br><span class="line">    mode =&gt; <span class="string">"server"</span></span><br><span class="line">    host =&gt; <span class="string">"192.8.27.5"</span></span><br><span class="line">    port =&gt; 4567</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">filter &#123;</span><br><span class="line">  <span class="comment">#matched data are send to output.</span></span><br><span class="line">&#125;</span><br><span class="line">output &#123;</span><br><span class="line">  <span class="comment"># For detail config for elasticsearch as output, </span></span><br><span class="line">  <span class="comment"># See: https://www.elastic.co/guide/en/logstash/current/plugins-outputs-elasticsearch.html</span></span><br><span class="line">  elasticsearch &#123;</span><br><span class="line">    action =&gt; <span class="string">"index"</span>          <span class="comment">#The operation on ES</span></span><br><span class="line">    hosts  =&gt; <span class="string">"192.8.27.5:9200"</span>   <span class="comment">#ElasticSearch host, can be array.</span></span><br><span class="line">    index  =&gt; <span class="string">"applog"</span>         <span class="comment">#The index to write data to.</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://jiakui.app/2018/09/02/logstash/" data-id="ckzpk6uft002cm0laxrkevbwj" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/logstash/">logstash</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/09/02/kibana/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          ELK日志分析系统-Kibana
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/09/01/elk/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ELK日志分析系统-ElasticSearch</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
 
 </section>
         
